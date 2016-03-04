@@ -25,7 +25,7 @@ function format(string) {
 
 var defaults = (function () {
     var workingDirName = path.basename(process.cwd()),
-      homeDir, osUserName, configFile, user;
+        homeDir, osUserName, configFile, user;
 
     if (process.platform === 'win32') {
         homeDir = process.env.USERPROFILE;
@@ -53,49 +53,97 @@ var defaults = (function () {
 
 gulp.task('default', function (done) {
     var prompts = [{
-        name: 'appName',
+        name: 'projectName',
         message: 'What is the name of your project?',
-        default: defaults.appName
+        default: 'CLIENT.Project'
     }, {
-        name: 'appDescription',
-        message: 'What is the description?'
+        name: 'projectSlug',
+        message: 'What would you like the slug to be?',
+        default: 'client-project'
     }, {
-        name: 'appVersion',
-        message: 'What is the version of your project?',
-        default: '0.1.0'
+        name: 'markupBuildSystem',
+        message: 'Select a stylesheet engine?',
+        choices: [{
+            name: "None",
+            value: "none"
+        }, {
+            name: "Includes",
+            value: "includes"
+        }, {
+            name: "Handlebars",
+            value: "handlebars"
+        }],
+        default: 'handlebars',
+        type: 'list'
     }, {
-        name: 'authorName',
-        message: 'What is the author name?',
-        default: defaults.authorName
+        name: 'markupFeatures',
+        message: 'Select a stylesheet engine?',
+        choices: [{
+            name: "Icons",
+            value: "icons"
+        }, {
+            name: "SEO Meta Data",
+            value: "seo"
+        }, {
+            name: "XHTML Strict Doctype (legacy)",
+            value: "xhtml"
+        }, {
+            name: "Imagemin",
+            value: "imagemin"
+        }],
+        default: '',
+        type: 'checkbox'
     }, {
-        name: 'authorEmail',
-        message: 'What is the author email?',
-        default: defaults.authorEmail
+        name: 'stylesBuildSystem',
+        message: 'Which styles build system?',
+        choices: [{
+            name: "None",
+            value: "none"
+        }, {
+            name: "Sass",
+            value: "sass"
+        }],
+        default: 'sass',
+        type: 'list'
     }, {
-        name: 'userName',
-        message: 'What is the github username?',
-        default: defaults.userName
+        name: 'stylesFeatures',
+        message: 'Any additional stylesheets?',
+        choices: [{
+            name: "Print",
+            value: "print"
+        }, {
+            name: "IE7 Conditional",
+            value: "ie7"
+        }, {
+            name: "IE8 Conditional",
+            value: "ie8"
+        }, {
+            name: "IE9 Conditional",
+            value: "ie9"
+        }],
+        default: '',
+        type: 'checkbox'
+    }, {
+        name: 'scriptsBuildSystem',
+        message: 'Which scripts build system?',
+        choices: [{
+            name: "None",
+            value: "none"
+        }, {
+            name: "ES6 (Babel)",
+            value: "es6"
+        }, {
+            name: "ES6 (TypeScript)",
+            value: "typescript"
+        }, {
+            name: "RequireJS (legacy)",
+            value: "requirejs"
+        }],
+        default: 'es6',
+        type: 'list'
     }, {
         type: 'list',
         name: 'stylesheetEngine',
-        message: 'Select a stylesheet engine?',
-        choices: [{
-            name: "CSS",
-            value: "css"
-        }, {
-            name: "SASS",
-            value: "sass"
-        }, {
-            name: "LESS",
-            value: "less"
-        }, {
-            name: "Stylus",
-            value: "stylus"
-        }],
-        default: 'css'
-    }, {
-        type: 'checkbox',
-        name: 'checkbox',
         message: 'Select a stylesheet engine?',
         choices: [{
             name: "CSS",
