@@ -8,22 +8,21 @@
 
 'use strict';
 
+var gulp = require('gulp');
+var install = require('gulp-install');
+var conflict = require('gulp-conflict');
+var template = require('gulp-template');
+var rename = require('gulp-rename');
+var inquirer = require('inquirer');
+var path = require('path');
+var _ = require('underscore.string');
 
-var gulp = require('gulp'),
-    install = require('gulp-install'),
-    conflict = require('gulp-conflict'),
-    template = require('gulp-template'),
-    rename = require('gulp-rename'),
-    _ = require('underscore.string'),
-    inquirer = require('inquirer'),
-    path = require('path');
-
-function format(string) {
+/*function format(string) {
     var username = string.toLowerCase();
     return username.replace(/\s/g, '');
-}
+}*/
 
-var defaults = (function () {
+/*var defaults = (function () {
     var workingDirName = path.basename(process.cwd()),
         homeDir, osUserName, configFile, user;
 
@@ -44,12 +43,12 @@ var defaults = (function () {
     }
 
     return {
-        appName: workingDirName,
+        projectName: workingDirName,
         userName: osUserName || format(user.name || ''),
         authorName: user.name || '',
         authorEmail: user.email || ''
     };
-})();
+})();*/
 
 gulp.task('default', function (done) {
     var prompts = [{
@@ -142,23 +141,65 @@ gulp.task('default', function (done) {
         default: 'es6',
         type: 'list'
     }, {
-        type: 'list',
-        name: 'stylesheetEngine',
-        message: 'Select a stylesheet engine?',
+        name: 'scriptsFeatures',
+        message: 'Any additional scripting features?',
         choices: [{
-            name: "CSS",
-            value: "css"
+            name: "JavaScript Unit Testing",
+            value: "testing"
         }, {
-            name: "SASS",
-            value: "sass"
+            name: "3rd-Party Vulnerability Audit",
+            value: "audit"
         }, {
-            name: "LESS",
-            value: "less"
+            name: "IE8 Conditional",
+            value: "ie8"
         }, {
-            name: "Stylus",
-            value: "stylus"
+            name: "IE9 Conditional",
+            value: "ie9"
         }],
-        default: 'css'
+        default: '',
+        type: 'checkbox'
+    }, {
+        name: 'framework',
+        message: 'Which framework build system?',
+        choices: [{
+            name: "None",
+            value: "none"
+        }, {
+            name: "StructureJS",
+            value: "structurejs"
+        }],
+        default: 'none',
+        type: 'list'
+    }, {
+        name: 'additionalScripts',
+        message: 'Any additional scripts?',
+        choices: [{
+            name: "Demo Application",
+            value: "demo"
+        }, {
+            name: "jQuery",
+            value: "jquery"
+        }, {
+            name: "Modernizr",
+            value: "modernizr"
+        }, {
+            name: "Auto Replace",
+            value: "auto-replace"
+        }, {
+            name: "External Links",
+            value: "external-links"
+        }, {
+            name: "Function Name",
+            value: "function-name"
+        }, {
+            name: "Has JS",
+            value: "has-js"
+        }, {
+            name: "Request Animation Frame",
+            value: "animation-frame"
+        }],
+        default: '',
+        type: 'checkbox'
     }, {
         type: 'confirm',
         name: 'moveon',
@@ -170,7 +211,7 @@ gulp.task('default', function (done) {
             if (!answers.moveon) {
                 return done();
             }
-            answers.appNameSlug = _.slugify(answers.appName);
+            //answers.projectSlug = _.slugify(answers.projectName);
             console.log("answers", answers);
             gulp.src(__dirname + '/templates/**')
                 .pipe(template(answers))
@@ -181,7 +222,7 @@ gulp.task('default', function (done) {
                 }))
                 .pipe(conflict('./'))
                 .pipe(gulp.dest('./'))
-                .pipe(install())
+                //.pipe(install())
                 .on('end', function () {
                     done();
                 });

@@ -63,18 +63,6 @@ IE9 Conditional
 
 
 
-Which scripts build system?
-
-    None
-    Load your JS modules the old fashioned way with <script> tags
-
-RequireJS
-Load your JS modules via require() calls
-
-
-
-
-
 
 Which scripts build system?
 

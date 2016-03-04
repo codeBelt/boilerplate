@@ -1,5 +1,5 @@
 {
-  "name": "<%= appNameSlug %>",
+  "name": "<%= projectSlug %>",
   "version": "0.1.0",
   "devDependencies": {
     "gulp-connect": "^2.0.6",
