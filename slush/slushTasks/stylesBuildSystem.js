@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var merge = require('merge-stream');
 
 module.exports = function (rootDirectory, answers) {
 
@@ -14,16 +15,21 @@ module.exports = function (rootDirectory, answers) {
             break;
     }
 
-    var basePath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem';
-    basePath += '/' + styleType + '/buildStyles.js';
+    var taskPath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem/' + styleType + '/buildScripts.js';
+    var sourcePath = rootDirectory + '/templates/src/stylesBuildSystem/' + styleType + '/**/*';
 
     gulp.task('stylesBuildSystem', function(done) {
-        gulp.src(basePath)
-            .pipe(gulp.dest('./tools/tasks/'))
-            .on('end', function () {
-                done();
-            });
+        var copyTasks = gulp
+            .src(taskPath)
+            .pipe(gulp.dest('./tools/tasks/'));
+
+        var copySourceFiles = gulp
+            .src(sourcePath)
+            .pipe(gulp.dest('./src/'));
+
+        return merge(copyTasks, copySourceFiles);
     });
+
 
     // List dependencies for this package
     return {

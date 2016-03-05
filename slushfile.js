@@ -31,12 +31,12 @@ gulp.task('default', function(done) {
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         var taskResults = [
-            //require('./slush/slushTasks/requiredFiles')(basePath, answers),
+            require('./slush/slushTasks/requiredFiles')(basePath, answers),
             require('./slush/slushTasks/markupBuildSystem')(basePath, answers),
-            //require('./slush/slushTasks/stylesBuildSystem')(basePath, answers),
-            //require('./slush/slushTasks/scriptsBuildSystem')(basePath, answers),
-            //require('./slush/slushTasks/scriptsFramework')(basePath, answers),
-            //require('./slush/slushTasks/additionalScripts')(basePath, answers)
+            require('./slush/slushTasks/stylesBuildSystem')(basePath, answers),
+            require('./slush/slushTasks/scriptsBuildSystem')(basePath, answers),
+            require('./slush/slushTasks/scriptsFramework')(basePath, answers),
+            require('./slush/slushTasks/additionalScripts')(basePath, answers)
         ];
 
         // Remove all null values in array.
