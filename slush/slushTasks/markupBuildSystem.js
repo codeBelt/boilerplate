@@ -1,24 +1,26 @@
 var gulp = require('gulp');
-var conflict = require('gulp-conflict');
 
 module.exports = function (rootDirectory, answers) {
 
-    var styleType = answers.stylesBuildSystem;
+    var markupType = answers.markupBuildSystem;
     var devDependencies = [];
 
-    switch (styleType) {
+    switch (markupType) {
         case 'none':
             devDependencies = [];
             break;
-        case 'sass':
+        case 'includes':
+            devDependencies = [];
+            break;
+        case 'handlebars':
             devDependencies = [];
             break;
     }
 
-    var basePath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem';
-    basePath += '/' + styleType + '/buildStyles.js';
+    var basePath = rootDirectory + '/templates/tools/tasks/markupBuildSystem';
+    basePath += '/' + markupType + '/buildMarkup.js';
 
-    gulp.task('stylesBuildSystem', function(done) {
+    gulp.task('markupBuildSystem', function(done) {
         gulp.src(basePath)
             .pipe(gulp.dest('./tools/tasks/'))
             .on('end', function () {
@@ -28,7 +30,7 @@ module.exports = function (rootDirectory, answers) {
 
     // List dependencies for this package
     return {
-        taskName: 'stylesBuildSystem',
+        taskName: 'markupBuildSystem',
         devDependencies: devDependencies,
         bowerDependencies: []
     };

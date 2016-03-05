@@ -1,30 +1,23 @@
 var gulp = require('gulp');
-var conflict = require('gulp-conflict');
 
 module.exports = function (rootDirectory, answers) {
 
-    var scriptType = answers.scriptsBuildSystem;
+    var styleType = answers.stylesBuildSystem;
     var devDependencies = [];
 
-    switch (scriptType) {
+    switch (styleType) {
         case 'none':
             devDependencies = [];
             break;
-        case 'babel':
-            devDependencies = [];
-            break;
-        case 'typescript':
-            devDependencies = [];
-            break;
-        case 'requirejs':
+        case 'sass':
             devDependencies = [];
             break;
     }
 
-    var basePath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem';
-    basePath += '/' + scriptType + '/buildScripts.js';
+    var basePath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem';
+    basePath += '/' + styleType + '/buildStyles.js';
 
-    gulp.task('scriptsBuildSystem', function(done) {
+    gulp.task('stylesBuildSystem', function(done) {
         gulp.src(basePath)
             .pipe(gulp.dest('./tools/tasks/'))
             .on('end', function () {
@@ -34,7 +27,7 @@ module.exports = function (rootDirectory, answers) {
 
     // List dependencies for this package
     return {
-        taskName: 'scriptsBuildSystem',
+        taskName: 'stylesBuildSystem',
         devDependencies: devDependencies,
         bowerDependencies: []
     };

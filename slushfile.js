@@ -31,12 +31,12 @@ gulp.task('default', function(done) {
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         var taskResults = [
-            //require('./slushTasks/requiredFiles')(basePath, answers),
-            require('./slushTasks/markupBuildSystem')(basePath, answers),
-            require('./slushTasks/stylesBuildSystem')(basePath, answers),
-            require('./slushTasks/scriptsBuildSystem')(basePath, answers),
-            require('./slushTasks/scriptsFramework')(basePath, answers),
-            require('./slushTasks/additionalScripts')(basePath, answers)
+            require('./slush/slushTasks/requiredFiles')(basePath, answers),
+            require('./slush/slushTasks/markupBuildSystem')(basePath, answers),
+            require('./slush/slushTasks/stylesBuildSystem')(basePath, answers),
+            require('./slush/slushTasks/scriptsBuildSystem')(basePath, answers),
+            require('./slush/slushTasks/scriptsFramework')(basePath, answers),
+            require('./slush/slushTasks/additionalScripts')(basePath, answers)
         ];
 
         // Remove all null values in array.
@@ -46,7 +46,7 @@ gulp.task('default', function(done) {
         var slushTasks = Util.generateSlushTasks(taskResults);
 
         // Final task to create the package.json and bower.json files.
-        var packageJsonTask = require('./slushTasks/packageJson')(basePath, answers, taskResults);
+        var packageJsonTask = require('./slush/slushTasks/packageJson')(basePath, answers, taskResults);
 
         // Run tasks in sequence and parallel.
         runSequence(

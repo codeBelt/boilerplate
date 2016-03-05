@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var prettify = require('gulp-jsbeautifier');
 var template = require('gulp-template');
 
-var Util = require('../slush/utils/Util');
+var Util = require('../utils/Util');
 
 module.exports = function (rootDirectory, answers, taskResults) {
     // Creates a stringify object of the dev dependencies to be added to the package.json
