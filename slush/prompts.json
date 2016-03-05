@@ -102,11 +102,11 @@
         "value": "none"
       },
       {
-        "name": "ES6 (Babel)",
-        "value": "es6"
+        "name": "ES2015 (Babel)",
+        "value": "babel"
       },
       {
-        "name": "ES6 (TypeScript)",
+        "name": "ES2015 (TypeScript)",
         "value": "typescript"
       },
       {
