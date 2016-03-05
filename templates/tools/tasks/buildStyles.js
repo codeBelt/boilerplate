@@ -1,73 +1,14 @@
-/*jshint node:true, laxbreak:true */
-'use strict';
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var browserSync = require('browser-sync');
+//var please = require('gulp-pleeease');
+var autoprefixer = require('gulp-autoprefixer');
 
-module.exports = function(grunt) {
-    var shouldMinify = !grunt.option('dev');
-
-    // Help Grunt find the right plugins at runtime
-    require('jit-grunt')(grunt, {
-        useminPrepare: 'grunt-usemin'
-    });
-
-    // Clear out any previously generated usemin task configuration
-    grunt.config.set('concat', undefined);
-    grunt.config.set('cssmin', undefined);
-
-    grunt.config.merge({
-        // Copies static files for non-optimized builds
-        copy: {
-            buildStyles: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= env.DIR_SRC %>',
-                    dest: '<%= env.DIR_DEST %>',
-                    src: ['assets/{styles,vendor}/**/*.css']
-                }]
-            }
-        },
-
-        // Searches for build comment blocks (`<!-- build:css -->`) and generates
-        // the appropriate `concat` and `cssmin` configuration.
-        useminPrepare: {
-            options: {
-                root: '<%= env.DIR_SRC %>',
-                staging: '<%= env.DIR_TMP %>',
-                dest: '<%= env.DIR_DEST %>',
-                flow: {
-                    buildStyles: {
-                        // Force css only
-                        steps: { css: ['concat', 'cssmin'], js: [] },
-                        post: {}
-                    }
-                }
-            },
-            buildStyles: ['<%= env.DIR_SRC %>/**/*.html']
-        }
-    });
-
-    grunt.registerTask('scrub:buildStyles', function() {
-        function scrub(name) {
-            var config = JSON
-                .stringify(grunt.config.get(name))
-                .replace(/\?v=@@version/g, '');
-
-            grunt.config.set(name, JSON.parse(config));
-        }
-
-        scrub('concat');
-        scrub('cssmin');
-    });
-
-    grunt.registerTask('buildStyles',
-        shouldMinify
-            ? [
-                'useminPrepare:buildStyles',
-                'scrub:buildStyles',
-                'concat:generated',
-                'cssmin:generated',
-            ]
-            : [
-                'copy:buildStyles'
-            ]
-    );
-};
+gulp.task('buildStyles', function () {
+    return gulp
+        .src(env.DIR_SRC + '/assets/scss/*.scss')
+        .pipe(sass())
+        .pipe(autoprefixer())
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/styles/'))
+        .pipe(browserSync.reload({ stream: true }));
+});

@@ -15,9 +15,10 @@ var runSequence = require('run-sequence');
 var clean = require('gulp-clean');
 
 var Util = require('./slush/utils/Util');
-var prompts = require('./slush/prompts.json');
+
 
 gulp.task('default', function(done) {
+    var prompts = require('./slush/prompts.json');
 
     // Ask the questions.
     inquirer.prompt(prompts, function(answers) {

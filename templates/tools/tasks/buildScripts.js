@@ -1,73 +1,23 @@
-/*jshint node:true, laxbreak:true */
-'use strict';
+var gulp = require('gulp');
+var ts = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
+var gulpif = require('gulp-if');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
+var tsify = require('tsify');
+var util = require('gulp-util');
+var browserSync = require('browser-sync');
 
-module.exports = function(grunt) {
-    var shouldMinify = !grunt.option('dev');
-
-    // Help Grunt find the right plugins at runtime
-    require('jit-grunt')(grunt, {
-        useminPrepare: 'grunt-usemin'
-    });
-
-    // Clear out any previously generated usemin task configuration
-    grunt.config.set('concat', undefined);
-    grunt.config.set('uglify', undefined);
-
-    grunt.config.merge({
-        // Copies static files for non-optimized builds
-        copy: {
-            buildScripts: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= env.DIR_SRC %>',
-                    dest: '<%= env.DIR_DEST %>',
-                    src: ['assets/{scripts,vendor}/**/*.js']
-                }]
-            }
-        },
-
-        // Searches for build comment blocks (`<!-- build:js -->`) and generates
-        // the appropriate `concat` and `uglify` configuration.
-        useminPrepare: {
-            options: {
-                root: '<%= env.DIR_SRC %>',
-                staging: '<%= env.DIR_TMP %>',
-                dest: '<%= env.DIR_DEST %>',
-                flow: {
-                    buildScripts: {
-                        // Force js only
-                        steps: { js: ['concat', 'uglifyjs'], css: [] },
-                        post: {}
-                    }
-                }
-            },
-            buildScripts: ['<%= env.DIR_SRC %>/**/*.html']
-        }
-    });
-
-    grunt.registerTask('scrub:buildScripts', function() {
-        function scrub(name) {
-            var config = JSON
-                .stringify(grunt.config.get(name))
-                .replace(/\?v=@@version/g, '');
-
-            grunt.config.set(name, JSON.parse(config));
-        }
-
-        scrub('concat');
-        scrub('uglify');
-    });
-
-    grunt.registerTask('buildScripts',
-        shouldMinify
-            ? [
-                'useminPrepare:buildScripts',
-                'scrub:buildScripts',
-                'concat:generated',
-                'uglify:generated'
-            ]
-            : [
-                'copy:buildScripts'
-            ]
-    );
-};
+gulp.task('buildScripts', function(){
+    return browserify()
+        .add(env.DIR_SRC + '/assets/scripts/main.ts')
+        .plugin(tsify, { target: 'ES5', module: 'commonjs' })
+        .bundle().on('error', function (error) { console.error(error.toString()); })
+        .pipe(source('main.js'))
+        .pipe(buffer())
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
+        .pipe(browserSync.reload({ stream: true }));
+});
