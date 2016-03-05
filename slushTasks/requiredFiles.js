@@ -4,20 +4,16 @@ module.exports = function (rootDirectory, answers) {
 
     gulp.task('requiredFiles', function(done) {
         var paths = [
-            rootDirectory +'/templates/*',
-            '!' + rootDirectory +'/templates/package.json'
+            rootDirectory + '/templates/**',
+            rootDirectory + '/templates/.*',
+            '!' + rootDirectory + '/templates/src/**/*',
+            '!' + rootDirectory + '/templates/tools/cache/**/*',
+            '!' + rootDirectory + '/templates/tools/tasks/**/*',
+            '!' + rootDirectory + '/templates/package.json'
         ];
 
         gulp.src(paths)
-            //.pipe(template(answers))
-            //.pipe(rename(function (file) {
-            //    if (file.basename[0] === '_') {
-            //        file.basename = '.' + file.basename.slice(1);
-            //    }
-            //}))
-            //.pipe(conflict('./'))
             .pipe(gulp.dest('./'))
-            //.pipe(install())
             .on('end', function () {
                 done();
             });
