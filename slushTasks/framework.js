@@ -7,7 +7,7 @@ module.exports = function (rootDirectory, answers) {
     }
 
     gulp.task('framework', function(done) {
-
+        done();
     });
 
     return {

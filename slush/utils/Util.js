@@ -1,3 +1,5 @@
+var devDependenciesData = require('../devDependencies.json');
+
 var Util = function() {};
 
 /**
@@ -43,6 +45,24 @@ Util.generateUniqueDevDependencies = function(taskResults) {
     });
 
     return devDependencies.sort();
+}
+
+/**
+ * Creates a stringify object with the dev dependencies and there version.
+ *
+ * @method generateDevDependenciesWithVersions
+ * @param taskResults {string}
+ * @return {Array<string>}
+ * @static
+ */
+Util.generateDevDependenciesWithVersions = function(devDependencyList) {
+    var devDependencyHash = {};
+
+    devDependencyList.forEach(function(item) {
+        devDependencyHash[item] = devDependenciesData[item];
+    });
+
+    return JSON.stringify(devDependencyHash);
 }
 
 module.exports = Util;

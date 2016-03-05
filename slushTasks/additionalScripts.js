@@ -7,7 +7,7 @@ module.exports = function (rootDirectory, answers) {
     }
 
     gulp.task('additionalScripts', function(done) {
-
+        done();
     });
 
     return {

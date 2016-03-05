@@ -7,7 +7,7 @@ module.exports = function (rootDirectory, answers) {
     }
 
     gulp.task('scriptsBuildSystem', function(done) {
-
+        done();
     });
 
     return {

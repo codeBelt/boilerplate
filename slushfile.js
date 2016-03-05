@@ -18,7 +18,7 @@ var prettify = require('gulp-jsbeautifier');
 
 var Util = require('./slush/utils/Util');
 var prompts = require('./slush/prompts.json');
-var devDependenciesData = require('./slush/devDependencies.json');
+
 
 
 //gulp.task('clean', function (done) {
@@ -53,22 +53,16 @@ gulp.task('default', function(done) {
         var slushTasks = Util.generateSlushTasks(taskResults);
 
         // Combined all dev dependencies returned from the slush tasks
-        var devDependencies = Util.generateUniqueDevDependencies(taskResults);
+        var uniqueDevDependencies = Util.generateUniqueDevDependencies(taskResults);
 
-
-
-        var devDependencyHash = {};
-        devDependencies.forEach(function(item) {
-            devDependencyHash[item] = devDependenciesData[item];
-        });
-
-
-
+        // Creates a stringify object of the dev dependencies to be added to the package.json
+        var devDependencyJson = Util.generateDevDependenciesWithVersions(uniqueDevDependencies);
 
         // TODO: move or clean up
         gulp.task('packageJson', function (done) {
             // TODO: make a clone of answers.
-            answers.devDependencies = JSON.stringify(devDependencyHash);
+            answers.devDependencies = devDependencyJson;
+
             gulp
                 .src([__dirname + '/templates/package.json'])
                 .pipe(template(answers))
@@ -78,9 +72,6 @@ gulp.task('default', function(done) {
                     done();
                 });
         });
-
-
-
 
         runSequence(slushTasks, 'packageJson', done);
     });
