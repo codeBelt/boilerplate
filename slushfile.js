@@ -11,25 +11,11 @@
 var gulp = require('gulp');
 var install = require('gulp-install');
 var inquirer = require('inquirer');
-var template = require('gulp-template');
 var runSequence = require('run-sequence');
 var clean = require('gulp-clean');
-var prettify = require('gulp-jsbeautifier');
 
 var Util = require('./slush/utils/Util');
 var prompts = require('./slush/prompts.json');
-
-
-
-//gulp.task('clean', function (done) {
-//    var path = __dirname + '/test/';
-//    return gulp
-//        .src([path], {read: false, force: true})
-//        .pipe(clean())
-//        .on('end', function () {
-//            done();
-//        });
-//});
 
 gulp.task('default', function(done) {
 
@@ -40,40 +26,25 @@ gulp.task('default', function(done) {
         }
 
         // List of all possible slush tasks
+        var basePath = __dirname;
         var taskResults = [
-            require('./slushTasks/requiredFiles')(__dirname, answers),
-            require('./slushTasks/markupBuildSystem')(__dirname, answers),
-            require('./slushTasks/stylesBuildSystem')(__dirname, answers),
-            require('./slushTasks/scriptsBuildSystem')(__dirname, answers),
-            require('./slushTasks/framework')(__dirname, answers),
-            require('./slushTasks/additionalScripts')(__dirname, answers)
+            require('./slushTasks/requiredFiles')(basePath, answers),
+            require('./slushTasks/markupBuildSystem')(basePath, answers),
+            require('./slushTasks/stylesBuildSystem')(basePath, answers),
+            require('./slushTasks/scriptsBuildSystem')(basePath, answers),
+            require('./slushTasks/scriptsFramework')(basePath, answers),
+            require('./slushTasks/additionalScripts')(basePath, answers)
         ];
 
-        // Combined all the slush tasks that need to be ran
+        // Remove all null values in array
+        taskResults = taskResults.filter(Boolean);
+
+        // Gets all the task name that need to be ran.
         var slushTasks = Util.generateSlushTasks(taskResults);
 
-        // Combined all dev dependencies returned from the slush tasks
-        var uniqueDevDependencies = Util.generateUniqueDevDependencies(taskResults);
+        var packageJsonTask = require('./slushTasks/packageJson')(basePath, answers, taskResults);
 
-        // Creates a stringify object of the dev dependencies to be added to the package.json
-        var devDependencyJson = Util.generateDevDependenciesWithVersions(uniqueDevDependencies);
-
-        // TODO: move or clean up
-        gulp.task('packageJson', function (done) {
-            // TODO: make a clone of answers.
-            answers.devDependencies = devDependencyJson;
-
-            gulp
-                .src([__dirname + '/templates/package.json'])
-                .pipe(template(answers))
-                .pipe(prettify({ indent_size: 2 }))
-                .pipe(gulp.dest('./'))
-                .on('end', function () {
-                    done();
-                });
-        });
-
-        runSequence(slushTasks, 'packageJson', done);
+        runSequence(slushTasks, packageJsonTask.taskName, done);
     });
 
 });

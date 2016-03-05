@@ -11,7 +11,8 @@ module.exports = function (rootDirectory, answers) {
     });
 
     return {
-        task: 'scriptsBuildSystem',
-        devDependencies: []
+        taskName: 'scriptsBuildSystem',
+        devDependencies: [],
+        bowerDependencies: []
     };
 };

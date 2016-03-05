@@ -13,7 +13,7 @@ var Util = function() {};
 Util.generateSlushTasks = function(taskResults) {
     var slushTasks =  taskResults.reduce(function (previousValue, currentValue) {
         if (currentValue) {
-            return previousValue.concat(currentValue.task);
+            return previousValue.concat(currentValue.taskName);
         }
 
         return previousValue;
@@ -55,7 +55,8 @@ Util.generateUniqueDevDependencies = function(taskResults) {
  * @return {Array<string>}
  * @static
  */
-Util.generateDevDependenciesWithVersions = function(devDependencyList) {
+Util.generateDevDependenciesWithVersions = function(taskResults) {
+    var devDependencyList = Util.generateUniqueDevDependencies(taskResults);
     var devDependencyHash = {};
 
     devDependencyList.forEach(function(item) {
@@ -63,6 +64,25 @@ Util.generateDevDependenciesWithVersions = function(devDependencyList) {
     });
 
     return JSON.stringify(devDependencyHash);
+}
+
+/**
+ *
+ * @method generateBowerDependencies
+ * @param taskResults {string}
+ * @return {Array<string>}
+ * @static
+ */
+Util.generateBowerDependencies = function(taskResults) {
+    var results = taskResults.reduce(function (previousValue, currentValue) {
+        if (currentValue.bowerDependencies.length > 0) {
+            return Object.assign(previousValue, ...currentValue.bowerDependencies);
+        }
+
+        return previousValue;
+    }, {});
+
+    return JSON.stringify(results);
 }
 
 module.exports = Util;

@@ -6,12 +6,13 @@ module.exports = function (rootDirectory, answers) {
         return null;
     }
 
-    gulp.task('framework', function(done) {
+    gulp.task('scriptsFramework', function(done) {
         done();
     });
 
     return {
-        task: 'framework',
-        devDependencies: []
+        taskName: 'scriptsFramework',
+        devDependencies: [],
+        bowerDependencies: []
     };
 };

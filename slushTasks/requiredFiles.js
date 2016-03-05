@@ -20,10 +20,11 @@ module.exports = function (rootDirectory, answers) {
     });
 
     return {
-        task: 'requiredFiles',
+        taskName: 'requiredFiles',
         devDependencies: [
             'gulp',
             'browserify'
-        ]
+        ],
+        bowerDependencies: []
     };
 };

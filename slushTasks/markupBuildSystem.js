@@ -13,7 +13,8 @@ module.exports = function (rootDirectory, answers) {
 
     // List dependencies for this package
     return {
-        task: 'markupBuildSystem',
-        devDependencies: ["tsify", "gulp"]
+        taskName: 'markupBuildSystem',
+        devDependencies: ["tsify", "gulp"],
+        bowerDependencies: []
     };
 };

@@ -1,9 +1,7 @@
 {
-  "name": "None",
+  "name": "<%= projectSlug %>",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "nerdery-function-bind": "./tools/cache/nerdery-function-bind"
-  },
+  "dependencies": <%= bowerDependencies %>,
   "devDependencies": {}
 }

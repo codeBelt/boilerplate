@@ -142,7 +142,7 @@
     "type": "checkbox"
   },
   {
-    "name": "framework",
+    "name": "scriptsFramework",
     "message": "Which framework build system?",
     "choices": [
       {
