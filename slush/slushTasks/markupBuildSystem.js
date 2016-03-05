@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var merge = require('merge-stream');
 
 module.exports = function (rootDirectory, answers) {
 
@@ -17,15 +18,19 @@ module.exports = function (rootDirectory, answers) {
             break;
     }
 
-    var basePath = rootDirectory + '/templates/tools/tasks/markupBuildSystem';
-    basePath += '/' + markupType + '/buildMarkup.js';
+    var taskPath = rootDirectory + '/templates/tools/tasks/markupBuildSystem/' + markupType + '/buildMarkup.js';
+    var sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + markupType + '/**/*';
 
     gulp.task('markupBuildSystem', function(done) {
-        gulp.src(basePath)
-            .pipe(gulp.dest('./tools/tasks/'))
-            .on('end', function () {
-                done();
-            });
+        var copyTasks = gulp
+            .src(taskPath)
+            .pipe(gulp.dest('./tools/tasks/'));
+
+        var copySourceFiles = gulp
+            .src(sourcePath)
+            .pipe(gulp.dest('./src/'));
+
+        return merge(copyTasks, copySourceFiles);
     });
 
     // List dependencies for this package
