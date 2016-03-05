@@ -19,16 +19,18 @@ var prompts = require('./slush/prompts.json');
 
 gulp.task('default', function(done) {
 
-    // Ask the questions
+    // Ask the questions.
     inquirer.prompt(prompts, function(answers) {
         if (!answers.moveon) {
             return done();
         }
 
-        // List of all possible slush tasks
+        // List of all possible slush tasks.
         var basePath = __dirname;
+
+        // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         var taskResults = [
-            require('./slushTasks/requiredFiles')(basePath, answers),
+            //require('./slushTasks/requiredFiles')(basePath, answers),
             require('./slushTasks/markupBuildSystem')(basePath, answers),
             require('./slushTasks/stylesBuildSystem')(basePath, answers),
             require('./slushTasks/scriptsBuildSystem')(basePath, answers),
@@ -36,15 +38,21 @@ gulp.task('default', function(done) {
             require('./slushTasks/additionalScripts')(basePath, answers)
         ];
 
-        // Remove all null values in array
+        // Remove all null values in array.
         taskResults = taskResults.filter(Boolean);
 
         // Gets all the task name that need to be ran.
         var slushTasks = Util.generateSlushTasks(taskResults);
 
+        // Final task to create the package.json and bower.json files.
         var packageJsonTask = require('./slushTasks/packageJson')(basePath, answers, taskResults);
 
-        runSequence(slushTasks, packageJsonTask.taskName, done);
+        // Run tasks in sequence and parallel.
+        runSequence(
+            slushTasks,
+            packageJsonTask.taskName,
+            done
+        );
     });
 
 });

@@ -18,25 +18,30 @@ module.exports = function (rootDirectory, answers) {
         bowerDependencies.push({"modernizr": "*"});
     }
 
+    var filesToCopy = [];
     var dictionary = {};
-    dictionary['auto-replace']      = './tools/cache/nerdery-auto-replace';
-    dictionary['external-links']    = './tools/cache/nerdery-external-links';
-    dictionary['function-name']     = './tools/cache/nerdery-function-name';
-    dictionary['has-js']            = './tools/cache/nerdery-has-js';
-    dictionary['animation-frame']   = './tools/cache/nerdery-request-animation-frame';
+    dictionary['auto-replace']    = 'nerdery-auto-replace';
+    dictionary['external-links']  = 'nerdery-external-links';
+    dictionary['function-name']   = 'nerdery-function-name';
+    dictionary['has-js']          = 'nerdery-has-js';
+    dictionary['animation-frame'] = 'nerdery-request-animation-frame';
 
     additionalScripts.forEach(function(item) {
         if (dictionary.hasOwnProperty(item) === true) {
             var obj = {};
-            obj[item] = dictionary[item];
+            obj[item] = './tools/cache/' + dictionary[item];
 
             bowerDependencies.push(obj);
+            filesToCopy.push(rootDirectory + '/templates/tools/cache/' + dictionary[item] + '/**/*');
         }
     });
 
-    //console.log('answers', answers.additionalScripts);
     gulp.task('additionalScripts', function(done) {
-        done();
+        gulp.src(filesToCopy,  { base: rootDirectory + '/templates' })
+            .pipe(gulp.dest('./'))
+            .on('end', function () {
+                done();
+            });
     });
 
     return {
