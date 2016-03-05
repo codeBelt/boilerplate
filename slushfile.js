@@ -10,69 +10,83 @@
 
 var gulp = require('gulp');
 var install = require('gulp-install');
-var conflict = require('gulp-conflict');
-var template = require('gulp-template');
-var rename = require('gulp-rename');
 var inquirer = require('inquirer');
-var path = require('path');
-var _ = require('underscore.string');
+var template = require('gulp-template');
+var runSequence = require('run-sequence');
+var clean = require('gulp-clean');
+var prettify = require('gulp-jsbeautifier');
 
+var Util = require('./slush/utils/Util');
 var prompts = require('./slush/prompts.json');
+var devDependenciesData = require('./slush/devDependencies.json');
 
-/*function format(string) {
-    var username = string.toLowerCase();
-    return username.replace(/\s/g, '');
-}*/
 
-/*var defaults = (function () {
-    var workingDirName = path.basename(process.cwd()),
-        homeDir, osUserName, configFile, user;
+//gulp.task('clean', function (done) {
+//    var path = __dirname + '/test/';
+//    return gulp
+//        .src([path], {read: false, force: true})
+//        .pipe(clean())
+//        .on('end', function () {
+//            done();
+//        });
+//});
 
-    if (process.platform === 'win32') {
-        homeDir = process.env.USERPROFILE;
-        osUserName = process.env.USERNAME || path.basename(homeDir).toLowerCase();
-    }
-    else {
-        homeDir = process.env.HOME || process.env.HOMEPATH;
-        osUserName = homeDir && homeDir.split('/').pop() || 'root';
-    }
+gulp.task('default', function(done) {
 
-    configFile = path.join(homeDir, '.gitconfig');
-    user = {};
-
-    if (require('fs').existsSync(configFile)) {
-        user = require('iniparser').parseSync(configFile).user;
-    }
-
-    return {
-        projectName: workingDirName,
-        userName: osUserName || format(user.name || ''),
-        authorName: user.name || '',
-        authorEmail: user.email || ''
-    };
-})();*/
-
-gulp.task('default', function (done) {
-
-    inquirer.prompt(prompts, function (answers) {
+    // Ask the questions
+    inquirer.prompt(prompts, function(answers) {
         if (!answers.moveon) {
             return done();
         }
-        //answers.projectSlug = _.slugify(answers.projectName);
-        console.log("answers", answers);
-        gulp.src(__dirname + '/templates/**')
-            .pipe(template(answers))
-            .pipe(rename(function (file) {
-                if (file.basename[0] === '_') {
-                    file.basename = '.' + file.basename.slice(1);
-                }
-            }))
-            .pipe(conflict('./'))
-            .pipe(gulp.dest('./'))
-            //.pipe(install())
-            .on('end', function () {
-                done();
-            });
+
+        // List of all possible slush tasks
+        var taskResults = [
+            require('./slushTasks/requiredFiles')(__dirname, answers),
+            require('./slushTasks/markupBuildSystem')(__dirname, answers),
+            require('./slushTasks/stylesBuildSystem')(__dirname, answers),
+            require('./slushTasks/scriptsBuildSystem')(__dirname, answers),
+            require('./slushTasks/framework')(__dirname, answers),
+            require('./slushTasks/additionalScripts')(__dirname, answers)
+        ];
+
+        // Combined all the slush tasks that need to be ran
+        var slushTasks = Util.generateSlushTasks(taskResults);
+
+        // Combined all dev dependencies returned from the slush tasks
+        var devDependencies = Util.generateUniqueDevDependencies(taskResults);
+
+
+
+        var devDependencyHash = {};
+        devDependencies.forEach(function(item) {
+            devDependencyHash[item] = devDependenciesData[item];
+        });
+
+
+
+
+        // TODO: move or clean up
+        gulp.task('packageJson', function (done) {
+            // TODO: make a clone of answers.
+            answers.devDependencies = JSON.stringify(devDependencyHash);
+            gulp
+                .src([__dirname + '/templates/package.json'])
+                .pipe(template(answers))
+                .pipe(prettify({ indent_size: 2 }))
+                .pipe(gulp.dest('./'))
+                .on('end', function () {
+                    done();
+                });
+        });
+
+
+
+
+        runSequence(slushTasks, 'packageJson', done);
     });
 
 });
+
+//https://github.com/react-fullstack/slush-react-fullstack
+//https://github.com/peterjuras/slush-react-express
+//https://github.com/arvindr21/slush-meanjs

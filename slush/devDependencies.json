@@ -1,0 +1,8 @@
+{
+  "babel-preset-es2015": "^6.3.13",
+  "babelify": "^7.2.0",
+  "browserify": "^12.0.1",
+  "gulp": "^3.9.0",
+  "tsify": "*",
+  "vinyl-source-stream": "^1.1.0"
+}

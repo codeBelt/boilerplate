@@ -1,0 +1,9 @@
+{
+  "name": "None",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "nerdery-function-bind": "./tools/cache/nerdery-function-bind"
+  },
+  "devDependencies": {}
+}

@@ -1,8 +1,11 @@
 {
   "name": "<%= projectSlug %>",
-  "version": "0.1.0",
-  "devDependencies": {
-    "gulp-connect": "^2.0.6",
-    "gulp": "^3.8.6"
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": <%= devDependencies %>,
+  "scripts": {
+    "postinstall": "node tools/npm-postinstall"
   }
 }
