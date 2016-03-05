@@ -114,7 +114,7 @@
         "value": "requirejs"
       }
     ],
-    "default": "es6",
+    "default": "babel",
     "type": "list"
   },
   {
