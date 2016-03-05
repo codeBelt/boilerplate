@@ -31,7 +31,7 @@ gulp.task('default', function(done) {
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         var taskResults = [
-            require('./slushTasks/requiredFiles')(basePath, answers),
+            //require('./slushTasks/requiredFiles')(basePath, answers),
             require('./slushTasks/markupBuildSystem')(basePath, answers),
             require('./slushTasks/stylesBuildSystem')(basePath, answers),
             require('./slushTasks/scriptsBuildSystem')(basePath, answers),
