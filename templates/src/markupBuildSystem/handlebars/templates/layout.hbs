@@ -1,0 +1,47 @@
+<!doctype html>
+<html class="no-js" lang="en-us">
+<head>
+    <!-- META DATA -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+
+    <!-- SEO -->
+    <title>CLIENT.Project</title>
+
+    <!-- STYLESHEETS -->
+    {{#block "styles"}}
+        <!-- build:css assets/styles/screen.css?v=@@version -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/screen.css?v=@@version" />
+        <!-- endbuild -->
+        <!--[if IE 9]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie9.css?v=@@version" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie8.css?v=@@version" /><![endif]-->
+        <!--[if lte IE 7]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie7.css?v=@@version" /><![endif]-->
+        <link rel="stylesheet" media="print" href="assets/styles/print.css?v=@@version" />
+    {{/block}}
+
+    <!-- POLYFILLS -->
+    {{#block "scriptsHead"}}
+        <!-- build:js assets/scripts/head.js?v=@@version -->
+        <!-- endbuild -->
+    {{/block}}
+</head>
+<body>
+    <!-- CONTENT -->
+    {{#block "body"}}
+    {{/block}}
+
+    <!-- JAVASCRIPT -->
+    {{#block "scriptsBody"}}
+        <!-- build:js assets/scripts/main.js?v=@@version -->
+        <!-- bower:js -->
+        <!-- endbower -->
+        <script src="assets/scripts/shim.js?v=@@version"></script>
+        <script src="assets/scripts/App.js?v=@@version"></script>
+        <script src="assets/scripts/main.js?v=@@version"></script>
+        <!-- endbuild -->
+    {{/block}}
+</body>
+</html>

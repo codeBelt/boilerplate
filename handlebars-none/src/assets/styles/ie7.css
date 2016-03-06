@@ -1,0 +1,13 @@
+/* ---------------------------------------------------------------------
+IE7 Specific Styles
+------------------------------------------------------------------------ */
+
+/* Bicubic resizing for non-native sized IMG */
+img {
+    -ms-interpolation-mode: bicubic;
+}
+
+audio, canvas, video {
+    display: inline;
+    zoom: 1;
+}

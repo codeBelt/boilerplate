@@ -1,0 +1,24 @@
+{
+  "generator-nerdery": {
+    "title": "CLIENT.Project",
+    "name": "client-project",
+    "markup": "MarkupHandlebars",
+    "markupFeatures": [],
+    "styles": "StylesVanilla",
+    "stylesFeatures": [
+      "print",
+      "ie7Conditional",
+      "ie8Conditional",
+      "ie9Conditional"
+    ],
+    "scripts": "ScriptsVanilla",
+    "scriptsNamespace": "NRD",
+    "scriptsFeatures": [],
+    "framework": "FrameworkVanilla",
+    "frameworkFeatures": [],
+    "generated": {
+      "version": "3.1.0",
+      "timestamp": "3/5/2016, 4:16:59 PM"
+    }
+  }
+}
