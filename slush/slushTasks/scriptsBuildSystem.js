@@ -14,7 +14,7 @@ module.exports = function (rootDirectory, answers) {
             devDependencies = [];
             break;
         case 'typescript':
-            devDependencies = [];
+            devDependencies = ['tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
             break;
         case 'requirejs':
             devDependencies = [];

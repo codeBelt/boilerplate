@@ -14,7 +14,7 @@ module.exports = function (rootDirectory, answers) {
             devDependencies = [];
             break;
         case 'handlebars':
-            devDependencies = [];
+            devDependencies = ['gulp-hb'];
             break;
     }
 
@@ -33,7 +33,6 @@ module.exports = function (rootDirectory, answers) {
         return merge(copyTasks, copySourceFiles);
     });
 
-    // List dependencies for this package
     return {
         taskName: 'markupBuildSystem',
         devDependencies: devDependencies,
