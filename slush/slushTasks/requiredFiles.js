@@ -22,8 +22,7 @@ module.exports = function (rootDirectory, answers) {
     return {
         taskName: 'requiredFiles',
         devDependencies: [
-            'gulp',
-            'browserify'
+            'gulp'
         ],
         bowerDependencies: []
     };
