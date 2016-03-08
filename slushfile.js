@@ -8,13 +8,23 @@
 
 'use strict';
 
+// Gulp Files
 var gulp = require('gulp');
 var install = require('gulp-install');
 var inquirer = require('inquirer');
 var runSequence = require('run-sequence');
 var clean = require('gulp-clean');
 
+// Helpers
 var Util = require('./slush/utils/Util');
+
+// Slush Tasks
+var requiredFiles = require('./slush/slushTasks/requiredFiles');
+var markupBuildSystem = require('./slush/slushTasks/markupBuildSystem');
+var stylesBuildSystem = require('./slush/slushTasks/stylesBuildSystem');
+var scriptsBuildSystem = require('./slush/slushTasks/scriptsBuildSystem');
+var scriptsFramework = require('./slush/slushTasks/scriptsFramework');
+var additionalScripts = require('./slush/slushTasks/additionalScripts');
 
 
 gulp.task('default', function(done) {
@@ -31,12 +41,12 @@ gulp.task('default', function(done) {
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         var taskResults = [
-            require('./slush/slushTasks/requiredFiles')(basePath, answers),
-            require('./slush/slushTasks/markupBuildSystem')(basePath, answers),
-            require('./slush/slushTasks/stylesBuildSystem')(basePath, answers),
-            require('./slush/slushTasks/scriptsBuildSystem')(basePath, answers),
-            require('./slush/slushTasks/scriptsFramework')(basePath, answers),
-            require('./slush/slushTasks/additionalScripts')(basePath, answers)
+            requiredFiles(basePath, answers),
+            markupBuildSystem(basePath, answers),
+            stylesBuildSystem(basePath, answers),
+            scriptsBuildSystem(basePath, answers),
+            scriptsFramework(basePath, answers),
+            additionalScripts(basePath, answers)
         ];
 
         // Remove all null values in array.

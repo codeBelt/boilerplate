@@ -158,6 +158,22 @@
     "type": "list"
   },
   {
+    "name": "javascriptTemplates",
+    "message": "Precompile JavaScript Templates?",
+    "choices": [
+      {
+        "name": "No",
+        "value": "no"
+      },
+      {
+        "name": "Yes",
+        "value": "yes"
+      }
+    ],
+    "default": "no",
+    "type": "list"
+  },
+  {
     "name": "additionalScripts",
     "message": "Any additional scripts?",
     "choices": [
