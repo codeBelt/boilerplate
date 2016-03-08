@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var prettify = require('gulp-jsbeautifier');
 var template = require('gulp-template');
+var install = require('gulp-install');
 
 var Util = require('../utils/Util');
 
@@ -21,8 +22,11 @@ module.exports = function (rootDirectory, answers, taskResults) {
                 rootDirectory + '/templates/bower.json'
             ])
             .pipe(template(clone))
-            .pipe(prettify({ indent_size: 2 }))
+            .pipe(prettify({
+                indent_size: 2
+            }))
             .pipe(gulp.dest('./'))
+            //.pipe(install())
             .on('end', function () {
                 done();
             });

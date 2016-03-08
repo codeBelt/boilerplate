@@ -8,17 +8,17 @@ gulp.task('buildScripts',  function(done) {
     browserify({
         entries: ['./main.ts'],
         debug: true,
-        extensions: ['.js', '.json', '.ts']
+        extensions: ['.js', '.ts']
     })
-        .plugin("tsify", {
+        .plugin('tsify', {
             target: 'es6'
         })
-        .transform("babelify", {
-            presets: ["es2015"],
-            extensions: [".js",".ts"]
+        .transform('babelify', {
+            presets: ['es2015'],
+            extensions: ['.js', '.ts']
         })
         .bundle()
-        .on("error", console.log)
+        .on('error', console.log)
         // .pipe(exorcist(jsDir + config.bundleFileName + '.js.map'))
         .pipe(source('main.js'))
         .pipe(gulp.dest(env.DIR_DEST))

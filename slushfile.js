@@ -10,10 +10,8 @@
 
 // Gulp Files
 var gulp = require('gulp');
-var install = require('gulp-install');
 var inquirer = require('inquirer');
-var runSequence = require('run-sequence');
-var clean = require('gulp-clean');
+var runSequence = require('run-sequence').use(gulp);
 
 // Helpers
 var Util = require('./slush/utils/Util');
