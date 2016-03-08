@@ -1,4 +1,4 @@
-include "templates/header.html"
+@@include('templates/header.html')
 
     <div class="js-demo">
         <div class="js-demo-card demo-card">
@@ -11,4 +11,7 @@ include "templates/header.html"
         </div>
     </div>
 
-include "templates/footer.html"
+
+@@include('templates/footer.html', {
+    "name": "haoxin",
+})

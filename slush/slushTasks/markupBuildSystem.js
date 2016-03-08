@@ -3,10 +3,10 @@ var merge = require('merge-stream');
 
 module.exports = function (rootDirectory, answers) {
 
-    var markupType = answers.markupBuildSystem;
+    var type = answers.markupBuildSystem;
     var devDependencies = [];
 
-    switch (markupType) {
+    switch (type) {
         case 'none':
             devDependencies = [];
             break;
@@ -18,8 +18,8 @@ module.exports = function (rootDirectory, answers) {
             break;
     }
 
-    var taskPath = rootDirectory + '/templates/tools/tasks/markupBuildSystem/' + markupType + '/buildMarkup.js';
-    var sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + markupType + '/**/*';
+    var taskPath = rootDirectory + '/templates/tools/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
+    var sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + type + '/**/*';
 
     gulp.task('markupBuildSystem', function(done) {
         var copyTasks = gulp

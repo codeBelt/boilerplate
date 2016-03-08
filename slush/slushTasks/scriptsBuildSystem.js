@@ -3,10 +3,10 @@ var merge = require('merge-stream');
 
 module.exports = function (rootDirectory, answers) {
 
-    var scriptType = answers.scriptsBuildSystem;
+    var type = answers.scriptsBuildSystem;
     var devDependencies = [];
 
-    switch (scriptType) {
+    switch (type) {
         case 'none':
             devDependencies = [];
             break;
@@ -14,15 +14,15 @@ module.exports = function (rootDirectory, answers) {
             devDependencies = [];
             break;
         case 'typescript':
-            devDependencies = ['tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
+            devDependencies = ['gulp', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
             break;
         case 'requirejs':
             devDependencies = [];
             break;
     }
 
-    var taskPath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem/' + scriptType + '/buildScripts.js';
-    var sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + scriptType + '/**/*';
+    var taskPath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
+    var sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + type + '/**/*';
 
     gulp.task('scriptsBuildSystem', function(done) {
         var copyTasks = gulp

@@ -3,10 +3,10 @@ var merge = require('merge-stream');
 
 module.exports = function (rootDirectory, answers) {
 
-    var styleType = answers.stylesBuildSystem;
+    var type = answers.stylesBuildSystem;
     var devDependencies = [];
 
-    switch (styleType) {
+    switch (type) {
         case 'none':
             devDependencies = [];
             break;
@@ -15,8 +15,8 @@ module.exports = function (rootDirectory, answers) {
             break;
     }
 
-    var taskPath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem/' + styleType + '/buildScripts.js';
-    var sourcePath = rootDirectory + '/templates/src/stylesBuildSystem/' + styleType + '/**/*';
+    var taskPath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem/' + type + '/buildScripts.js';
+    var sourcePath = rootDirectory + '/templates/src/stylesBuildSystem/' + type + '/**/*';
 
     gulp.task('stylesBuildSystem', function(done) {
         var copyTasks = gulp
