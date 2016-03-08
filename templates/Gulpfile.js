@@ -5,10 +5,10 @@ var runSequence = require('run-sequence');
 var util = require('gulp-util');
 
 // Uncomment the next line to report the Gulp execution time (for optimization, etc)
-require("time-require");
+//require("time-require");
 
 // Pulling in all tasks from the tasks folder
-requireDir('./gulpTasks', { recurse: true });
+requireDir('./tools/tasks', { recurse: true });
 
 util.env.prod = !!util.env.prod;
 global.pkg = require('./package.json');
@@ -38,37 +38,41 @@ global.banner = util.env.banner = [
 
 
 gulp.task('default', function() {
-    if (util.env.prod === true) {
-        runSequence(
-            'clean',
-            ['buildTypeScript', 'precompileJst', 'buildStyles', 'buildMarkup'],
-            'usemin'
-        );
-    } else {
-        runSequence(
-            'clean',
-            ['buildTypeScript', 'precompileJst', 'buildStyles', 'buildMarkup'],
-            ['connectHttp', 'watch']
-        );
-    }
+    runSequence(
+        ['buildScripts']
+    );
+
+    //if (util.env.prod === true) {
+    //    runSequence(
+    //        'clean',
+    //        ['buildTypeScript', 'precompileJst', 'buildStyles', 'buildMarkup'],
+    //        'usemin'
+    //    );
+    //} else {
+    //    runSequence(
+    //        'clean',
+    //        ['buildTypeScript', 'precompileJst', 'buildStyles', 'buildMarkup'],
+    //        ['connectHttp', 'watch']
+    //    );
+    //}
 });
 
-gulp.task('usemin', function() {
-    return gulp
-        .src(env.DIR_DEST + '/*.html')
-        .pipe(plugin.usemin({
-            css:    [plugin.minifyCss()],
-            html:   [plugin.minifyHtml({ empty: true }) ],
-            js:     [plugin.uglify()],
-            vendor: [plugin.uglify()]
-        }))
-        .pipe(plugin.header(banner, { pkg : pkg } ))
-        .pipe(gulp.dest(env.DIR_DEST));
-});
+/*gulp.task('usemin', function() {
+ return gulp
+ .src(env.DIR_DEST + '/!*.html')
+ .pipe(plugin.usemin({
+ css:    [plugin.minifyCss()],
+ html:   [plugin.minifyHtml({ empty: true }) ],
+ js:     [plugin.uglify()],
+ vendor: [plugin.uglify()]
+ }))
+ .pipe(plugin.header(banner, { pkg : pkg } ))
+ .pipe(gulp.dest(env.DIR_DEST));
+ });
 
 
-gulp.task('watch', function() {
-    gulp.watch(env.DIR_SRC + '/assets/scripts/**/*.ts', ['buildTypeScript']);
-    gulp.watch(env.DIR_SRC + '/assets/scss/**/*.scss', ['buildStyles']);
-    gulp.watch(env.DIR_SRC + '/**/*.hbs', ['buildMarkup']);
-});
+ gulp.task('watch', function() {
+ gulp.watch(env.DIR_SRC + '/assets/scripts/!**!/!*.ts', ['buildTypeScript']);
+ gulp.watch(env.DIR_SRC + '/assets/scss/!**!/!*.scss', ['buildStyles']);
+ gulp.watch(env.DIR_SRC + '/!**!/!*.hbs', ['buildMarkup']);
+ });*/

@@ -7,7 +7,7 @@
 class App {
 
     constructor() {
-
+        alert('hey');
     }
 
     /**

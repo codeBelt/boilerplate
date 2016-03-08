@@ -8,16 +8,16 @@ module.exports = function (rootDirectory, answers) {
 
     switch (type) {
         case 'none':
-            devDependencies = [];
+            devDependencies = ['gulp'];
             break;
         case 'babel':
-            devDependencies = [];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'gulp-babel', 'gulp-concat'];
             break;
         case 'typescript':
-            devDependencies = ['gulp', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
             break;
         case 'requirejs':
-            devDependencies = [];
+            devDependencies = ['gulp'];
             break;
     }
 

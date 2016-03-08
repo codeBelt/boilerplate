@@ -1,6 +1,6 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
-    
+
     require('nerdery-request-animation-frame');
     var $ = require('jquery');
     var DemoView = require('./views/DemoView');
@@ -20,6 +20,8 @@ define(function(require, exports, module) { // jshint ignore:line
         ExternalLinks.init();
         HasJs.init();
         this.init();
+
+        alert('hey');
     };
 
     var proto = App.prototype;

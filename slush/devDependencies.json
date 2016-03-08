@@ -10,5 +10,9 @@
   "browserify": "*",
   "vinyl-source-stream": "*",
   "gulp-sass": "*",
-  "gulp-autoprefixer": "*"
+  "gulp-autoprefixer": "*",
+  "gulp-sourcemaps": "*",
+  "gulp-babel": "*",
+  "gulp-concat": "*",
+  "gulp-load-plugins": "*"
 }

@@ -21,7 +21,7 @@ module.exports = function (rootDirectory, answers) {
 
     return {
         taskName: 'requiredFiles',
-        devDependencies: ['gulp', 'gulp-util'],
+        devDependencies: ['gulp', 'gulp-util', 'gulp-load-plugins'],
         bowerDependencies: []
     };
 };

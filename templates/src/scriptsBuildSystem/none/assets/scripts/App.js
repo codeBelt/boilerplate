@@ -2,7 +2,7 @@ var NRD = window.NRD || {};
 
 NRD['./App'] = (function() {
     'use strict';
-    
+
 
     /**
      * Initial application setup. Runs once upon every page load.
@@ -11,6 +11,7 @@ NRD['./App'] = (function() {
      * @constructor
      */
     var App = function() {
+        alert('hey');
         this.init();
     };
 
