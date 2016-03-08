@@ -25,8 +25,9 @@ var stylesBuildSystem = require('./slush/slushTasks/stylesBuildSystem');
 var scriptsBuildSystem = require('./slush/slushTasks/scriptsBuildSystem');
 var scriptsFramework = require('./slush/slushTasks/scriptsFramework');
 var additionalScripts = require('./slush/slushTasks/additionalScripts');
+var packageJson = require('./slush/slushTasks/packageJson');
 
-
+// Default Slash Tasks
 gulp.task('default', function(done) {
     var prompts = require('./slush/prompts.json');
 
@@ -56,7 +57,7 @@ gulp.task('default', function(done) {
         var slushTasks = Util.generateSlushTasks(taskResults);
 
         // Final task to create the package.json and bower.json files.
-        var packageJsonTask = require('./slush/slushTasks/packageJson')(basePath, answers, taskResults);
+        var packageJsonTask = packageJson(basePath, answers, taskResults);
 
         // Run tasks in sequence and parallel.
         runSequence(
