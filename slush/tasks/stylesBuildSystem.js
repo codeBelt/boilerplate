@@ -8,10 +8,10 @@ module.exports = function (rootDirectory, answers) {
 
     switch (type) {
         case 'none':
-            devDependencies = [];
+            devDependencies = ['gulp'];
             break;
         case 'sass':
-            devDependencies = [];
+            devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer'];
             break;
     }
 

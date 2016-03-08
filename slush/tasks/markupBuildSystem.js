@@ -8,13 +8,13 @@ module.exports = function (rootDirectory, answers) {
 
     switch (type) {
         case 'none':
-            devDependencies = [];
+            devDependencies = ['gulp'];
             break;
         case 'includes':
-            devDependencies = [];
+            devDependencies = ['gulp', 'gulp-file-include'];
             break;
         case 'handlebars':
-            devDependencies = ['gulp-hb'];
+            devDependencies = ['gulp', 'gulp-hb', 'gulp-rename', 'gulp-replace', 'gulp-prettify'];
             break;
     }
 
