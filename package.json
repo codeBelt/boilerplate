@@ -1,13 +1,16 @@
 {
-  "name": "<%= projectSlug %>",
+  "name": "slush-boilerplate",
   "version": "0.1.0",
   "devDependencies": {
+  },
+  "dependencies": {
     "gulp": "^3.8.6",
     "gulp-clean": "^0.3.2",
     "gulp-connect": "^2.0.6",
     "gulp-jsbeautifier": "^2.0.2",
     "merge-stream": "^1.0.0",
     "require-dir": "^0.3.0",
-    "run-sequence": "^1.1.5"
+    "run-sequence": "^1.1.5",
+    "gulp-install": "^0.6.0"
   }
 }
