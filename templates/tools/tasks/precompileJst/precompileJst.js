@@ -4,7 +4,7 @@ var wrap = require('gulp-wrap');
 var declare = require('gulp-declare');
 var concat = require('gulp-concat');
 
-gulp.task('precompileJst', function(){
+gulp.task('precompileJst', function(done){
     return gulp
         .src('src/templates/precompile/**/*.hbs')
         .pipe(handlebars({
