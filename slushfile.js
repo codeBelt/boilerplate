@@ -19,13 +19,13 @@ var clean = require('gulp-clean');
 var Util = require('./slush/utils/Util');
 
 // Slush Tasks
-var requiredFiles = require('./slush/slushTasks/requiredFiles');
-var markupBuildSystem = require('./slush/slushTasks/markupBuildSystem');
-var stylesBuildSystem = require('./slush/slushTasks/stylesBuildSystem');
-var scriptsBuildSystem = require('./slush/slushTasks/scriptsBuildSystem');
-var scriptsFramework = require('./slush/slushTasks/scriptsFramework');
-var additionalScripts = require('./slush/slushTasks/additionalScripts');
-var packageJson = require('./slush/slushTasks/packageJson');
+var requiredFiles = require('./slush/tasks/requiredFiles');
+var markupBuildSystem = require('./slush/tasks/markupBuildSystem');
+var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
+var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
+var scriptsFramework = require('./slush/tasks/scriptsFramework');
+var additionalScripts = require('./slush/tasks/additionalScripts');
+var packageJson = require('./slush/tasks/packageJson');
 
 // Default Slash Tasks
 gulp.task('default', function(done) {
