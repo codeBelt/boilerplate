@@ -70,5 +70,5 @@ gulp.task('usemin', function() {
 gulp.task('watch', function() {
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*.ts', ['buildTypeScript']);
     gulp.watch(env.DIR_SRC + '/assets/scss/**/*.scss', ['buildStyles']);
-    gulp.watch(env.DIR_SRC + '/*.html', ['buildMarkup']);
+    gulp.watch(env.DIR_SRC + '/**/*.hbs', ['buildMarkup']);
 });
