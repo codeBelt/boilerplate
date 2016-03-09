@@ -2,6 +2,13 @@
 
 const devDependenciesData = require('../devDependencies.json');
 
+/**
+ * Utility class for the slush generator and slush tasks.
+ *
+ * @class Util
+ * @extends DOMElement
+ * @constructor
+ **/
 class Util {
 
     /**
