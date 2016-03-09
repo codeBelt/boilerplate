@@ -1,10 +1,12 @@
-var gulp = require('gulp');
-var merge = require('merge-stream');
+'use strict';
 
-module.exports = function (rootDirectory, answers) {
+const gulp = require('gulp');
+const merge = require('merge-stream');
 
-    var type = answers.markupBuildSystem;
-    var devDependencies = [];
+module.exports = (rootDirectory, answers) => {
+
+    const type = answers.markupBuildSystem;
+    let devDependencies = [];
 
     switch (type) {
         case 'none':
@@ -18,15 +20,15 @@ module.exports = function (rootDirectory, answers) {
             break;
     }
 
-    var taskPath = rootDirectory + '/templates/tools/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
-    var sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + type + '/**/*';
+    const taskPath = rootDirectory + '/templates/tools/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
+    const sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + type + '/**/*';
 
-    gulp.task('markupBuildSystem', function(done) {
-        var copyTasks = gulp
+    gulp.task('markupBuildSystem', (done) => {
+        const copyTasks = gulp
             .src(taskPath)
             .pipe(gulp.dest('./tools/tasks/'));
 
-        var copySourceFiles = gulp
+        const copySourceFiles = gulp
             .src(sourcePath)
             .pipe(gulp.dest('./src/'));
 

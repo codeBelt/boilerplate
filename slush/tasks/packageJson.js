@@ -1,18 +1,20 @@
-var gulp = require('gulp');
-var prettify = require('gulp-jsbeautifier');
-var template = require('gulp-template');
-var install = require('gulp-install');
+'use strict';
 
-var Util = require('../utils/Util');
+const gulp = require('gulp');
+const prettify = require('gulp-jsbeautifier');
+const template = require('gulp-template');
+const install = require('gulp-install');
 
-module.exports = function (rootDirectory, answers, taskResults) {
+const Util = require('../utils/Util');
+
+module.exports = (rootDirectory, answers, taskResults) => {
     // Creates a stringify object of the dev dependencies to be added to the package.json
-    var devDependencyJson = Util.generateDevDependenciesWithVersions(taskResults);
-    var bowerDependenciesJson = Util.generateBowerDependencies(taskResults);
+    const devDependencyJson = Util.generateDevDependenciesWithVersions(taskResults);
+    const bowerDependenciesJson = Util.generateBowerDependencies(taskResults);
 
-    gulp.task('packageJson', function (done) {
+    gulp.task('packageJson', (done) => {
 
-        var clone = Object.assign({}, answers);
+        const clone = Object.assign({}, answers);
         clone.devDependencies = devDependencyJson;
         clone.bowerDependencies = bowerDependenciesJson;
 
@@ -27,14 +29,12 @@ module.exports = function (rootDirectory, answers, taskResults) {
             }))
             .pipe(gulp.dest('./'))
             //.pipe(install())
-            .on('end', function () {
-                done();
-            });
+            .on('end', done);
     });
 
     return {
         taskName: 'packageJson',
         devDependencies: [],
         bowerDependencies: []
-    };
+    }
 };

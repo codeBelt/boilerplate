@@ -1,10 +1,12 @@
-var gulp = require('gulp');
-var merge = require('merge-stream');
+'use strict';
 
-module.exports = function (rootDirectory, answers) {
+const gulp = require('gulp');
+const merge = require('merge-stream');
 
-    var type = answers.scriptsBuildSystem;
-    var devDependencies = [];
+module.exports = (rootDirectory, answers) => {
+
+    const type = answers.scriptsBuildSystem;
+    let devDependencies = [];
 
     switch (type) {
         case 'none':
@@ -21,15 +23,15 @@ module.exports = function (rootDirectory, answers) {
             break;
     }
 
-    var taskPath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
-    var sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + type + '/**/*';
+    const taskPath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
+    const sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + type + '/**/*';
 
-    gulp.task('scriptsBuildSystem', function(done) {
-        var copyTasks = gulp
+    gulp.task('scriptsBuildSystem', (done) => {
+        const copyTasks = gulp
             .src(taskPath)
             .pipe(gulp.dest('./tools/tasks/'));
 
-        var copySourceFiles = gulp
+        const copySourceFiles = gulp
             .src(sourcePath)
             .pipe(gulp.dest('./src/'));
 
@@ -41,5 +43,5 @@ module.exports = function (rootDirectory, answers) {
         taskName: 'scriptsBuildSystem',
         devDependencies: devDependencies,
         bowerDependencies: []
-    };
+    }
 };

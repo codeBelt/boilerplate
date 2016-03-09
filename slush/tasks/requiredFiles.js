@@ -1,9 +1,11 @@
-var gulp = require('gulp');
+'use strict';
 
-module.exports = function (rootDirectory, answers) {
+const gulp = require('gulp');
 
-    gulp.task('requiredFiles', function(done) {
-        var paths = [
+module.exports = (rootDirectory, answers) => {
+
+    gulp.task('requiredFiles', (done) => {
+        const paths = [
             rootDirectory + '/templates/**',
             rootDirectory + '/templates/.*',
             '!' + rootDirectory + '/templates/src/**/*',
@@ -14,14 +16,12 @@ module.exports = function (rootDirectory, answers) {
 
         gulp.src(paths)
             .pipe(gulp.dest('./'))
-            .on('end', function () {
-                done();
-            });
+            .on('end', done);
     });
 
     return {
         taskName: 'requiredFiles',
         devDependencies: ['gulp', 'gulp-util', 'gulp-load-plugins'],
         bowerDependencies: []
-    };
+    }
 };

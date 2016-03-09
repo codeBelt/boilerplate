@@ -1,10 +1,12 @@
-var gulp = require('gulp');
+'use strict';
 
-module.exports = function (rootDirectory, answers) {
+const gulp = require('gulp');
+
+module.exports = (rootDirectory, answers) => {
     if (answers.scriptsFramework === 'none') { return null; }
 
-    var frameworkType = answers.scriptsFramework;
-    var bowerDependencies = [];
+    const frameworkType = answers.scriptsFramework;
+    const bowerDependencies = [];
 
     switch (frameworkType) {
         case 'structurejs':
@@ -12,9 +14,13 @@ module.exports = function (rootDirectory, answers) {
             bowerDependencies.push({"jquery": "*"});
             bowerDependencies.push({"handlebars": "*"});
             break;
+        case 'reactjs':
+            break;
+        case 'angular':
+            break;
     }
 
-    gulp.task('scriptsFramework', function(done) {
+    gulp.task('scriptsFramework', (done) => {
         done();
     });
 
@@ -22,5 +28,5 @@ module.exports = function (rootDirectory, answers) {
         taskName: 'scriptsFramework',
         devDependencies: [],
         bowerDependencies: bowerDependencies
-    };
+    }
 };

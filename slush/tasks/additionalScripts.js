@@ -1,14 +1,16 @@
-var gulp = require('gulp');
+'use strict';
 
-module.exports = function (rootDirectory, answers) {
+const gulp = require('gulp');
+
+module.exports = (rootDirectory, answers) => {
     if (answers.additionalScripts.length === 0) { return null; }
 
-    var scriptsFramework = answers.scriptsFramework;
-    var additionalScripts = answers.additionalScripts;
-    var basePath = rootDirectory + '/templates/tools/cache';
-    var bowerDependencies = [];
+    const scriptsFramework = answers.scriptsFramework;
+    const additionalScripts = answers.additionalScripts;
+    const basePath = rootDirectory + '/templates/tools/cache';
+    const bowerDependencies = [];
 
-    var addDemoFiles = (additionalScripts.indexOf('demo') !== -1);
+    const addDemoFiles = (additionalScripts.indexOf('demo') !== -1);
 
     if (additionalScripts.indexOf('jquery') !== -1) {
         bowerDependencies.push({"jquery": "*"});
@@ -18,17 +20,17 @@ module.exports = function (rootDirectory, answers) {
         bowerDependencies.push({"modernizr": "*"});
     }
 
-    var filesToCopy = [];
-    var dictionary = {};
+    const filesToCopy = [];
+    const dictionary = {};
     dictionary['auto-replace']    = 'nerdery-auto-replace';
     dictionary['external-links']  = 'nerdery-external-links';
     dictionary['function-name']   = 'nerdery-function-name';
     dictionary['has-js']          = 'nerdery-has-js';
     dictionary['animation-frame'] = 'nerdery-request-animation-frame';
 
-    additionalScripts.forEach(function(item) {
+    additionalScripts.forEach((item) => {
         if (dictionary.hasOwnProperty(item) === true) {
-            var obj = {};
+            const obj = {};
             obj[item] = './tools/cache/' + dictionary[item];
 
             bowerDependencies.push(obj);
@@ -36,17 +38,16 @@ module.exports = function (rootDirectory, answers) {
         }
     });
 
-    gulp.task('additionalScripts', function(done) {
-        gulp.src(filesToCopy,  { base: rootDirectory + '/templates' })
+    gulp.task('additionalScripts', (done) => {
+        gulp
+            .src(filesToCopy,  { base: rootDirectory + '/templates' })
             .pipe(gulp.dest('./'))
-            .on('end', function () {
-                done();
-            });
+            .on('end', done);
     });
 
     return {
         taskName: 'additionalScripts',
         devDependencies: [],
         bowerDependencies: bowerDependencies
-    };
+    }
 };
