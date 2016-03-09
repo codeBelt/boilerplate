@@ -13,7 +13,7 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp'];
             break;
         case 'babel':
-            devDependencies = ['gulp', 'gulp-sourcemaps', 'gulp-babel', 'gulp-concat'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'gulp-babel', 'gulp-concat', 'babel-preset-es2015'];
             break;
         case 'typescript':
             devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
