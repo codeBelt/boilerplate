@@ -11,7 +11,7 @@ gulp.task('buildScripts', function(done){
         },
         // ... more require.js options
     })
-        .pipe(gulp.dest(env.DIR_DEST))
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
         .on('end', function () {
             done();
         });

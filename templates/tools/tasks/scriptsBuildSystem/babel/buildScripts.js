@@ -12,7 +12,7 @@ gulp.task('buildScripts', function(done){
         }))
         .pipe(concat('main.js'))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(env.DIR_DEST))
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
         .on('end', function () {
             done();
         });

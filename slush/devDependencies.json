@@ -14,5 +14,6 @@
   "gulp-sourcemaps": "*",
   "gulp-babel": "*",
   "gulp-concat": "*",
+  "gulp-file-include": "*",
   "gulp-load-plugins": "*"
 }
