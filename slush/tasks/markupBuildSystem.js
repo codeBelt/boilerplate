@@ -20,9 +20,11 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
+    // Files and folder locations
     const taskPath = rootDirectory + '/templates/tools/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
     const sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + type + '/**/*';
 
+    // Gulp task
     gulp.task('markupBuildSystem', (done) => {
         const copyTasks = gulp
             .src(taskPath)
@@ -35,6 +37,7 @@ module.exports = (rootDirectory, answers) => {
         return merge(copyTasks, copySourceFiles);
     });
 
+    // Return data
     return {
         taskName: 'markupBuildSystem',
         devDependencies: devDependencies,

@@ -39,7 +39,7 @@ global.banner = util.env.banner = [
 
 gulp.task('default', function() {
     runSequence(
-        ['buildScripts']
+        ['buildScripts', 'buildMarkup']
     );
 
     //if (util.env.prod === true) {
