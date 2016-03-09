@@ -11,7 +11,7 @@
   },
   {
     "name": "markupBuildSystem",
-    "message": "Select a stylesheet engine?",
+    "message": "Which markup build system?",
     "choices": [
       {
         "name": "None",
@@ -31,7 +31,7 @@
   },
   {
     "name": "markupFeatures",
-    "message": "Select a stylesheet engine?",
+    "message": "What markup features would you like?",
     "choices": [
       {
         "name": "Icons",
