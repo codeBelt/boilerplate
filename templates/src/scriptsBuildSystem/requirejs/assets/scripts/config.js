@@ -47,4 +47,4 @@ require.config({
 /**
  * Module definitions for pre-loaded scripts.
  */
-define('modernizr', function() { return window.Modernizr; }); // jshint ignore:line
+//define('modernizr', function() { return window.Modernizr; }); // jshint ignore:line

@@ -19,7 +19,7 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015'];
             break;
         case 'requirejs':
-            devDependencies = ['gulp', 'gulp-requirejs'];
+            devDependencies = ['gulp', 'gulp-requirejs', 'requirejs'];
             break;
     }
 

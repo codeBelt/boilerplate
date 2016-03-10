@@ -3,6 +3,7 @@
   "babelify": "*",
   "tsify": "*",
   "gulp-requirejs": "*",
+  "requirejs": "*",
   "handlebars": "*",
   "handlebars-layouts": "*",
   "gulp-hb": "*",
