@@ -8,7 +8,7 @@
 
 'use strict';
 
-// Gulp Files
+// Slush/Gulp Files
 var gulp = require('gulp');
 var inquirer = require('inquirer');
 var runSequence = require('run-sequence').use(gulp);
