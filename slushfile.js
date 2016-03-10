@@ -19,6 +19,7 @@ var Util = require('./slush/utils/Util');
 // Slush Tasks
 var requiredFiles = require('./slush/tasks/requiredFiles');
 var markupBuildSystem = require('./slush/tasks/markupBuildSystem');
+var markupFeatures = require('./slush/tasks/markupFeatures');
 var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
 var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
 var scriptsFramework = require('./slush/tasks/scriptsFramework');
@@ -42,6 +43,7 @@ gulp.task('default', function(done) {
         var taskResults = [
             requiredFiles(basePath, answers),
             markupBuildSystem(basePath, answers),
+            markupFeatures(basePath, answers),
             stylesBuildSystem(basePath, answers),
             scriptsBuildSystem(basePath, answers),
             scriptsFramework(basePath, answers),
