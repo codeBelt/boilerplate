@@ -6,9 +6,10 @@ const merge = require('merge-stream');
 module.exports = (rootDirectory, answers) => {
 
     const markupFeatures = answers.markupFeatures;
+    const allowImagemin = (markupFeatures.indexOf('imagemin') !== -1);
     let devDependencies = [];
 
-    if (markupFeatures.indexOf('imagemin') !== -1) {
+    if (allowImagemin === true) {
         devDependencies.push('gulp', 'gulp-imagemin', 'imagemin-pngquant');
     }
 
@@ -17,11 +18,15 @@ module.exports = (rootDirectory, answers) => {
 
     // Gulp task
     gulp.task('markupFeatures', (done) => {
-        const copyTasks = gulp
-            .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
+        if (allowImagemin === true) {
+            const copyTasks = gulp
+                .src(taskPath)
+                .pipe(gulp.dest('./tools/tasks/'));
 
-        return merge(copyTasks);
+            return merge(copyTasks);
+        } else {
+            done();
+        }
     });
 
     // Return data
