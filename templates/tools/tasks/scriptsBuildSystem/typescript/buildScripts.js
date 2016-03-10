@@ -6,7 +6,7 @@ var source = require('vinyl-source-stream');
 //http://www.gurustop.net/blog/2015/10/27/babel-typescript-compiler-gulp
 gulp.task('buildScripts',  function(done) {
     browserify({
-        entries: ['./main.ts'],
+        entries: [env.DIR_SRC + '/assets/scripts/main.ts'],
         debug: true,
         extensions: ['.js', '.jsx', '.ts']
     })

@@ -1,4 +1,4 @@
 import App from './App';
 
-window.app = new App();
-window.app.init();
+var app = new App();
+app.init();
