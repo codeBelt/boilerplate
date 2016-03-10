@@ -38,10 +38,12 @@ global.banner = util.env.banner = [
 //https://www.browsersync.io/docs/gulp/
 //https://github.com/ryanbenson/Harvest/blob/master/gulpfile.js
 
+//https://css-tricks.com/gulp-for-beginners/
+
 
 gulp.task('default', function() {
     runSequence(
-        ['buildScripts', 'buildMarkup']
+        ['buildScripts', 'buildMarkup', 'buildStyles']
     );
 
     //if (util.env.prod === true) {

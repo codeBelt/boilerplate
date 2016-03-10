@@ -17,7 +17,7 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
-    const taskPath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem/' + type + '/buildScripts.js';
+    const taskPath = rootDirectory + '/templates/tools/tasks/stylesBuildSystem/' + type + '/buildStyles.js';
     const sourcePath = rootDirectory + '/templates/src/stylesBuildSystem/' + type + '/**/*';
 
     gulp.task('stylesBuildSystem', (done) => {
