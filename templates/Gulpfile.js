@@ -3,6 +3,8 @@ var requireDir = require('require-dir');
 var plugin = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var util = require('gulp-util');
+var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
 
 // Uncomment the next line to report the Gulp execution time (for optimization, etc)
 //require("time-require");
@@ -57,7 +59,24 @@ gulp.task('default', function() {
     //}
 });
 
-/*gulp.task('usemin', function() {
+gulp.task('serve', ['default'], function() {
+    browserSync.init({
+        injectChanges: true,
+        server: {
+            open: true,
+            baseDir: env.DIR_DEST
+        }
+    });
+});
+
+gulp.task('watch', function() {
+    gulp.watch(env.DIR_SRC + '/assets/scripts/**/*.ts', ['buildScripts']);
+    gulp.watch(env.DIR_SRC + '/assets/scss/**/*.scss', ['buildStyles']);
+    gulp.watch(env.DIR_SRC + '/**/*.hbs', ['buildMarkup']);
+});
+
+/*
+ gulp.task('usemin', function() {
  return gulp
  .src(env.DIR_DEST + '/!*.html')
  .pipe(plugin.usemin({
@@ -69,10 +88,4 @@ gulp.task('default', function() {
  .pipe(plugin.header(banner, { pkg : pkg } ))
  .pipe(gulp.dest(env.DIR_DEST));
  });
-
-
- gulp.task('watch', function() {
- gulp.watch(env.DIR_SRC + '/assets/scripts/!**!/!*.ts', ['buildTypeScript']);
- gulp.watch(env.DIR_SRC + '/assets/scss/!**!/!*.scss', ['buildStyles']);
- gulp.watch(env.DIR_SRC + '/!**!/!*.hbs', ['buildMarkup']);
- });*/
+ */

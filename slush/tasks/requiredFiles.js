@@ -21,7 +21,14 @@ module.exports = (rootDirectory, answers) => {
 
     return {
         taskName: 'requiredFiles',
-        devDependencies: ['gulp', 'gulp-util', 'gulp-load-plugins'],
+        devDependencies: [
+            'gulp',
+            'gulp-util',
+            'gulp-load-plugins',
+            'require-dir',
+            'run-sequence',
+            'browser-sync'
+        ],
         bowerDependencies: []
     }
 };
