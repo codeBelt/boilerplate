@@ -8,7 +8,7 @@ gulp.task('buildScripts',  function(done) {
     browserify({
         entries: ['./main.ts'],
         debug: true,
-        extensions: ['.js', '.ts']
+        extensions: ['.js', '.jsx', '.ts']
     })
         .plugin('tsify', {
             target: 'es6'
