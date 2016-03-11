@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var argv = require('yargs').argv;
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 

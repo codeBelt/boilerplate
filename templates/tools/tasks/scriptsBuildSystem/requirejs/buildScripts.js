@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var argv = require('yargs').argv;
 var requirejs = require('gulp-requirejs');
 
 gulp.task('buildScripts', function(done){
