@@ -1,4 +1,17 @@
     <!-- JAVASCRIPT -->
+    <!-- build:vendor assets/scripts/vendor.js?v=@@version -->
+    <% if (additionalScripts.indexOf("jquery") >= 0) { %>
+    <script src="assets/vendor/jquery/dist/jquery.min.js?v=@@version"></script>
+    <% } %>
+    <!-- endbuild -->
+
+    <!-- build:js assets/scripts/main.js?v=@@version -->
+    <% if (precompileJst !== "no") { %>
+    <script src="assets/scripts/precompiledJst.js?v=@@version"></script>
+    <% } %>
+    <script src="assets/scripts/main.js?v=@@version"></script>
+    <!-- endbuild -->
+
     <script src="assets/vendor/requirejs/require.js?v=@@version"></script>
     <script src="assets/scripts/config.js?v=@@version"></script>
     <script>

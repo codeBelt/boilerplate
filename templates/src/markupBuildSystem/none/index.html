@@ -79,11 +79,20 @@
     <!-- CONTENT -->
 
     <!-- JAVASCRIPT -->
-    <!-- build:js assets/scripts/main.js?v=@@version -->
-    <!-- bower:js -->
-    <!-- endbower -->
     <script src="assets/scripts/shim.js?v=@@version"></script>
     <script src="assets/scripts/App.js?v=@@version"></script>
+    <script src="assets/scripts/main.js?v=@@version"></script>
+
+    <!-- build:vendor assets/scripts/vendor.js?v=@@version -->
+    <% if (additionalScripts.indexOf("jquery") >= 0) { %>
+    <script src="assets/vendor/jquery/dist/jquery.min.js?v=@@version"></script>
+    <% } %>
+    <!-- endbuild -->
+
+    <!-- build:js assets/scripts/main.js?v=@@version -->
+    <% if (precompileJst !== "no") { %>
+    <script src="assets/scripts/precompiledJst.js?v=@@version"></script>
+    <% } %>
     <script src="assets/scripts/main.js?v=@@version"></script>
     <!-- endbuild -->
 </body>
