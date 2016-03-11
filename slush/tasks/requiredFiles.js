@@ -4,6 +4,7 @@ const gulp = require('gulp');
 
 module.exports = (rootDirectory, answers) => {
 
+    // Gulp task
     gulp.task('requiredFiles', (done) => {
         const paths = [
             rootDirectory + '/templates/**',
@@ -20,6 +21,7 @@ module.exports = (rootDirectory, answers) => {
             .on('end', done);
     });
 
+    // Return data
     return {
         taskName: 'requiredFiles',
         devDependencies: [

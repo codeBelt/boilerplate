@@ -34,6 +34,7 @@ module.exports = (rootDirectory, answers) => {
         }
     });
 
+    // Gulp task
     gulp.task('additionalScripts', (done) => {
         gulp
             .src(filesToCopy,  { base: rootDirectory + '/templates' })
@@ -41,6 +42,7 @@ module.exports = (rootDirectory, answers) => {
             .on('end', done);
     });
 
+    // Return data
     return {
         taskName: 'additionalScripts',
         devDependencies: [],

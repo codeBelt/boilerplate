@@ -28,6 +28,7 @@ module.exports = (rootDirectory, answers) => {
     const taskPath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
     const sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + type + '/**/*';
 
+    // Gulp task
     gulp.task('scriptsBuildSystem', (done) => {
         const copyTasks = gulp
             .src(taskPath)
@@ -40,7 +41,7 @@ module.exports = (rootDirectory, answers) => {
         return merge(copyTasks, copySourceFiles);
     });
 
-    // List dependencies for this package
+    // Return data
     return {
         taskName: 'scriptsBuildSystem',
         devDependencies: devDependencies,

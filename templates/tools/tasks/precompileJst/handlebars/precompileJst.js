@@ -6,8 +6,8 @@ var declare = require('gulp-declare');
 var concat = require('gulp-concat');
 
 gulp.task('precompileJst', function(done){
-    return gulp
-        .src('src/templates/precompile/**/*.hbs')
+    gulp
+        .src(env.DIR_SRC + '/templates/jst/**/*.hbs')
         .pipe(handlebars({
             handlebars: require('handlebars')
         }))
@@ -31,5 +31,8 @@ gulp.task('precompileJst', function(done){
             noRedeclare: true // Avoid duplicate declarations
         }))
         .pipe(concat('precompiledJst.js'))
-        .pipe(gulp.dest('web/assets/scripts/'));
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
+        .on('end', function () {
+            done();
+        });
 });

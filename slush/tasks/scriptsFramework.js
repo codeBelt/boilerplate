@@ -18,10 +18,12 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
+    // Gulp task
     gulp.task('scriptsFramework', (done) => {
         done();
     });
 
+    // Return data
     return {
         taskName: 'scriptsFramework',
         devDependencies: [],

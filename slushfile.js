@@ -25,6 +25,7 @@ var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
 var scriptsFramework = require('./slush/tasks/scriptsFramework');
 var additionalScripts = require('./slush/tasks/additionalScripts');
 var stylesFeatures = require('./slush/tasks/stylesFeatures');
+var precompileJst = require('./slush/tasks/precompileJst');
 var packageJson = require('./slush/tasks/packageJson');
 
 // Default Slash Tasks
@@ -49,6 +50,7 @@ console.log("answers", answers);
             scriptsBuildSystem(basePath, answers),
             scriptsFramework(basePath, answers),
             stylesFeatures(basePath, answers),
+            precompileJst(basePath, answers),
             additionalScripts(basePath, answers)
         ];
 

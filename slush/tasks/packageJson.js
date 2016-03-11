@@ -12,6 +12,7 @@ module.exports = (rootDirectory, answers, taskResults) => {
     const devDependencyJson = Util.generateDevDependenciesWithVersions(taskResults);
     const bowerDependenciesJson = Util.generateBowerDependencies(taskResults);
 
+    // Gulp task
     gulp.task('packageJson', (done) => {
 
         const clone = Object.assign({}, answers);
@@ -32,6 +33,7 @@ module.exports = (rootDirectory, answers, taskResults) => {
             .on('end', done);
     });
 
+    // Return data
     return {
         taskName: 'packageJson',
         devDependencies: [],

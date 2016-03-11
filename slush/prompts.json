@@ -146,7 +146,7 @@
     "type": "list"
   },
   {
-    "name": "javascriptTemplates",
+    "name": "precompileJst",
     "message": "Precompile JavaScript Templates?",
     "choices": [
       {
@@ -155,7 +155,7 @@
       },
       {
         "name": "Yes",
-        "value": "yes"
+        "value": "handlebars"
       }
     ],
     "default": "no",
