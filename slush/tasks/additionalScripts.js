@@ -5,12 +5,8 @@ const gulp = require('gulp');
 module.exports = (rootDirectory, answers) => {
     if (answers.additionalScripts.length === 0) { return null; }
 
-    const scriptsFramework = answers.scriptsFramework;
     const additionalScripts = answers.additionalScripts;
-    const basePath = rootDirectory + '/templates/tools/cache';
     const bowerDependencies = [];
-
-    const addDemoFiles = (additionalScripts.indexOf('demo') !== -1);
 
     if (additionalScripts.indexOf('jquery') !== -1) {
         bowerDependencies.push({'jquery': '*'});

@@ -78,16 +78,12 @@
         "value": "print"
       },
       {
-        "name": "IE7 Conditional",
-        "value": "ie7"
+        "name": "IE9 Conditional",
+        "value": "ie9"
       },
       {
         "name": "IE8 Conditional",
         "value": "ie8"
-      },
-      {
-        "name": "IE9 Conditional",
-        "value": "ie9"
       }
     ],
     "default": "",
@@ -128,14 +124,6 @@
       {
         "name": "3rd-Party Vulnerability Audit",
         "value": "audit"
-      },
-      {
-        "name": "IE8 Conditional",
-        "value": "ie8"
-      },
-      {
-        "name": "IE9 Conditional",
-        "value": "ie9"
       }
     ],
     "default": "",
@@ -178,10 +166,6 @@
     "message": "Any additional scripts?",
     "choices": [
       {
-        "name": "Demo Application",
-        "value": "demo"
-      },
-      {
         "name": "jQuery",
         "value": "jquery"
       },
@@ -212,6 +196,22 @@
     ],
     "default": "",
     "type": "checkbox"
+  },
+  {
+    "name": "demo",
+    "message": "Do you want a demo application?",
+    "choices": [
+      {
+        "name": "No",
+        "value": "no"
+      },
+      {
+        "name": "Yes",
+        "value": "yes"
+      }
+    ],
+    "default": "no",
+    "type": "list"
   },
   {
     "type": "confirm",

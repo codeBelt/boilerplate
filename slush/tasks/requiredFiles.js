@@ -14,7 +14,8 @@ module.exports = (rootDirectory, answers) => {
             '!' + rootDirectory + '/templates/package.json'
         ];
 
-        gulp.src(paths)
+        gulp
+            .src(paths)
             .pipe(gulp.dest('./'))
             .on('end', done);
     });

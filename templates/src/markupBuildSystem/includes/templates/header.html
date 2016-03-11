@@ -1,16 +1,29 @@
+<% if (markupFeatures.indexOf("xhtml") >= 0) { %>
 <!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html class="no-js" lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
+<%  } else { %>
+<!doctype html>
+<html class="no-js" lang="en-us">
+<% } %>
 <head>
     <!-- META DATA -->
+    <% if (markupFeatures.indexOf("xhtml") >= 0) { %>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%  } else { %>
+    <meta charset="utf-8" />
+    <% } %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+
     <!-- SEO -->
-    <title>CLIENT.Project @@title</title>
+    <title><%= projectName %></title>
+    <% if (markupFeatures.indexOf("seo") >= 0) { %>
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <!-- ICONS -->
+    <% } %>
 
+    <% if (markupFeatures.indexOf("icons") >= 0) { %>
+    <!-- ICONS -->
     <!-- Touch Icons - iOS and Android 2.1+  -->
     <link rel="apple-touch-icon" sizes="57x57" href="assets/media/images/apple-touch-icon-57x57.png?=@@version" />
     <link rel="apple-touch-icon" sizes="60x60" href="assets/media/images/apple-touch-icon-60x60.png?=@@version" />
@@ -37,6 +50,7 @@
     <!-- IE 11+ on Windows 8.1+ -->
     <meta name="msapplication-TileImage" content="assets/media/images/mstile-144x144.png?v=@@version">
     <meta name="msapplication-TileColor" content="#ff0000">
+    <% } %>
 
     <!-- STYLESHEETS -->
     <!-- build:css assets/styles/head.css?v=@@version -->
@@ -44,8 +58,15 @@
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css?v=@@version" />
-    <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/legacy.css?v=@@version" /><![endif]-->
+    <% if (stylesFeatures.indexOf("ie9") >= 0) { %>
+    <!--[if IE 9]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie9.css?v=@@version" /><![endif]-->
+    <% } %>
+    <% if (stylesFeatures.indexOf("ie8") >= 0) { %>
+    <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie8.css?v=@@version" /><![endif]-->
+    <% } %>
+    <% if (stylesFeatures.indexOf("print") >= 0) { %>
     <link rel="stylesheet" media="print" href="assets/styles/print.css?v=@@version" />
+    <% } %>
 
     <!-- POLYFILLS -->
     <!-- build:js assets/scripts/head.js?v=@@version -->

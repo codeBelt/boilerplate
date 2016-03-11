@@ -24,6 +24,7 @@ var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
 var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
 var scriptsFramework = require('./slush/tasks/scriptsFramework');
 var additionalScripts = require('./slush/tasks/additionalScripts');
+var stylesFeatures = require('./slush/tasks/stylesFeatures');
 var packageJson = require('./slush/tasks/packageJson');
 
 // Default Slash Tasks
@@ -35,7 +36,7 @@ gulp.task('default', function(done) {
         if (!answers.moveon) {
             return done();
         }
-
+console.log("answers", answers);
         // List of all possible slush tasks.
         var basePath = __dirname;
 
@@ -47,6 +48,7 @@ gulp.task('default', function(done) {
             stylesBuildSystem(basePath, answers),
             scriptsBuildSystem(basePath, answers),
             scriptsFramework(basePath, answers),
+            stylesFeatures(basePath, answers),
             additionalScripts(basePath, answers)
         ];
 
