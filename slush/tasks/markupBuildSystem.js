@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const merge = require('merge-stream');
 const template = require('gulp-template');
+const prettify = require('gulp-prettify');
 
 module.exports = (rootDirectory, answers) => {
 
@@ -34,6 +35,17 @@ module.exports = (rootDirectory, answers) => {
         const copySourceFiles = gulp
             .src(sourcePath)
             .pipe(template(answers))
+            .pipe(prettify({
+                indent_size: 4,
+                indent_inner_html : true,
+                wrap_line_length: 999999,
+                unformatted: [
+                    'a', 'b', 'code', 'i', 'p',
+                    'pre', 'small', 'span',
+                    'sub', 'sup', 'u', 'textarea',
+                    'strong', 'em', 'svg'
+                ]
+            }))
             .pipe(gulp.dest('./src/'));
 
         return merge(copyTasks, copySourceFiles);
