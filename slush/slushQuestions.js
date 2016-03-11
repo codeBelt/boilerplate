@@ -117,7 +117,7 @@ module.exports = [
     },
     {
         name: "jsNamespace",
-        message: "What is the namespace!!!!!!!!!!!!!!!",
+        message: "What JavaScript global variable name would you like?",
         "default": "NERD",
         when: function( answers ) {
             return answers.scriptsBuildSystem === "none";
