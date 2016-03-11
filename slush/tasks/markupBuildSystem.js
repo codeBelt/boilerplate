@@ -2,6 +2,7 @@
 
 const gulp = require('gulp');
 const merge = require('merge-stream');
+const template = require('gulp-template');
 
 module.exports = (rootDirectory, answers) => {
 
@@ -32,6 +33,7 @@ module.exports = (rootDirectory, answers) => {
 
         const copySourceFiles = gulp
             .src(sourcePath)
+            .pipe(template(answers))
             .pipe(gulp.dest('./src/'));
 
         return merge(copyTasks, copySourceFiles);
