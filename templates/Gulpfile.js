@@ -65,8 +65,8 @@ gulp.task('default', function() {
 gulp.task('serve', ['default'], function() {
     browserSync.init({
         injectChanges: true,
+        open: (argv.open === true),
         server: {
-            open: true,
             baseDir: env.DIR_DEST
         }
     });
