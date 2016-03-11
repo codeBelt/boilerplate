@@ -7,6 +7,7 @@ module.exports = (rootDirectory, answers) => {
 
     const type = answers.scriptsBuildSystem;
     let devDependencies = [];
+    let bowerDependencies = [];
 
     switch (type) {
         case 'none':
@@ -20,6 +21,7 @@ module.exports = (rootDirectory, answers) => {
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'gulp-requirejs', 'requirejs'];
+            bowerDependencies = [{'requirejs': '*'}];
             break;
     }
 
@@ -42,6 +44,6 @@ module.exports = (rootDirectory, answers) => {
     return {
         taskName: 'scriptsBuildSystem',
         devDependencies: devDependencies,
-        bowerDependencies: []
+        bowerDependencies: bowerDependencies
     }
 };

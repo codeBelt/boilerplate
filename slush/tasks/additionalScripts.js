@@ -13,11 +13,11 @@ module.exports = (rootDirectory, answers) => {
     const addDemoFiles = (additionalScripts.indexOf('demo') !== -1);
 
     if (additionalScripts.indexOf('jquery') !== -1) {
-        bowerDependencies.push({"jquery": "*"});
+        bowerDependencies.push({'jquery': '*'});
     }
 
     if (additionalScripts.indexOf('modernizr') !== -1) {
-        bowerDependencies.push({"modernizr": "*"});
+        bowerDependencies.push({'modernizr': '*'});
     }
 
     const filesToCopy = [];
