@@ -1,4 +1,4 @@
-var NRD = window.NRD || {};
+var <%= jsNamespace %> = window.<%= jsNamespace %> || {};
 
 (function() {
     'use strict';
@@ -8,7 +8,7 @@ var NRD = window.NRD || {};
     // separate modules in their own files.
 
     // Require
-    var App = NRD['./App'];
+    var App = <%= jsNamespace %>['./App'];
 
     // Initialize
     window.app = new App();

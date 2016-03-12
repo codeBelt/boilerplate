@@ -1,6 +1,6 @@
-var NRD = window.NRD || {};
+var <%= jsNamespace %> = window.<%= jsNamespace %> || {};
 
-NRD['./App'] = (function() {
+<%= jsNamespace %>['./App'] = (function() {
     'use strict';
 
 

@@ -30,7 +30,7 @@ var packageJson = require('./slush/tasks/packageJson');
 
 // Default Slash Tasks
 gulp.task('default', function(done) {
-    var questions = require('./slush/slushQuestions.js');
+    var questions = require('./slush/questions.js');
 
     // Ask the questions.
     inquirer.prompt(questions, function(answers) {
