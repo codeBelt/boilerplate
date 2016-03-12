@@ -37,7 +37,7 @@ gulp.task('default', function(done) {
         if (!answers.moveon) {
             return done();
         }
-console.log("answers", answers);
+
         // List of all possible slush tasks.
         var basePath = __dirname;
 
