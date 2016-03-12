@@ -77,7 +77,8 @@ module.exports = [
         "choices": [
             {
                 "name": "Autoprefixer",
-                "value": "autoprefixer"
+                "value": "autoprefixer",
+                "checked": true
             },
             {
                 "name": "Print",
