@@ -19,7 +19,6 @@ module.exports = (rootDirectory, answers) => {
     const taskPath = rootDirectory + '/templates/tools/tasks/precompileJst/' + type + '/precompileJst.js';
     const sourcePath = rootDirectory + '/templates/src/precompileJst/' + type + '/**/*';
 
-
     // Gulp task
     gulp.task('precompileJst', (done) => {
         const copyTasks = gulp
