@@ -2,6 +2,7 @@
 
 const gulp = require('gulp');
 const merge = require('merge-stream');
+const template = require('gulp-template');
 
 module.exports = (rootDirectory, answers) => {
 
@@ -13,7 +14,7 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp'];
             break;
         case 'sass':
-            devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer'];
+            devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer', 'gulp-if'];
             break;
     }
 
@@ -24,6 +25,7 @@ module.exports = (rootDirectory, answers) => {
     gulp.task('stylesBuildSystem', (done) => {
         const copyTasks = gulp
             .src(taskPath)
+            .pipe(template(answers))
             .pipe(gulp.dest('./tools/tasks/'));
 
         const copySourceFiles = gulp

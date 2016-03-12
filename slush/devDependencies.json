@@ -2,6 +2,7 @@
   "tsify": "*",
   "gulp-requirejs": "*",
   "requirejs": "*",
+  "gulp-if": "*",
   "time-require": "*",
   "gulp-file-include'": "*",
   "gulp-babel": "*",

@@ -8,11 +8,11 @@ module.exports = (rootDirectory, answers) => {
     const additionalScripts = answers.additionalScripts;
     const bowerDependencies = [];
 
-    if (additionalScripts.indexOf('jquery') !== -1) {
+    if (additionalScripts.indexOf('jquery') >= 0) {
         bowerDependencies.push({'jquery': '*'});
     }
 
-    if (additionalScripts.indexOf('modernizr') !== -1) {
+    if (additionalScripts.indexOf('modernizr') >= 0) {
         bowerDependencies.push({'modernizr': '*'});
     }
 

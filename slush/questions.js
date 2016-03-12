@@ -76,6 +76,10 @@ module.exports = [
         "message": "Any additional stylesheets?",
         "choices": [
             {
+                "name": "Autoprefixer",
+                "value": "autoprefixer"
+            },
+            {
                 "name": "Print",
                 "value": "print"
             },

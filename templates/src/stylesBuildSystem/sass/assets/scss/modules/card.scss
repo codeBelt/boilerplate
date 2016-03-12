@@ -8,10 +8,6 @@
     left: 25%;
     top: 25%;
     width: 50%;
-    -webkit-perspective: 800px;
-    -moz-perspective: 800px;
-    -ms-perspective: 800px;
-    -o-perspective: 800px;
     perspective: 800px;
 }
 
@@ -32,20 +28,8 @@
 .transition .demo-card-front,
 .transition .demo-card-back {
     /* For 3D-CSS compliant browsers */
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform .5s ease-in-out, visibility .5s ease-in-out;
-    -moz-transition: -moz-transform .5s ease-in-out, visibility .5s ease-in-out;
-    -ms-transition: -ms-transform .5s ease-in-out, visibility .5s ease-in-out;
-    -o-transition: -o-transform .5s ease-in-out, visibility .5s ease-in-out;
     transition: transform .5s ease-in-out, visibility .5s ease-in-out;
 }
 
@@ -59,10 +43,6 @@
     box-shadow: 0 0 150px #ff0000;
 
     /* 3D-CSS compliant browsers */
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
     transform: rotateY(0deg);
 
     /* Non-3D-CSS compliant browsers */
@@ -74,10 +54,6 @@
     box-shadow: 0 0 150px #00aa00;
 
     /* 3D-CSS compliant browsers */
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
     transform: rotateY(-180deg);
 
     /* Non-3D-CSS compliant browsers */
@@ -86,10 +62,6 @@
 
 .flipped .demo-card-front {
     /* For 3D-CSS compliant browsers */
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 
     /* For non-3D-CSS compliant browsers */
@@ -98,10 +70,6 @@
 
 .flipped .demo-card-back {
     /* For 3D-CSS compliant browsers */
-    -webkit-transform: rotateY(0deg);
-    -moz-transform:  rotateY(0deg);
-    -ms-transform:  rotateY(0deg);
-    -o-transform: rotateY(0deg);
     transform: rotateY(0deg);
 
     /* For non-3D-CSS compliant browsers */

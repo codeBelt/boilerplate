@@ -5,25 +5,35 @@ var argv = require('yargs').argv;
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 var plugin = require('gulp-load-plugins')();
+var gulpIf = require('gulp-if');
 
-// Uncomment the next line to report the Gulp execution time (for optimization, etc)
+/**
+ * Uncomment the next line to report the Gulp execution time (for optimization, etc)
+ */
 //require('time-require');
 
-// Pulling in all tasks from the tasks folder
+/**
+ * Pulling in all tasks from the tasks folder
+ */
 requireDir('./tools/tasks', {
     recurse: true
 });
 
-argv.prod = !!argv.prod;
-
+/**
+ * Setup global variables to use across tasks
+ */
 global.pkg = require('./package.json');
 global.env = require('./build-env.js');
 
-// A code block that will be added to our minified code files.
-// Gets the name and appVersion and other info from the above loaded 'package.json' file.
-global.banner = require('./banner.js')(pkg);//TODO: double check this changes the timestamp every build.
+argv.prod = !!argv.prod;
 
-console.log(global.banner);
+
+/**
+ * A code block that will be added to our minified code files.
+ * Gets the name and appVersion and other info from the above loaded 'package.json' file.
+ */
+global.banner = require('./banner.js')(pkg); //TODO: double check this changes the timestamp every build.
+
 //https://knpuniversity.com/screencast/gulp
 //https://markgoodyear.com/2014/01/getting-started-with-gulp/
 //http://fettblog.eu/gulp-4-parallel-and-series/
