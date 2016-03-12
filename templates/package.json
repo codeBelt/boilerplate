@@ -1,7 +1,8 @@
 {
-  "name": "<%= projectName %>",
+  "name": "<%= projectSlug %>",
   "version": "1.0.0",
-  "description": "",
+  "description": "<%= projectName %> description.",
+  "developedBy": "",
   "private": true,
   "dependencies": {},
   "devDependencies": <%= devDependencies %>,

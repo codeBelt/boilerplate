@@ -1,6 +1,10 @@
 'use strict';
 
 const gulp = require('gulp');
+const jsbeautifier = require('gulp-jsbeautifier');
+const template = require('gulp-template');
+const prettify = require('gulp-prettify');
+const merge = require('merge-stream');
 
 module.exports = (rootDirectory, answers) => {
 
@@ -12,13 +16,24 @@ module.exports = (rootDirectory, answers) => {
             '!' + rootDirectory + '/templates/src/**/*',
             '!' + rootDirectory + '/templates/tools/cache/**/*',
             '!' + rootDirectory + '/templates/tools/tasks/**/*',
-            '!' + rootDirectory + '/templates/package.json'
+            '!' + rootDirectory + '/templates/package.json',
+            '!' + rootDirectory + '/templates/Gulpfile.js'
         ];
 
-        gulp
+        const copyFiles = gulp
             .src(paths)
-            .pipe(gulp.dest('./'))
-            .on('end', done);
+            .pipe(gulp.dest('./'));
+
+        const gulpfileParse = gulp
+            .src(rootDirectory + '/templates/Gulpfile.js')
+            // Uses Underscore/Lodash templates to add or remove sections
+            // which is determined what data is the "answers" object.
+            .pipe(template(answers))
+            .pipe(jsbeautifier({
+            }))
+            .pipe(gulp.dest('./'));
+
+        return merge(copyFiles, gulpfileParse);
     });
 
     // Return data

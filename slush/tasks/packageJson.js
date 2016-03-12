@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
-const prettify = require('gulp-jsbeautifier');
+const jsbeautifier = require('gulp-jsbeautifier');
 const template = require('gulp-template');
 const install = require('gulp-install');
 
@@ -25,7 +25,7 @@ module.exports = (rootDirectory, answers, taskResults) => {
                 rootDirectory + '/templates/bower.json'
             ])
             .pipe(template(clone))
-            .pipe(prettify({
+            .pipe(jsbeautifier({
                 indent_size: 2
             }))
             .pipe(gulp.dest('./'))
