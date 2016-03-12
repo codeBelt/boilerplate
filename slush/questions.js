@@ -178,7 +178,7 @@ module.exports = [
         "type": "list"
     },
     {
-        "name": "additionalScripts",
+        "name": "scriptsAdditional",
         "message": "Any additional scripts?",
         "choices": [
             {

@@ -23,7 +23,7 @@ var markupFeatures = require('./slush/tasks/markupFeatures');
 var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
 var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
 var scriptsFramework = require('./slush/tasks/scriptsFramework');
-var additionalScripts = require('./slush/tasks/additionalScripts');
+var scriptsAdditional = require('./slush/tasks/scriptsAdditional');
 var stylesFeatures = require('./slush/tasks/stylesFeatures');
 var precompileJst = require('./slush/tasks/precompileJst');
 var packageJson = require('./slush/tasks/packageJson');
@@ -46,12 +46,12 @@ console.log("answers", answers);
             requiredFiles(basePath, answers),
             markupBuildSystem(basePath, answers),
             markupFeatures(basePath, answers),
-            stylesBuildSystem(basePath, answers),
             scriptsBuildSystem(basePath, answers),
             scriptsFramework(basePath, answers),
+            scriptsAdditional(basePath, answers),
             stylesFeatures(basePath, answers),
-            precompileJst(basePath, answers),
-            additionalScripts(basePath, answers)
+            stylesBuildSystem(basePath, answers),
+            precompileJst(basePath, answers)
         ];
 
         // Remove all null values in array.

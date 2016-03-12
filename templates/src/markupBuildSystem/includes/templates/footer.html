@@ -88,7 +88,7 @@
 
         <% if (scriptsBuildSystem.indexOf("requirejs") < 0) { %>
             <!-- build:vendor assets/scripts/vendor.js?v=@@version -->
-                <% if (additionalScripts.indexOf("jquery") >= 0) { %>
+                <% if (scriptsAdditional.indexOf("jquery") >= 0) { %>
                     <script src="assets/vendor/jquery/dist/jquery.min.js?v=@@version"></script>
                 <% } %>
             <!-- endbuild -->

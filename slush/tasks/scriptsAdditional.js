@@ -3,16 +3,16 @@
 const gulp = require('gulp');
 
 module.exports = (rootDirectory, answers) => {
-    if (answers.additionalScripts.length === 0) { return null; }
+    if (answers.scriptsAdditional.length === 0) { return null; }
 
-    const additionalScripts = answers.additionalScripts;
+    const scriptsAdditional = answers.scriptsAdditional;
     const bowerDependencies = [];
 
-    if (additionalScripts.indexOf('jquery') >= 0) {
+    if (scriptsAdditional.indexOf('jquery') >= 0) {
         bowerDependencies.push({'jquery': '*'});
     }
 
-    if (additionalScripts.indexOf('modernizr') >= 0) {
+    if (scriptsAdditional.indexOf('modernizr') >= 0) {
         bowerDependencies.push({'modernizr': '*'});
     }
 
@@ -24,7 +24,7 @@ module.exports = (rootDirectory, answers) => {
     dictionary['has-js']          = 'nerdery-has-js';
     dictionary['animation-frame'] = 'nerdery-request-animation-frame';
 
-    additionalScripts.forEach((item) => {
+    scriptsAdditional.forEach((item) => {
         if (dictionary.hasOwnProperty(item) === true) {
             const obj = {};
             obj[item] = './tools/cache/' + dictionary[item];
@@ -35,7 +35,7 @@ module.exports = (rootDirectory, answers) => {
     });
 
     // Gulp task
-    gulp.task('additionalScripts', (done) => {
+    gulp.task('scriptsAdditional', (done) => {
         gulp
             .src(filesToCopy,  { base: rootDirectory + '/templates' })
             .pipe(gulp.dest('./'))
@@ -44,7 +44,7 @@ module.exports = (rootDirectory, answers) => {
 
     // Return data
     return {
-        taskName: 'additionalScripts',
+        taskName: 'scriptsAdditional',
         devDependencies: [],
         bowerDependencies: bowerDependencies
     }

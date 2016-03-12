@@ -80,7 +80,7 @@
         <!-- POLYFILLS -->
         {{#block "scriptsHead"}}
             <!-- build:js assets/scripts/head.js?v=@@version -->
-                <% if (additionalScripts.indexOf("modernizr") >= 0) { %>
+                <% if (scriptsAdditional.indexOf("modernizr") >= 0) { %>
                     <script src="assets/vendor/modernizr/modernizr.js?v=@@version"></script>
                 <% } %>
             <!-- endbuild -->
@@ -183,7 +183,7 @@
         {{#block "scriptsBody"}}
             <% if (scriptsBuildSystem.indexOf("requirejs") < 0) { %>
                 <!-- build:vendor assets/scripts/vendor.js?v=@@version -->
-                    <% if (additionalScripts.indexOf("jquery") >= 0) { %>
+                    <% if (scriptsAdditional.indexOf("jquery") >= 0) { %>
                         <script src="assets/vendor/jquery/dist/jquery.min.js?v=@@version"></script>
                     <% } %>
                 <!-- endbuild -->
