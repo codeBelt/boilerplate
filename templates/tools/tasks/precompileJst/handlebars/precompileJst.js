@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var handlebars = require('gulp-handlebars');
-var wrap = require('gulp-wrap');
-var declare = require('gulp-declare');
-var concat = require('gulp-concat');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const handlebars = require('gulp-handlebars');
+const wrap = require('gulp-wrap');
+const declare = require('gulp-declare');
+const concat = require('gulp-concat');
 
-gulp.task('precompileJst', function(done){
+gulp.task('precompileJst', (done) => {
     gulp
         .src(env.DIR_SRC + '/templates/jst/**/*.hbs')
         .pipe(handlebars({
@@ -15,11 +15,11 @@ gulp.task('precompileJst', function(done){
         //.pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
         //    imports: {
         //// Shortens the file path for the templates.
-        //processName: function(filePath) { // input:  src/templates/_header.hbs
+        //processName: (filePath) => { // input:  src/templates/_header.hbs
         //    return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
         //},
         //// Shortens the file path for the partials.
-        //processPartialName: function(filePath) { // input:  src/templates/_header.hbs
+        //processPartialName: (filePath) => { // input:  src/templates/_header.hbs
         //    return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
         //}
         //}
@@ -32,7 +32,5 @@ gulp.task('precompileJst', function(done){
         }))
         .pipe(concat('precompiledJst.js'))
         .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

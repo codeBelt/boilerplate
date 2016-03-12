@@ -1,11 +1,9 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
+const gulp = require('gulp');
+const argv = require('yargs').argv;
 
-gulp.task('buildStyles', function (done) {
+gulp.task('buildStyles', (done) => {
     gulp
         .src(env.DIR_SRC + '/assets/styles/**/*.css')
         .pipe(gulp.dest(env.DIR_DEST + '/assets/styles/'))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

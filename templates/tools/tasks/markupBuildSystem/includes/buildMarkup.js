@@ -1,8 +1,8 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var fileinclude = require('gulp-file-include');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const fileinclude = require('gulp-file-include');
 
-gulp.task('buildMarkup', function(done) {
+gulp.task('buildMarkup', (done) => {
     gulp
         .src(env.DIR_SRC + '/*.html')
         .pipe(fileinclude({
@@ -10,7 +10,5 @@ gulp.task('buildMarkup', function(done) {
             basepath: env.DIR_SRC
         }))
         .pipe(gulp.dest(env.DIR_DEST))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

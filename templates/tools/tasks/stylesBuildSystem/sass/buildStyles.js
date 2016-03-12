@@ -1,15 +1,13 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('buildStyles', function (done) {
+gulp.task('buildStyles', (done) => {
     gulp
         .src(env.DIR_SRC + '/assets/scss/*.scss')
         .pipe(sass())
         .pipe(autoprefixer())
         .pipe(gulp.dest(env.DIR_DEST + '/assets/styles/'))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

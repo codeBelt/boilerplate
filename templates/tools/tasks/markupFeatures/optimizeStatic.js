@@ -1,9 +1,9 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
 
-gulp.task('optimizeStatic', function(done) {
+gulp.task('optimizeStatic', (done) => {
     gulp
         .src(env.DIR_SRC + '/assets/media/images/**/*.{png,gif}')
         .pipe(imagemin({
@@ -16,7 +16,5 @@ gulp.task('optimizeStatic', function(done) {
             use: [pngquant()]
         }))
         .pipe(gulp.dest(env.DIR_DEST + '/assets/media/images/'))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

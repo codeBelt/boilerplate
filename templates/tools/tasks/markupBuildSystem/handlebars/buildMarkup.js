@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var hb = require('gulp-hb');
-var rename = require('gulp-rename');
-var replace = require('gulp-replace');
-var prettify = require('gulp-prettify');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const hb = require('gulp-hb');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const prettify = require('gulp-prettify');
 
-gulp.task('buildMarkup', function(done) {
+gulp.task('buildMarkup', (done) => {
     gulp
         .src([
             env.DIR_SRC + '/**/*.hbs',
@@ -17,7 +17,7 @@ gulp.task('buildMarkup', function(done) {
             helpers: env.DIR_NPM + '/handlebars-layouts/index.js',
             data: env.DIR_SRC + '/assets/data/*.json'
         }))
-        .pipe(rename(function (path) {
+        .pipe(rename((path) => {
             path.extname = '.html'
         }))
         .pipe(replace(/@@version/g, pkg.version))
@@ -33,7 +33,5 @@ gulp.task('buildMarkup', function(done) {
             ]
         }))
         .pipe(gulp.dest(env.DIR_DEST))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

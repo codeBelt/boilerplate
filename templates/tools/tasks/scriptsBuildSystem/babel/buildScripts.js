@@ -1,9 +1,9 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
 
-gulp.task('buildScripts', function(done){
+gulp.task('buildScripts', (done) => {
     browserify({
         entries: [env.DIR_SRC + '/assets/scripts/main.js'],
         debug: true,
@@ -18,7 +18,5 @@ gulp.task('buildScripts', function(done){
         // .pipe(exorcist(jsDir + config.bundleFileName + '.js.map'))
         .pipe(source('main.js'))
         .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });

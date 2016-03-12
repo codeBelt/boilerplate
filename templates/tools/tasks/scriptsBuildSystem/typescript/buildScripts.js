@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var argv = require('yargs').argv;
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+const gulp = require('gulp');
+const argv = require('yargs').argv;
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
 
 //http://egorsmirnov.me/2015/05/25/browserify-babelify-and-es6.html
 //http://www.gurustop.net/blog/2015/10/27/babel-typescript-compiler-gulp
-gulp.task('buildScripts',  function(done) {
+gulp.task('buildScripts', (done) => {
     browserify({
         entries: [env.DIR_SRC + '/assets/scripts/main.ts'],
         debug: true,
@@ -23,7 +23,5 @@ gulp.task('buildScripts',  function(done) {
         // .pipe(exorcist(jsDir + config.bundleFileName + '.js.map'))
         .pipe(source('main.js'))
         .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
-        .on('end', function () {
-            done();
-        });
+        .on('end', done);
 });
