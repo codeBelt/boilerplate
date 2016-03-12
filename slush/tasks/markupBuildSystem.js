@@ -35,7 +35,11 @@ module.exports = (rootDirectory, answers) => {
 
         const copySourceFiles = gulp
             .src(sourcePath)
+            // Uses Underscore/Lodash templates to add or remove sections
+            // which is determined what data is the "answers" object.
             .pipe(template(answers))
+            // Prettifies the files after Underscore/Lodash templates adds
+            // or removes the sections.
             .pipe(prettify({
                 indent_size: 4,
                 indent_inner_html : true,
@@ -48,7 +52,14 @@ module.exports = (rootDirectory, answers) => {
                     'strong', 'em', 'svg'
                 ]
             }))
+            // Fixes format issue after prettify.
+            // It will take @@include and put it on a new line.
             .pipe(replace(/@@include/g, '\n@@include'))
+            // Fixes format issue after prettify.
+            // For example if will take {{#block "scriptsBody"}} {{/block}}
+            // and put {{/block}} on a new line plus tab it over two times.
+            .pipe(replace(/}} {{\/block}}/g, '}}\n\t\t{{/block}}'))
+            // Copies the files to the src folder.
             .pipe(gulp.dest('./src/'));
 
         return merge(copyTasks, copySourceFiles);
