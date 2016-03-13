@@ -2,6 +2,7 @@
   "tsify": "*",
   "gulp-requirejs": "*",
   "requirejs": "*",
+  "gulp-header": "*",
   "gulp-useref": "*",
   "gulp-uglify": "*",
   "gulp-htmlmin": "*",

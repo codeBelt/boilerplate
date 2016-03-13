@@ -7,6 +7,8 @@ const gulpIf = require('gulp-if');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
+const header = require('gulp-header');
+const gulpIgnore = require('gulp-ignore');
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -98,7 +100,10 @@ gulp.task('minify', (done) => {
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulpIf('*.css', cleanCSS()))
-        //.pipe(plugin.header(banner, { pkg : pkg } ))
+        // Exclude html files so we don't the banner
+        .pipe(gulpIgnore.exclude('*.html'))
+        // Add banner to top of minified files
+        .pipe(header(banner))
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
 });
