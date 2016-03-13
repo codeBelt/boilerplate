@@ -12,7 +12,7 @@ module.exports = (rootDirectory, answers) => {
 
     switch (type) {
         case 'none':
-            devDependencies = ['gulp'];
+            devDependencies = ['gulp', 'merge-stream'];
             break;
         case 'babel':
             devDependencies = ['gulp', 'gulp-sourcemaps', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream'];
