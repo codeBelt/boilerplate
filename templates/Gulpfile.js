@@ -28,14 +28,21 @@ requireDir('./tools/tasks', {
 global.pkg = require('./package.json');
 global.env = require('./build-env.js');
 
-argv.prod = !!argv.prod;
+//argv.prod = !!argv.prod;
+
+// All builds are considered to be production builds, unless they're not.
+global.isProd = (!argv.stage && !argv.dev && argv.prod);
+global.isStage = (argv.stage && !argv.dev && !argv.prod);
+global.isDev = (!argv.stage && argv.dev && !argv.prod);
 
 
+console.log("isProd", isProd);
+console.log("isStage", isStage);
+console.log("isDev", isDev);
 /**
- * A code block that will be added to our minified code files.
- * Gets the name and appVersion and other info from the above loaded 'package.json' file.
+ * A code block that will be added to the minified code files.
  */
-global.banner = require('./banner.js')(pkg); //TODO: double check this changes the timestamp every build.
+global.banner = require('./banner.js')(pkg);
 
 //https://knpuniversity.com/screencast/gulp
 //https://markgoodyear.com/2014/01/getting-started-with-gulp/

@@ -93,8 +93,13 @@
 
         <!-- JAVASCRIPT -->
         <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>
-            <script src="assets/vendor/requirejs/require.js"></script>
-            <script src="assets/scripts/config.js"></script>
+            <!-- build:js assets/scripts/require.js -->
+                <script src="assets/vendor/requirejs/require.js"></script>
+            <!-- endbuild -->
+
+            <!-- build:js assets/scripts/config.js -->
+                <script src="assets/scripts/config.js"></script>
+            <!-- endbuild -->
         <% } %>
 
         <script>
