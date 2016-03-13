@@ -5,7 +5,7 @@ const pngquant = require('imagemin-pngquant');
 
 gulp.task('optimizeStatic', (done) => {
     gulp
-        .src(env.DIR_SRC + '/assets/media/images/**/*.{png,gif}')
+        .src(env.DIR_SRC + '/assets/media/images/**/*.+(png|jpg|gif|svg)')
         .pipe(imagemin({
             progressive: true,
             optimizationLevel: 7,
