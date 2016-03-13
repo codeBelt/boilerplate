@@ -1,11 +1,12 @@
-var gulp = require('gulp');
-var requireDir = require('require-dir');
-var runSequence = require('run-sequence');
-var argv = require('yargs').argv;
-var browserSync = require('browser-sync').create();
-var reload = browserSync.reload;
-var plugin = require('gulp-load-plugins')();
-var gulpIf = require('gulp-if');
+const gulp = require('gulp');
+const requireDir = require('require-dir');
+const runSequence = require('run-sequence');
+const argv = require('yargs').argv;
+const browserSync = require('browser-sync').create();
+const gulpIf = require('gulp-if');
+const cleanCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify');
+const useref = require('gulp-useref');
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -43,27 +44,28 @@ global.banner = require('./banner.js')(pkg); //TODO: double check this changes t
 //https://css-tricks.com/gulp-for-beginners/
 
 
-gulp.task('default', function() {
-    runSequence(
-        ['buildScripts', 'buildMarkup', 'buildStyles']
-    );
-
-    //if (argv.prod === true) {
-    //    runSequence(
-    //        'clean',
-    //        ['buildTypeScript', 'precompileJst', 'buildStyles', 'buildMarkup'],
-    //        'usemin'
-    //    );
-    //} else {
-    //    runSequence(
-    //        'clean',
-    //        ['buildTypeScript', 'precompileJst', 'buildStyles', 'buildMarkup'],
-    //        ['connectHttp', 'watch']
-    //    );
-    //}
+gulp.task('default', (done) => {
+    if (argv.prod === true) {
+        runSequence(
+            //['clean'],
+            ['buildScripts', 'buildMarkup', 'buildStyles'],
+            ['minify']
+        );
+    } else {
+        runSequence(
+            //['clean'],
+            ['buildScripts', 'buildMarkup', 'buildStyles']
+        );
+    }
 });
 
-gulp.task('serve', ['default'], function() {
+/**
+ * TODO:
+ *
+ * @task serve
+ * @options --open
+ */
+gulp.task('serve', ['default'], (done) => {
     browserSync.init({
         injectChanges: true,
         open: (argv.open === true),
@@ -78,23 +80,25 @@ gulp.task('optimizeStatic', ['todo'], function() {
 });
 <% } %>
 
-gulp.task('watch', function() {
+
+/**
+ * TODO:
+ *
+ * @task watch
+ */
+gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*.ts', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/scss/**/*.scss', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.hbs', ['buildMarkup']);
 });
 
-/*
- gulp.task('usemin', function() {
- return gulp
- .src(env.DIR_DEST + '/!*.html')
- .pipe(plugin.usemin({
- css:    [plugin.minifyCss()],
- html:   [plugin.minifyHtml({ empty: true }) ],
- js:     [plugin.uglify()],
- vendor: [plugin.uglify()]
- }))
- .pipe(plugin.header(banner, { pkg : pkg } ))
- .pipe(gulp.dest(env.DIR_DEST));
- });
- */
+gulp.task('minify', (done) => {
+    gulp
+        .src(env.DIR_DEST + '/*.html')
+        .pipe(useref())
+        .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulpIf('*.css', cleanCSS()))
+        //.pipe(plugin.header(banner, { pkg : pkg } ))
+        .pipe(gulp.dest(env.DIR_DEST))
+        .on('end', done);
+});

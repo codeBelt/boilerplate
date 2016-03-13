@@ -28,56 +28,56 @@
         <% if (markupFeatures.indexOf("icons") >= 0) { %>
             <!-- ICONS -->
             <!-- Touch Icons - iOS and Android 2.1+  -->
-            <link rel="apple-touch-icon" sizes="57x57" href="assets/media/images/apple-touch-icon-57x57.png?=@@version" />
-            <link rel="apple-touch-icon" sizes="60x60" href="assets/media/images/apple-touch-icon-60x60.png?=@@version" />
-            <link rel="apple-touch-icon" sizes="72x72" href="assets/media/images/apple-touch-icon-72x72.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="76x76" href="assets/media/images/apple-touch-icon-76x76.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="114x114" href="assets/media/images/apple-touch-icon-114x114.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="120x120" href="assets/media/images/apple-touch-icon-120x120.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="144x144" href="assets/media/images/apple-touch-icon-144x144.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="152x152" href="assets/media/images/apple-touch-icon-152x152.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="180x180" href="assets/media/images/apple-touch-icon-180x180.png?v=@@version" />
-            <link rel="apple-touch-icon" sizes="196x196" href="assets/media/images/apple-touch-icon-196x196.png?v=@@version" />
+            <link rel="apple-touch-icon" sizes="57x57" href="assets/media/images/apple-touch-icon-57x57.png" />
+            <link rel="apple-touch-icon" sizes="60x60" href="assets/media/images/apple-touch-icon-60x60.png" />
+            <link rel="apple-touch-icon" sizes="72x72" href="assets/media/images/apple-touch-icon-72x72.png" />
+            <link rel="apple-touch-icon" sizes="76x76" href="assets/media/images/apple-touch-icon-76x76.png" />
+            <link rel="apple-touch-icon" sizes="114x114" href="assets/media/images/apple-touch-icon-114x114.png" />
+            <link rel="apple-touch-icon" sizes="120x120" href="assets/media/images/apple-touch-icon-120x120.png" />
+            <link rel="apple-touch-icon" sizes="144x144" href="assets/media/images/apple-touch-icon-144x144.png" />
+            <link rel="apple-touch-icon" sizes="152x152" href="assets/media/images/apple-touch-icon-152x152.png" />
+            <link rel="apple-touch-icon" sizes="180x180" href="assets/media/images/apple-touch-icon-180x180.png" />
+            <link rel="apple-touch-icon" sizes="196x196" href="assets/media/images/apple-touch-icon-196x196.png" />
 
             <!-- For IE 9 and below. ICO should be 32x32 pixels in size, generated from http://www.xiconeditor.com/ or might not work -->
-            <!--[if lte IE 9]><link rel="shortcut icon" href="assets/media/images/favicon-32x32.ico?v=@@version" type="image/x-icon" ><![endif]-->
+            <!--[if lte IE 9]><link rel="shortcut icon" href="assets/media/images/favicon-32x32.ico" type="image/x-icon" ><![endif]-->
 
             <!-- All other browsers -->
-            <link rel="icon" type="image/png" sizes="196x196" href="assets/media/images/favicon-196x196.png?v=@@version" />
-            <link rel="icon" type="image/png" sizes="192x192" href="assets/media/images/favicon-192x192.png?v=@@version" />
-            <link rel="icon" type="image/png" sizes="160x160" href="assets/media/images/favicon-160x160.png?v=@@version" />
-            <link rel="icon" type="image/png" sizes="96x96" href="assets/media/images/favicon-96x96.png?v=@@version" />
-            <link rel="icon" type="image/png" sizes="32x32" href="assets/media/images/favicon-32x32.png?v=@@version" />
-            <link rel="icon" type="image/png" sizes="16x16" href="assets/media/images/favicon-16x16.png?v=@@version" />
+            <link rel="icon" type="image/png" sizes="196x196" href="assets/media/images/favicon-196x196.png" />
+            <link rel="icon" type="image/png" sizes="192x192" href="assets/media/images/favicon-192x192.png" />
+            <link rel="icon" type="image/png" sizes="160x160" href="assets/media/images/favicon-160x160.png" />
+            <link rel="icon" type="image/png" sizes="96x96" href="assets/media/images/favicon-96x96.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="assets/media/images/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="assets/media/images/favicon-16x16.png" />
 
             <!-- IE 11+ on Windows 8.1+ -->
-            <meta name="msapplication-TileImage" content="assets/media/images/mstile-144x144.png?v=@@version">
+            <meta name="msapplication-TileImage" content="assets/media/images/mstile-144x144.png">
             <meta name="msapplication-TileColor" content="#ff0000">
         <% } %>
 
         <!-- STYLESHEETS -->
-        <!-- build:css assets/styles/screen.css?v=@@version -->
+        <!-- build:css assets/styles/screen.css -->
         <!-- bower:css -->
         <!-- endbower -->
-        <link rel="stylesheet" media="screen, projection" href="assets/styles/screen.css?v=@@version" />
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/screen.css" />
         <!-- endbuild -->
 
         <% if (stylesFeatures.indexOf("ie9") >= 0) { %>
-            <!--[if IE 9]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie9.css?v=@@version" /><![endif]-->
+            <!--[if IE 9]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie9.css" /><![endif]-->
         <% } %>
 
         <% if (stylesFeatures.indexOf("ie8") >= 0) { %>
-            <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie8.css?v=@@version" /><![endif]-->
+            <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie8.css" /><![endif]-->
         <% } %>
 
         <% if (stylesFeatures.indexOf("print") >= 0) { %>
-            <link rel="stylesheet" media="print" href="assets/styles/print.css?v=@@version" />
+            <link rel="stylesheet" media="print" href="assets/styles/print.css" />
         <% } %>
 
         <!-- POLYFILLS -->
-        <!-- build:js assets/scripts/head.js?v=@@version -->
+        <!-- build:js assets/scripts/head.js -->
             <% if (scriptsAdditional.indexOf("modernizr") >= 0) { %>
-                <script src="assets/vendor/modernizr/modernizr.js?v=@@version"></script>
+                <script src="assets/vendor/modernizr/modernizr.js"></script>
             <% } %>
         <!-- endbuild -->
     </head>
@@ -86,8 +86,8 @@
 
         <!-- JAVASCRIPT -->
         <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>
-            <script src="assets/vendor/requirejs/require.js?v=@@version"></script>
-            <script src="assets/scripts/config.js?v=@@version"></script>
+            <script src="assets/vendor/requirejs/require.js"></script>
+            <script src="assets/scripts/config.js"></script>
         <% } %>
 
         <script>
@@ -174,17 +174,17 @@
         </script>
 
         <% if (scriptsBuildSystem.indexOf("requirejs") < 0) { %>
-            <!-- build:vendor assets/scripts/vendor.js?v=@@version -->
+            <!-- build:js assets/scripts/vendor.js -->
                 <% if (scriptsAdditional.indexOf("jquery") >= 0) { %>
-                    <script src="assets/vendor/jquery/dist/jquery.min.js?v=@@version"></script>
+                    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
                 <% } %>
             <!-- endbuild -->
 
-            <!-- build:js assets/scripts/main.js?v=@@version -->
+            <!-- build:js assets/scripts/main.js -->
                 <% if (precompileJst !== "no") { %>
-                    <script src="assets/scripts/precompiledJst.js?v=@@version"></script>
+                    <script src="assets/scripts/precompiledJst.js"></script>
                 <% } %>
-                <script src="assets/scripts/main.js?v=@@version"></script>
+                <script src="assets/scripts/main.js"></script>
             <!-- endbuild -->
         <% } %>
 
