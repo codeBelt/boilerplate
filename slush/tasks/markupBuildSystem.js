@@ -19,7 +19,7 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp', 'gulp-file-include'];
             break;
         case 'handlebars':
-            devDependencies = ['gulp', 'handlebars', 'gulp-hb', 'handlebars-layouts', 'gulp-rename', 'gulp-replace', 'gulp-prettify'];
+            devDependencies = ['gulp', 'handlebars', 'handlebars-helpers', 'gulp-hb', 'handlebars-layouts', 'gulp-rename', 'gulp-replace', 'gulp-prettify'];
             break;
     }
 

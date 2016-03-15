@@ -1,6 +1,11 @@
 {
   "tsify": "*",
   "del": "*",
+  "gulp": "*",
+  "yargs": "*",
+  "handlebars-helpers": "*",
+  "gulp-requirejs-optimize": "*",
+  "gulp-ignore": "*",
   "gulp-requirejs": "*",
   "requirejs": "*",
   "gulp-header": "*",
