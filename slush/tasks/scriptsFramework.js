@@ -10,7 +10,7 @@ module.exports = (rootDirectory, answers) => {
 
     switch (frameworkType) {
         case 'structurejs':
-            bowerDependencies.push({'structurejs': '*'}, {'jquery': '*'}, {'handlebars': '*'});
+            bowerDependencies.push('structurejs', 'jquery', 'handlebars');
             break;
         case 'reactjs':
             break;

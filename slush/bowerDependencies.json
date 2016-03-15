@@ -1,0 +1,12 @@
+{
+  "requirejs": "*",
+  "jquery": "*",
+  "modernizr": "*",
+  "structurejs": "*",
+  "handlebars": "*",
+  "nerdery-auto-replace": "./tools/cache/nerdery-auto-replace",
+  "nerdery-external-links": "./tools/cache/nerdery-external-links",
+  "nerdery-function-name": "./tools/cache/nerdery-function-name",
+  "nerdery-has-js": "./tools/cache/nerdery-has-js",
+  "nerdery-request-animation-frame": "./tools/cache/nerdery-request-animation-frame"
+}

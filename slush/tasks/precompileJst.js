@@ -12,7 +12,7 @@ module.exports = (rootDirectory, answers) => {
     switch (type) {
         case 'handlebars':
             devDependencies = ['gulp', 'gulp-handlebars', 'handlebars', 'gulp-wrap', 'gulp-declare', 'gulp-concat'];
-            bowerDependencies.push({'handlebars': '*'});
+            bowerDependencies.push('handlebars');
             break;
     }
 

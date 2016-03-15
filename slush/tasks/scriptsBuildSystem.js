@@ -22,7 +22,7 @@ module.exports = (rootDirectory, answers) => {
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'requirejs', 'gulp-requirejs-optimize', 'merge-stream'];
-            bowerDependencies = [{'requirejs': '*'}];
+            bowerDependencies = ['requirejs'];
             break;
     }
 

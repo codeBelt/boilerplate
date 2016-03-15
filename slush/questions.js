@@ -117,7 +117,7 @@ module.exports = [
                 "value": "requirejs"
             }
         ],
-        "default": "babel",
+        "default": "requirejs",
         "type": "list"
     },
     {
@@ -191,23 +191,23 @@ module.exports = [
             },
             {
                 "name": "Auto Replace",
-                "value": "auto-replace"
+                "value": "nerdery-auto-replace"
             },
             {
                 "name": "External Links",
-                "value": "external-links"
+                "value": "nerdery-external-links"
             },
             {
                 "name": "Function Name",
-                "value": "function-name"
+                "value": "nerdery-function-name"
             },
             {
                 "name": "Has JS",
-                "value": "has-js"
+                "value": "nerdery-has-js"
             },
             {
                 "name": "Request Animation Frame",
-                "value": "animation-frame"
+                "value": "nerdery-request-animation-frame"
             }
         ],
         "default": "",

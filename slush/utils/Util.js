@@ -1,6 +1,7 @@
 'use strict';
 
-const devDependenciesData = require('../devDependencies.json');
+const _devDependenciesData = require('../devDependencies.json');
+const _bowerDependenciesData = require('../bowerDependencies.json');
 
 /**
  * Utility class for the slush generator and slush tasks.
@@ -32,28 +33,23 @@ class Util {
     }
 
     /**
-     * Creates a list of dev dependencies returned from data passed in.
      *
-     * @method generateUniqueDevDependencies
-     * @param taskResults {any}
+     * @method createListFromPropertyName
+     * @param taskResults {array}
+     * @param propertyName {string}
      * @return {Array<string>}
      * @static
      */
-    static generateUniqueDevDependencies(taskResults) {
-        let devDependencies = taskResults.reduce((previousValue, currentValue) => {
-            if (currentValue && previousValue.indexOf(currentValue.devDependencies) === -1) {
-                return previousValue.concat(currentValue.devDependencies);
+    static createListFromPropertyName(taskResults, propertyName) {
+        let list = taskResults.reduce((previousValue, currentValue) => {
+            if (currentValue && previousValue.indexOf(currentValue[propertyName]) === -1) {
+                return previousValue.concat(currentValue[propertyName]);
             }
 
             return previousValue;
         }, []);
 
-        // Remove duplicates of dev dependencies
-        devDependencies = devDependencies.filter((item, index, array) => {
-            return array.indexOf(item) === index;
-        });
-
-        return devDependencies.sort();
+        return Util.removeDuplicates(list);
     }
 
     /**
@@ -65,33 +61,47 @@ class Util {
      * @static
      */
     static generateDevDependenciesWithVersions(taskResults) {
-        const devDependencyList = Util.generateUniqueDevDependencies(taskResults);
+        const devDependencyList = Util.createListFromPropertyName(taskResults, 'devDependencies');
         const devDependencyHash = {};
 
         devDependencyList.forEach((item) => {
-            devDependencyHash[item] = devDependenciesData[item];
+            devDependencyHash[item] = _devDependenciesData[item];
         });
 
         return JSON.stringify(devDependencyHash);
     }
 
     /**
+     * Creates a stringify object with the bower dependencies and there version.
      *
-     * @method generateBowerDependencies
+     * @method generateBowerDependenciesWithVersions
      * @param taskResults {string}
      * @return {Array<string>}
      * @static
      */
-    static generateBowerDependencies(taskResults) {
-        const results = taskResults.reduce((previousValue, currentValue) => {
-            if (currentValue.bowerDependencies.length > 0) {
-                return Object.assign(previousValue, ...currentValue.bowerDependencies);
-            }
+    static generateBowerDependenciesWithVersions(taskResults) {
+        const bowerDependencyList = Util.createListFromPropertyName(taskResults, 'bowerDependencies');
+        const bowerDependencyHash = {};
 
-            return previousValue;
-        }, {});
+        bowerDependencyList.forEach((item) => {
+            bowerDependencyHash[item] = _bowerDependenciesData[item];
+        });
 
-        return JSON.stringify(results);
+        return JSON.stringify(bowerDependencyHash);
+    }
+
+    /**
+     * Remove duplicates out of an array.
+     *
+     * @method removeDuplicates
+     * @static
+     */
+    static removeDuplicates(list) {
+        const results = list.filter((item, index, array) => {
+            return array.indexOf(item) === index;
+        });
+
+        return results.sort();
     }
 
 }

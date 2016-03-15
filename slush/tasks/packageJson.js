@@ -10,7 +10,7 @@ const Util = require('../utils/Util');
 module.exports = (rootDirectory, answers, taskResults) => {
     // Creates a stringify object of the dev dependencies to be added to the package.json
     const devDependencyJson = Util.generateDevDependenciesWithVersions(taskResults);
-    const bowerDependenciesJson = Util.generateBowerDependencies(taskResults);
+    const bowerDependenciesJson = Util.generateBowerDependenciesWithVersions(taskResults);
 
     // Gulp task
     gulp.task('packageJson', (done) => {
