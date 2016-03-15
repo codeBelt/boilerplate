@@ -213,22 +213,22 @@ module.exports = [
         "default": "",
         "type": "checkbox"
     },
-    {
-        "name": "demo",
-        "message": "Do you want a demo application?",
-        "choices": [
-            {
-                "name": "No",
-                "value": "no"
-            },
-            {
-                "name": "Yes",
-                "value": "yes"
-            }
-        ],
-        "default": "no",
-        "type": "list"
-    },
+    //{
+    //    "name": "demo",
+    //    "message": "Do you want a demo application?",
+    //    "choices": [
+    //        {
+    //            "name": "No",
+    //            "value": "no"
+    //        },
+    //        {
+    //            "name": "Yes",
+    //            "value": "yes"
+    //        }
+    //    ],
+    //    "default": "no",
+    //    "type": "list"
+    //},
     {
         "type": "confirm",
         "name": "moveon",
