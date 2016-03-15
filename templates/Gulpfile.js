@@ -9,6 +9,7 @@ const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
 const gulpIgnore = require('gulp-ignore');
+const del = require('del');
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -52,17 +53,20 @@ global.banner = require('./banner.js')(pkg);
 
 //https://css-tricks.com/gulp-for-beginners/
 
+gulp.task('clean:web', (done) => {
+    return del(env.DIR_DEST);
+});
 
 gulp.task('default', (done) => {
     if (argv.prod === true) {
         runSequence(
-            //['clean'],
+            ['clean:web'],
             ['buildScripts', 'buildMarkup', 'buildStyles'],
             ['minify']
         );
     } else {
         runSequence(
-            //['clean'],
+            ['clean:web'],
             ['buildScripts', 'buildMarkup', 'buildStyles']
         );
     }
@@ -85,8 +89,8 @@ gulp.task('serve', ['default'], (done) => {
 });
 
 <% if (markupFeatures.indexOf("icons") >= 0) { %>
-gulp.task('optimizeStatic', ['todo'], function() {
-});
+    gulp.task('optimizeStatic', ['todo'], function() {
+    });
 <% } %>
 
 

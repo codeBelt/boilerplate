@@ -1,5 +1,6 @@
 {
   "tsify": "*",
+  "del": "*",
   "gulp-requirejs": "*",
   "requirejs": "*",
   "gulp-header": "*",

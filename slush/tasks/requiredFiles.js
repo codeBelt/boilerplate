@@ -41,6 +41,7 @@ module.exports = (rootDirectory, answers) => {
         taskName: 'requiredFiles',
         devDependencies: [
             'gulp',
+            'del',
             'gulp-header',
             'gulp-clean-css',
             'gulp-useref',
