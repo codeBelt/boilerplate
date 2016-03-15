@@ -53,23 +53,103 @@ global.banner = require('./banner.js')(pkg);
 
 //https://css-tricks.com/gulp-for-beginners/
 
-gulp.task('clean:web', (done) => {
+// -- Tasks ----------------------------------------------------------------
+gulp.task('clean:dest', (done) => {
     return del(env.DIR_DEST);
 });
 
+gulp.task('clean:docs', (done) => {
+    return del(env.DIR_DOCS);
+});
+
+gulp.task('clean:installed', (done) => {
+    return del([
+        'tools/node-*',
+        env.DIR_BOWER,
+        env.DIR_NPM
+    ]);
+});
+
+/*gulp.task('default', 'Run default tasks for the target environment.',
+    // Ran `grunt`
+    grunt.option('dev')   ? ['build'] :
+        // Ran `grunt --stage`
+        grunt.option('stage') ? ['lint', 'build'] :
+            // Ran `grunt --prod`
+            grunt.option('prod')  ? ['lint', 'build', 'docs'] : []
+);*/
+
+/**
+ * Run default tasks for the target environment.
+ *
+ * @task default
+ */
 gulp.task('default', (done) => {
     if (argv.prod === true) {
         runSequence(
+            ['clean:dest'],
+            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
+            ['minify']
+        );
+    } else {
+        runSequence(
+            ['clean:dest'],
+            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
+        );
+    }
+});
+
+/**
+ * Compile source code and outputs to destination.
+ *
+ * @task build
+ */
+gulp.task('build', (done) => {
+    if (argv.prod === true) {
+        runSequence(
             ['clean:web'],
-            ['buildScripts', 'buildMarkup', 'buildStyles'],
+            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
             ['minify']
         );
     } else {
         runSequence(
             ['clean:web'],
-            ['buildScripts', 'buildMarkup', 'buildStyles']
+            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
         );
     }
+});
+
+/**
+ * Generate documentation.
+ *
+ * @task docs
+ */
+gulp.task('docs', (done) => {
+    runSequence(
+        ['clean:docs', 'docsScripts']
+    );
+});
+
+/**
+ * Validate code syntax.
+ *
+ * @task lint
+ */
+gulp.task('lint', (done) => {
+    runSequence(
+        ['lintScripts']
+    );
+});
+
+/**
+ * Inject 3rd-party library references from bower.json into source code.
+ *
+ * @task inject
+ */
+gulp.task('inject', (done) => {
+    runSequence(
+        ['injectStyles', 'injectScripts']
+    );
 });
 
 /**
@@ -118,3 +198,45 @@ gulp.task('minify', (done) => {
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
 });
+
+
+// Watches files and directories changes and runs associated tasks automatically.
+// For LiveReload, download browser extension at http://go.livereload.com/extensions
+/*watch: {
+    options: {
+        livereload: {
+            // Default port for LiveReload
+            // *Will not work if multiple users run using the same port on a shared server*
+            port: 35729
+        }
+    },
+    watchVendor: {
+        files: [env.DIR_BOWER + '/!**!/!*'],
+            tasks: [
+            'buildScripts',
+            'buildStyles'
+        ]
+    },
+    watchMarkup: {
+        files: [env.DIR_SRC + '/!**!/!*.html'],
+            tasks: ['buildMarkup']
+    },
+    watchStatic: {
+        files: [
+            env.DIR_SRC + '/!**!/.htaccess',
+            env.DIR_SRC + '/!**!/!*.{php,rb,py,jsp,asp,aspx,cshtml,txt}',
+            env.DIR_SRC + '/assets/media/!**',
+        ],
+            tasks: ['buildStatic']
+    },
+    watchStyles: {
+        files: [env.DIR_SRC + '/assets/styles/!**!/!*'],
+            tasks: ['buildStyles']
+    },
+    watchScripts: {
+        files: [env.DIR_SRC + '/assets/scripts/!**!/!*'],
+            tasks: ['buildScripts']
+    }
+},
+});*/
+
