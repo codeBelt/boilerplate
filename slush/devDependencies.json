@@ -3,6 +3,8 @@
   "del": "*",
   "gulp": "*",
   "yargs": "*",
+  "run-sequence": "*",
+  "require-dir": "*",
   "handlebars-helpers": "*",
   "gulp-requirejs-optimize": "*",
   "gulp-ignore": "*",

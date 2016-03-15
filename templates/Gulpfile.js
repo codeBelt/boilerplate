@@ -88,13 +88,13 @@ gulp.task('default', (done) => {
     if (argv.prod === true) {
         runSequence(
             ['clean:dest'],
-            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
+            [ 'buildMarkup', 'buildStyles', 'buildScripts'],
             ['minify']
         );
     } else {
         runSequence(
             ['clean:dest'],
-            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
+            [ 'buildMarkup', 'buildStyles', 'buildScripts']
         );
     }
 });
