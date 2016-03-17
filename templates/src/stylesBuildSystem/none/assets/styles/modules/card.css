@@ -1,0 +1,77 @@
+/* ---------------------------------------------------------------------
+ Sample styles
+ (samples only, remove this from your project's codebase)
+------------------------------------------------------------------------ */
+
+.demo-card {
+    position: absolute;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    perspective: 800px;
+}
+
+.demo-card-front,
+.demo-card-back {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding: 40px;
+    border-radius: 30px;
+    color: #ffffff;
+    text-align: center;
+    font: 25px Georgia;
+    line-height: 2;
+}
+
+.transition .demo-card-front,
+.transition .demo-card-back {
+    /* For 3D-CSS compliant browsers */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform .5s ease-in-out, visibility .5s ease-in-out;
+}
+
+.active  .demo-card-front,
+.active  .demo-card-back {
+   color: #aaffff;
+}
+
+.demo-card-front {
+    background-color: #ff0000;
+    box-shadow: 0 0 150px #ff0000;
+
+    /* 3D-CSS compliant browsers */
+    transform: rotateY(0deg);
+
+    /* Non-3D-CSS compliant browsers */
+    visibility: visible;
+}
+
+.demo-card-back {
+    background-color: #00aa00;
+    box-shadow: 0 0 150px #00aa00;
+
+    /* 3D-CSS compliant browsers */
+    transform: rotateY(-180deg);
+
+    /* Non-3D-CSS compliant browsers */
+    visibility: hidden;
+}
+
+.flipped .demo-card-front {
+    /* For 3D-CSS compliant browsers */
+    transform: rotateY(180deg);
+
+    /* For non-3D-CSS compliant browsers */
+    visibility: hidden;
+}
+
+.flipped .demo-card-back {
+    /* For 3D-CSS compliant browsers */
+    transform: rotateY(0deg);
+
+    /* For non-3D-CSS compliant browsers */
+    visibility: visible;
+}

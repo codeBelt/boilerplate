@@ -6,7 +6,7 @@ const merge = require('merge-stream');
 module.exports = (rootDirectory, answers) => {
 
     let devDependencies = ['gulp', 'gulp-yuidoc'];
-    let bowerDependencies = ['yuidoc-friendly-theme'];
+    let bowerDependencies = [];
 
     // Files and folder locations
     const filesToCopy = [

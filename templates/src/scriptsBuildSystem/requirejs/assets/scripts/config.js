@@ -35,16 +35,15 @@ require.config({
     paths: {
         // this empty string tells r.js to use single quotes when injecting
         // bower modules automatically. Otherwise it defaults to double quotes.
-        'requirejs': ''
+        'requirejs': '',
+        'jquery': '../vendor/jquery/dist/jquery'
     },
 
     shim: {
+        'jquery': {
+            exports: '$'
+        }
     },
 
     waitSeconds: 120
 });
-
-/**
- * Module definitions for pre-loaded scripts.
- */
-//define('modernizr', function() { return window.Modernizr; }); // jshint ignore:line

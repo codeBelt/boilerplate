@@ -1,9 +1,10 @@
-var <%= jsNamespace %> = window.<%= jsNamespace %> || {};
+var NRD = window.NRD || {};
 
-<%= jsNamespace %>['./shim'] = (function() {
+NRD['./shim'] = (function() {
     'use strict';
 
-    // Shim Example
-    <%= jsNamespace %>['nerdery-function-bind'] = window.nerderyFunctionBind;
+    // Shim
+    NRD['jquery'] = window.jQuery;
+    NRD['nerdery-function-bind'] = window.nerderyFunctionBind;
 
 }());

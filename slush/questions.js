@@ -15,6 +15,12 @@ module.exports = [
         "message": "What would you like the slug to be?",
         "default": (answer) => {
             return Util.toSentence(answer.projectName, '-');
+        },
+        "validate": (answer) => {
+            //if (answer.length < 1) {
+            //    return 'You must choose at least one topping.';
+            //}
+            return true;
         }
     },
     {
@@ -219,22 +225,22 @@ module.exports = [
         "default": "",
         "type": "checkbox"
     },
-    //{
-    //    "name": "demo",
-    //    "message": "Do you want a demo application?",
-    //    "choices": [
-    //        {
-    //            "name": "No",
-    //            "value": "no"
-    //        },
-    //        {
-    //            "name": "Yes",
-    //            "value": "yes"
-    //        }
-    //    ],
-    //    "default": "no",
-    //    "type": "list"
-    //},
+    {
+        "name": "demoBuildSystem",
+        "message": "Do you want a demo application?",
+        "choices": [
+            {
+                "name": "No",
+                "value": "no"
+            },
+            {
+                "name": "Yes",
+                "value": "yes"
+            }
+        ],
+        "default": "yes",
+        "type": "list"
+    },
     {
         "type": "confirm",
         "name": "moveon",
