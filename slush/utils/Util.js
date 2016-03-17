@@ -104,6 +104,41 @@ class Util {
         return results.sort();
     }
 
+    /**
+     * Converts a string to a sentence case string.
+     *
+     * @method toSentence
+     * @param str {string}
+     * @param [separator] {string} Can be any string you want to use as a separator.
+     * @returns {string}
+     * @public
+     * @static
+     * @example
+     *      StringUtil.toSentence("liveDown_by-the.River");
+     *      // 'live down by the river'
+     *
+     *      StringUtil.toSentence("liveDown_by-the.River", '-');
+     *      // 'live-down-by-the-river'
+     *
+     *      StringUtil.toSentence("liveDown_by-the.River", '_');
+     *      // 'live_down_by_the_river'
+     *
+     *      StringUtil.toSentence("liveDown_by-the.River", '/');
+     *      // 'live/down/by/the/river'
+     */
+    static toSentence(str, separator) {
+        if (separator === void 0) { separator = ' '; }
+
+        return String(str)
+            .replace(/(\d)/g, '$1 ')
+            .replace(/([a-z](?=[A-Z]))/g, '$1 ')
+            .replace(/[^a-zA-Z0-9 ]/g, ' ')
+            .replace(/\s{2,}/g, ' ')
+            .replace(/^ | $/g, '')
+            .toLowerCase()
+            .replace(/\s+/g, separator);
+    }
+
 }
 
 module.exports = Util;

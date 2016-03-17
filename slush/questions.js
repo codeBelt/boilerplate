@@ -1,5 +1,9 @@
 "use strict";
 
+// Helpers
+var Util = require('./utils/Util');
+
+//Util.toSentence('-');
 module.exports = [
     {
         "name": "projectName",
@@ -9,7 +13,9 @@ module.exports = [
     {
         "name": "projectSlug",
         "message": "What would you like the slug to be?",
-        "default": "client-project"
+        "default": (answer) => {
+            return Util.toSentence(answer.projectName, '-');
+        }
     },
     {
         "name": "markupBuildSystem",
