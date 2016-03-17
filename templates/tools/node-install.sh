@@ -71,7 +71,7 @@ install ()
 
     log "INSTALLING GLOBAL DEPENDENCIES..."
     npm install --global bower
-    npm install --global grunt-cli
+    npm install --global gulp-cli
     log 'OK'
 
     printf '=============================================================\n'
@@ -107,7 +107,7 @@ install_standalone ()
     chmod 770 "$STANDALONE_DIR/bin/node"
     log "INSTALLING GLOBAL DEPENDENCIES..."
     "$STANDALONE_DIR/bin/npm" install --global bower
-    "$STANDALONE_DIR/bin/npm" install --global grunt-cli
+    "$STANDALONE_DIR/bin/npm" install --global gulp-cli
     printf ":: OK, STANDALONE NODE INSTALLED AT %s" $STANDALONE_DIR
 }
 

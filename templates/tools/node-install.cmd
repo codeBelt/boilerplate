@@ -88,7 +88,7 @@ echo :: OK
 echo :: INSTALLING GLOBAL DEPENDENCIES...
 SET PATH=%PATH%;%AppData%\npm;%ProgramFiles%\nodejs\
 call npm install --global bower
-call npm install --global grunt-cli
+call npm install --global gulp-cli
 
 goto finish
 
@@ -117,7 +117,7 @@ call "%STANDALONE_DIR%npm" install --global npm@%NPM_VERSION%
 
 echo :: INSTALLING GLOBAL DEPENDENCIES...
 call "%STANDALONE_DIR%npm" install --global bower
-call "%STANDALONE_DIR%npm" install --global grunt-cli
+call "%STANDALONE_DIR%npm" install --global gulp-cli
 echo :: OK, STANDALONE NODE INSTALLED AT "%STANDALONE_DIR%"
 
 goto finish

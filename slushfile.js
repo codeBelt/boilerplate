@@ -18,6 +18,7 @@ var Util = require('./slush/utils/Util');
 
 // Slush Tasks
 var requiredFiles = require('./slush/tasks/requiredFiles');
+var docsBuildSystem = require('./slush/tasks/docsBuildSystem');
 var markupBuildSystem = require('./slush/tasks/markupBuildSystem');
 var markupFeatures = require('./slush/tasks/markupFeatures');
 var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
@@ -44,6 +45,7 @@ gulp.task('default', function(done) {
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         var taskResults = [
             requiredFiles(basePath, answers),
+            docsBuildSystem(basePath, answers),
             markupBuildSystem(basePath, answers),
             markupFeatures(basePath, answers),
             scriptsBuildSystem(basePath, answers),

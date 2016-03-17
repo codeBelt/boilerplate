@@ -2,6 +2,7 @@
   "tsify": "*",
   "del": "*",
   "gulp": "*",
+  "gulp-yuidoc": "*",
   "yargs": "*",
   "run-sequence": "*",
   "require-dir": "*",

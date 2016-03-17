@@ -126,7 +126,8 @@ gulp.task('build', (done) => {
  */
 gulp.task('docs', (done) => {
     runSequence(
-        ['clean:docs', 'docsScripts']
+        ['clean:docs'],
+        ['buildDocs']
     );
 });
 
