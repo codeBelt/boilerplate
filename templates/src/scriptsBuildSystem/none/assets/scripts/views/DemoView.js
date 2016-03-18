@@ -102,7 +102,7 @@ NRD['./views/DemoView'] = (function() {
      * @private
      */
     proto.createChildren = function() {
-        this.$card = this.$element.find('.js-demo-card');
+        this.$card = this.$element.find('.js-demoView-card');
 
         return this;
     };

@@ -1,3 +1,5 @@
+import DemoView from './views/DemoView';
+
 /**
  * Initial application setup. Runs once upon every page load.
  *
@@ -6,8 +8,16 @@
  */
 class App {
 
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _demoView
+     * @type {DemoView}
+     * @protected
+     */
+    _demoView = null;
+
     constructor() {
-        alert('hey');
     }
 
     /**
@@ -17,7 +27,9 @@ class App {
      * @public
      */
     init() {
-
+        // Create your views here
+        // Pass in a jQuery reference to DOM elements that need functionality attached to them
+        this._demoView = new DemoView($('.js-demoView'));
     }
 
 }
