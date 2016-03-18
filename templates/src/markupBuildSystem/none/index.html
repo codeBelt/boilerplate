@@ -59,7 +59,7 @@
         <!-- build:css assets/styles/screen.css -->
         <!-- bower:css -->
         <!-- endbower -->
-        <link rel="stylesheet" media="screen, projection" href="assets/styles/screen.css" />
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
         <!-- endbuild -->
 
         <% if (stylesFeatures.indexOf("ie9") >= 0) { %>
@@ -83,6 +83,18 @@
     </head>
     <body>
         <!-- CONTENT -->
+        <% if (demoBuildSystem === "yes") { %>
+            <div class="js-demo">
+                <div class="js-demo-card demo-card">
+                    <div class="demo-card-front">
+                        <div>Awww.</div>The JavaScript boilerplate has not been initialized :-(
+                    </div>
+                    <div class="demo-card-back">
+                        <div>Success!</div>The JavaScript boilerplate has been initialized!
+                    </div>
+                </div>
+            </div>
+        <% } %>
 
         <!-- JAVASCRIPT -->
         <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>

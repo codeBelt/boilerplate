@@ -1,6 +1,20 @@
 {{#extend "layout"}}
 
     {{#content "body" mode="append"}}
+
+        <% if (demoBuildSystem === "yes") { %>
+            <div class="js-demo">
+                <div class="js-demo-card demo-card">
+                    <div class="demo-card-front">
+                        <div>Awww.</div>The JavaScript boilerplate has not been initialized :-(
+                    </div>
+                    <div class="demo-card-back">
+                        <div>Success!</div>The JavaScript boilerplate has been initialized!
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
     {{/content}}
 
 {{/extend}}
