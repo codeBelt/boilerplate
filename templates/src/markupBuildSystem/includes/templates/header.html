@@ -62,6 +62,10 @@
         <!-- endbuild -->
         <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
 
+        <% if (demoBuildSystem === "yes" && stylesBuildSystem === "none") { %>
+            <link rel="stylesheet" media="screen, projection" href="assets/styles/modules/card.css" />
+        <% } %>
+
         <% if (stylesFeatures.indexOf("ie9") >= 0) { %>
             <!--[if IE 9]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie9.css" /><![endif]-->
         <% } %>
