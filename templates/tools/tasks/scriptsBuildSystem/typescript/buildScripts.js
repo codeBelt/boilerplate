@@ -17,7 +17,9 @@ gulp.task('buildScripts', (done) => {
         })
         .transform('babelify', {
             presets: ['es2015'],
-            extensions: ['.js', '.ts']
+            extensions: ['.js', '.ts'],
+            //https://github.com/HenriqueLimas/gulp-babelify-starter-kit/blob/master/.babelrc
+            plugins: ['transform-class-properties']
         })
         .bundle()
         .on('error', console.log)

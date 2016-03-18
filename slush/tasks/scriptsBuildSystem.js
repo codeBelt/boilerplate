@@ -15,10 +15,10 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp', 'merge-stream'];
             break;
         case 'babel':
-            devDependencies = ['gulp', 'gulp-sourcemaps', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties'];
             break;
         case 'typescript':
-            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties'];
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'requirejs', 'gulp-requirejs-optimize', 'merge-stream'];

@@ -18,6 +18,10 @@ class DemoView {
      */
     _$card = null;
 
+    _onClickHandler = null;
+    _onMouseEnterHandler = null;
+    _onMouseLeaveHandler = null;
+
     /**
      * A reference to the containing DOM element.
      *
