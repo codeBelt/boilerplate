@@ -196,7 +196,7 @@
 
         <% if (scriptsBuildSystem.indexOf("requirejs") < 0) { %>
             <!-- build:js assets/scripts/vendor.js -->
-                <% if (scriptsAdditional.indexOf("jquery") >= 0) { %>
+                <% if (scriptsAdditional.indexOf("jquery") >= 0 || demoBuildSystem === "yes") { %>
                     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
                 <% } %>
             <!-- endbuild -->
@@ -205,6 +205,13 @@
                 <% if (precompileJst !== "no") { %>
                     <script src="assets/scripts/precompiledJst.js"></script>
                 <% } %>
+
+                <% if (scriptsBuildSystem === "none" && demoBuildSystem === "yes") { %>
+                    <script src="assets/scripts/shim.js"></script>
+                    <script src="assets/scripts/views/DemoView.js"></script>
+                    <script src="assets/scripts/App.js"></script>
+                <% } %>
+
                 <script src="assets/scripts/main.js"></script>
             <!-- endbuild -->
         <% } %>
