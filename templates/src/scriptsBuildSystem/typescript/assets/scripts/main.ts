@@ -2,5 +2,5 @@
 
 import App from './App';
 
-var app = new App();
+const app = new App();
 app.init();

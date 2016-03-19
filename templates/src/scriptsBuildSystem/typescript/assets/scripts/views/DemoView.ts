@@ -231,7 +231,7 @@ class DemoView {
      * @protected
      */
     _wait(millisecondsToWait) {
-        var deferred = $.Deferred();
+        const deferred = $.Deferred();
 
         window.setTimeout(function() {
             deferred.resolve();

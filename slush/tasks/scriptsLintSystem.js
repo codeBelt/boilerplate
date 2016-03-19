@@ -17,7 +17,7 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp', 'gulp-eslint', 'babel-eslint', 'eslint-plugin-react'];
             break;
         case 'typescript':
-            devDependencies = ['gulp', 'gulp-tslint'];
+            devDependencies = ['gulp', 'gulp-tslint', 'tslint', 'typescript'];
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'gulp-jshint', 'jshint'];

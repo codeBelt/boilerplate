@@ -8,6 +8,8 @@
   "eslint-plugin-react": "*",
   "babel-eslint": "*",
   "gulp-tslint": "*",
+  "tslint": "*",
+  "typescript": "*",
   "gulp-yuidoc": "*",
   "yargs": "*",
   "run-sequence": "*",
