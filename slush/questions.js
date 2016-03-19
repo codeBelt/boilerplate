@@ -129,7 +129,7 @@ module.exports = [
                 "value": "requirejs"
             }
         ],
-        "default": "typescript",
+        "default": "babel",
         "type": "list"
     },
     {

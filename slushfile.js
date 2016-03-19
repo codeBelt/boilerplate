@@ -25,6 +25,7 @@ var markupFeatures = require('./slush/tasks/markupFeatures');
 var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
 var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
 var scriptsFramework = require('./slush/tasks/scriptsFramework');
+var scriptsLintSystem = require('./slush/tasks/scriptsLintSystem');
 var scriptsAdditional = require('./slush/tasks/scriptsAdditional');
 var stylesFeatures = require('./slush/tasks/stylesFeatures');
 var precompileJst = require('./slush/tasks/precompileJst');
@@ -52,6 +53,7 @@ gulp.task('default', function(done) {
             markupFeatures(basePath, answers),
             scriptsBuildSystem(basePath, answers),
             scriptsFramework(basePath, answers),
+            scriptsLintSystem(basePath, answers),
             scriptsAdditional(basePath, answers),
             stylesFeatures(basePath, answers),
             stylesBuildSystem(basePath, answers),
