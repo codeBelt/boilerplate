@@ -8,7 +8,6 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
-const gulpIgnore = require('gulp-ignore');
 const del = require('del');
 
 /**
@@ -192,10 +191,7 @@ gulp.task('minify', (done) => {
         .pipe(useref())
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulpIf('*.css', cleanCSS()))
-        // Exclude html files so we don't the banner
-        .pipe(gulpIgnore.exclude('*.html'))
-        // Add banner to top of minified files
-        .pipe(header(banner))
+        .pipe(gulpIf('**/*.{css,js}', header(banner)))
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
 });

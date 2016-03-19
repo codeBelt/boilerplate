@@ -42,7 +42,6 @@ module.exports = (rootDirectory, answers) => {
         devDependencies: [
             'gulp',
             'del',
-            'gulp-ignore',
             'gulp-uglify',
             'gulp-header',
             'gulp-clean-css',
@@ -50,7 +49,6 @@ module.exports = (rootDirectory, answers) => {
             'gulp-if',
             'yargs',
             'time-require',
-            'gulp-load-plugins',
             'require-dir',
             'run-sequence',
             'browser-sync'
