@@ -42,7 +42,7 @@ console.log("isDev", isDev);
 /**
  * A code block that will be added to the minified code files.
  */
-global.banner = require('./banner.js')(pkg);
+global.banner = require('./tools/banner.js')(pkg);
 
 //https://knpuniversity.com/screencast/gulp
 //https://markgoodyear.com/2014/01/getting-started-with-gulp/

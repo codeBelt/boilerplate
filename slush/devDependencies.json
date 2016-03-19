@@ -4,6 +4,8 @@
   "gulp": "*",
   "gulp-jslint": "*",
   "gulp-eslint": "*",
+  "eslint-plugin-react": "*",
+  "babel-eslint": "*",
   "gulp-tslint": "*",
   "gulp-yuidoc": "*",
   "yargs": "*",

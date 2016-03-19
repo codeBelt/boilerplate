@@ -13,6 +13,8 @@ module.exports = (rootDirectory, answers) => {
         const paths = [
             rootDirectory + '/templates/**',
             rootDirectory + '/templates/.*',
+            '!' + rootDirectory + '/templates/scriptsLintSystem',
+            '!' + rootDirectory + '/templates/scriptsLintSystem/**/*',
             '!' + rootDirectory + '/templates/src/**/*',
             '!' + rootDirectory + '/templates/tools/cache/**/*',
             '!' + rootDirectory + '/templates/tools/tasks/**/*',
