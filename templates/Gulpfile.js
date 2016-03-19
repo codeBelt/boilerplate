@@ -83,7 +83,16 @@ gulp.task('clean:installed', (done) => {
  *
  * @task default
  */
-gulp.task('default', (done) => {
+gulp.task('default', ['build'], (done) => {
+});
+
+/**
+ * Compile source code and outputs to destination.
+ *
+ * @task build
+ */
+gulp.task('build', (done) => {
+    //'buildStatic'
     if (argv.prod === true) {
         runSequence(
             ['clean:dest'],
@@ -94,26 +103,6 @@ gulp.task('default', (done) => {
         runSequence(
             ['clean:dest'],
             [ 'buildMarkup', 'buildStyles', 'buildScripts']
-        );
-    }
-});
-
-/**
- * Compile source code and outputs to destination.
- *
- * @task build
- */
-gulp.task('build', (done) => {
-    if (argv.prod === true) {
-        runSequence(
-            ['clean:web'],
-            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
-            ['minify']
-        );
-    } else {
-        runSequence(
-            ['clean:web'],
-            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
         );
     }
 });
