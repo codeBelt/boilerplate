@@ -6,6 +6,5 @@ gulp.task('lintScripts', function (done) {
         .src([env.DIR_SRC + '/assets/scripts/**/*.js','!node_modules/**'])
         .pipe(eslint())
         .pipe(eslint.format())
-        .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
 });
