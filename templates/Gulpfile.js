@@ -30,15 +30,15 @@ global.env = require('./build-env.js');
 
 //argv.prod = !!argv.prod;
 
-// All builds are considered to be production builds, unless they're not.
-global.isProd = (!argv.stage && !argv.dev && argv.prod);
-global.isStage = (argv.stage && !argv.dev && !argv.prod);
-global.isDev = (!argv.stage && argv.dev && !argv.prod);
+/**
+ * All builds are considered to be production builds, unless they're not.
+ */
+global.isProd = !!argv.prod;
+global.isStage = !!argv.stage;
+global.isDev = !!argv.dev;
 
+global.isProd = (isStage === false && isDev === false);
 
-console.log("isProd", isProd);
-console.log("isStage", isStage);
-console.log("isDev", isDev);
 /**
  * A code block that will be added to the minified code files.
  */
@@ -53,6 +53,27 @@ global.banner = require('./tools/banner.js')(pkg);
 //https://css-tricks.com/gulp-for-beginners/
 
 // -- Tasks ----------------------------------------------------------------
+/**
+ * Run default tasks for the target environment.
+ *
+ * @task default
+ */
+gulp.task('default', (done) => {
+    runSequence(
+        // Ran `gulp --dev`
+        (isDev === true) ? ['build'] :
+        // Ran `gulp --stage`
+        (isStage === true) ? ['lint', 'build'] :
+        // Ran `gulp --prod`
+        (isProd === true) ? ['lint', 'build'] : []
+    );
+});
+
+/**
+ * Cleaning tasks
+ *
+ * @task clean:*
+ */
 gulp.task('clean:dest', (done) => {
     return del(env.DIR_DEST);
 });
@@ -67,23 +88,6 @@ gulp.task('clean:installed', (done) => {
         env.DIR_BOWER,
         env.DIR_NPM
     ]);
-});
-
-/*gulp.task('default', 'Run default tasks for the target environment.',
-    // Ran `grunt`
-    grunt.option('dev')   ? ['build'] :
-        // Ran `grunt --stage`
-        grunt.option('stage') ? ['lint', 'build'] :
-            // Ran `grunt --prod`
-            grunt.option('prod')  ? ['lint', 'build', 'docs'] : []
-);*/
-
-/**
- * Run default tasks for the target environment.
- *
- * @task default
- */
-gulp.task('default', ['build'], (done) => {
 });
 
 /**
@@ -105,6 +109,22 @@ gulp.task('build', (done) => {
             [ 'buildMarkup', 'buildStyles', 'buildScripts']
         );
     }
+});
+
+/**
+ * Minify source code.
+ *
+ * @task minify
+ */
+gulp.task('minify', (done) => {
+    gulp
+        .src(env.DIR_DEST + '/*.html')
+        .pipe(useref())
+        .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulpIf('*.css', cleanCSS()))
+        .pipe(gulpIf('**/*.{css,js}', header(banner)))
+        .pipe(gulp.dest(env.DIR_DEST))
+        .on('end', done);
 });
 
 /**
@@ -131,17 +151,6 @@ gulp.task('lint', (done) => {
 });
 
 /**
- * Inject 3rd-party library references from bower.json into source code.
- *
- * @task inject
- */
-gulp.task('inject', (done) => {
-    runSequence(
-        ['injectStyles', 'injectScripts']
-    );
-});
-
-/**
  * TODO:
  *
  * @task serve
@@ -158,6 +167,11 @@ gulp.task('serve', ['default'], (done) => {
 });
 
 <% if (markupFeatures.indexOf("icons") >= 0) { %>
+    /**
+     * Optimizes images.
+     *
+     * @task optimizeStatic
+     */
     gulp.task('optimizeStatic', ['todo'], function() {
     });
 <% } %>
@@ -174,55 +188,84 @@ gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/**/*.hbs', ['buildMarkup']);
 });
 
-gulp.task('minify', (done) => {
-    gulp
-        .src(env.DIR_DEST + '/*.html')
-        .pipe(useref())
-        .pipe(gulpIf('*.js', uglify()))
-        .pipe(gulpIf('*.css', cleanCSS()))
-        .pipe(gulpIf('**/*.{css,js}', header(banner)))
-        .pipe(gulp.dest(env.DIR_DEST))
-        .on('end', done);
+/**
+ * Inject 3rd-party library references from bower.json into source code.
+ *
+ * @task inject
+ */
+gulp.task('inject', (done) => {
+    runSequence(
+        ['injectStyles', 'injectScripts']
+    );
 });
-
 
 // Watches files and directories changes and runs associated tasks automatically.
 // For LiveReload, download browser extension at http://go.livereload.com/extensions
-/*watch: {
-    options: {
-        livereload: {
-            // Default port for LiveReload
-            // *Will not work if multiple users run using the same port on a shared server*
-            port: 35729
-        }
-    },
-    watchVendor: {
-        files: [env.DIR_BOWER + '/!**!/!*'],
-            tasks: [
-            'buildScripts',
-            'buildStyles'
-        ]
-    },
-    watchMarkup: {
-        files: [env.DIR_SRC + '/!**!/!*.html'],
-            tasks: ['buildMarkup']
-    },
-    watchStatic: {
-        files: [
-            env.DIR_SRC + '/!**!/.htaccess',
-            env.DIR_SRC + '/!**!/!*.{php,rb,py,jsp,asp,aspx,cshtml,txt}',
-            env.DIR_SRC + '/assets/media/!**',
-        ],
-            tasks: ['buildStatic']
-    },
-    watchStyles: {
-        files: [env.DIR_SRC + '/assets/styles/!**!/!*'],
-            tasks: ['buildStyles']
-    },
-    watchScripts: {
-        files: [env.DIR_SRC + '/assets/scripts/!**!/!*'],
-            tasks: ['buildScripts']
-    }
-},
-});*/
+///*watch: {
+//    options: {
+//        livereload: {
+//            // Default port for LiveReload
+//            // *Will not work if multiple users run using the same port on a shared server*
+//            port: 35729
+//        }
+//    },
+//    watchVendor: {
+//        files: [env.DIR_BOWER + '/!**!/!*'],
+//            tasks: [
+//            'buildScripts',
+//            'buildStyles'
+//        ]
+//    },
+//    watchMarkup: {
+//        files: [env.DIR_SRC + '/!**!/!*.html'],
+//            tasks: ['buildMarkup']
+//    },
+//    watchStatic: {
+//        files: [
+//            env.DIR_SRC + '/!**!/.htaccess',
+//            env.DIR_SRC + '/!**!/!*.{php,rb,py,jsp,asp,aspx,cshtml,txt}',
+//            env.DIR_SRC + '/assets/media/!**',
+//        ],
+//            tasks: ['buildStatic']
+//    },
+//    watchStyles: {
+//        files: [env.DIR_SRC + '/assets/styles/!**!/!*'],
+//            tasks: ['buildStyles']
+//    },
+//    watchScripts: {
+//        files: [env.DIR_SRC + '/assets/scripts/!**!/!*'],
+//            tasks: ['buildScripts']
+//    }
+//},
+//});*/
 
+//grunt.registerTask('default', 'Run default tasks for the target environment.',
+//    // Ran `grunt`
+//    grunt.option('dev')   ? ['build'] :
+//        // Ran `grunt --stage`
+//        grunt.option('stage') ? ['lint', 'build'] :
+//            // Ran `grunt --prod`
+//            grunt.option('prod')  ? ['lint', 'build', 'docs'] : []
+//);
+//grunt.registerTask(
+//    'build',
+//    'Compile source code and outputs to destination.',
+//    ['clean:dest', 'buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts', 'clean:tmp']
+//);
+//grunt.registerTask(
+//    'docs',
+//    'Generate documentation.',
+//    ['clean:docs', 'docsScripts', 'clean:tmp']
+//);
+//grunt.registerTask(
+//    'lint',
+//    'Validate code syntax.',
+//    ['lintScripts']
+//);
+//grunt.registerTask(
+//    'inject',
+//    'Inject 3rd-party library references from bower.json into source code.',
+//    ['injectStyles', 'injectScripts']
+//);
+//
+//grunt.loadNpmTasks('grunt-contrib-watch');
