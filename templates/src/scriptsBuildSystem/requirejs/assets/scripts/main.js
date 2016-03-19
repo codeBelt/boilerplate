@@ -9,7 +9,7 @@
 /**
  * Bootstrap.
  */
-require(
+require( // jshint ignore:line
     [
         './App'
     ],
@@ -18,7 +18,7 @@ require(
     ) {
         'use strict';
 
-        
+
         window.app = new App();
     }
 );

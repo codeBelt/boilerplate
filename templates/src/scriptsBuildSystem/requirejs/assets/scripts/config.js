@@ -31,7 +31,7 @@
  *          }
  *     }
  */
-require.config({
+require.config({ // jshint ignore:line
     paths: {
         // this empty string tells r.js to use single quotes when injecting
         // bower modules automatically. Otherwise it defaults to double quotes.

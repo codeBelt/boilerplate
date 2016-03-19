@@ -11,7 +11,7 @@ module.exports = (rootDirectory, answers) => {
 
     switch (type) {
         case 'none':
-            devDependencies = ['gulp', 'gulp-jslint'];
+            devDependencies = ['gulp', 'gulp-jshint' ,'jshint'];
             break;
         case 'babel':
             devDependencies = ['gulp', 'gulp-eslint', 'babel-eslint', 'eslint-plugin-react'];
@@ -20,7 +20,7 @@ module.exports = (rootDirectory, answers) => {
             devDependencies = ['gulp', 'gulp-tslint'];
             break;
         case 'requirejs':
-            devDependencies = ['gulp', 'gulp-jslint'];
+            devDependencies = ['gulp', 'gulp-jshint', 'jshint'];
             break;
     }
 
