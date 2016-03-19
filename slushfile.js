@@ -30,6 +30,7 @@ var scriptsAdditional = require('./slush/tasks/scriptsAdditional');
 var stylesFeatures = require('./slush/tasks/stylesFeatures');
 var precompileJst = require('./slush/tasks/precompileJst');
 var packageJson = require('./slush/tasks/packageJson');
+var testingBuildSystem = require('./slush/tasks/testingBuildSystem');
 
 // Default Slash Tasks
 gulp.task('default', function(done) {
@@ -57,7 +58,8 @@ gulp.task('default', function(done) {
             scriptsAdditional(basePath, answers),
             stylesFeatures(basePath, answers),
             stylesBuildSystem(basePath, answers),
-            precompileJst(basePath, answers)
+            precompileJst(basePath, answers),
+            testingBuildSystem(basePath, answers)
         ];
 
         // Remove all null values in array.

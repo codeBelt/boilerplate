@@ -142,22 +142,6 @@ module.exports = [
         type: "input"
     },
     {
-        "name": "scriptsFeatures",
-        "message": "Any additional scripting features?",
-        "choices": [
-            {
-                "name": "JavaScript Unit Testing",
-                "value": "testing"
-            },
-            {
-                "name": "3rd-Party Vulnerability Audit",
-                "value": "audit"
-            }
-        ],
-        "default": "",
-        "type": "checkbox"
-    },
-    {
         "name": "scriptsFramework",
         "message": "Which framework build system?",
         "choices": [
@@ -240,6 +224,22 @@ module.exports = [
         ],
         "default": "yes",
         "type": "list"
+    },
+    {
+        "name": "testingBuildSystem",
+        "message": "Any testing features?",
+        "choices": [
+            {
+                "name": "JavaScript Unit Testing",
+                "value": "testing"
+            },
+            {
+                "name": "3rd-Party Vulnerability Audit",
+                "value": "audit"
+            }
+        ],
+        "default": "",
+        "type": "checkbox"
     },
     {
         "type": "confirm",
