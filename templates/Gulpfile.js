@@ -42,7 +42,7 @@ global.isProd = (isStage === false && isDev === false);
 /**
  * A code block that will be added to the minified code files.
  */
-global.banner = require('./tools/banner.js')(pkg);
+global.banner = require('./banner.js')(pkg);
 
 //https://knpuniversity.com/screencast/gulp
 //https://markgoodyear.com/2014/01/getting-started-with-gulp/
@@ -96,17 +96,16 @@ gulp.task('clean:installed', (done) => {
  * @task build
  */
 gulp.task('build', (done) => {
-    //'buildStatic'
     if (argv.prod === true) {
         runSequence(
             ['clean:dest'],
-            [ 'buildMarkup', 'buildStyles', 'buildScripts'],
+            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
             ['minify']
         );
     } else {
         runSequence(
             ['clean:dest'],
-            [ 'buildMarkup', 'buildStyles', 'buildScripts']
+            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
         );
     }
 });

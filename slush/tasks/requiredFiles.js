@@ -11,7 +11,7 @@ module.exports = (rootDirectory, answers) => {
     // Gulp task
     gulp.task('requiredFiles', (done) => {
         const paths = [
-            rootDirectory + '/templates/**',
+            rootDirectory + '/templates/*',
             rootDirectory + '/templates/.*',
             '!' + rootDirectory + '/templates/scriptsLintSystem',
             '!' + rootDirectory + '/templates/scriptsLintSystem/**/*',
@@ -26,16 +26,21 @@ module.exports = (rootDirectory, answers) => {
             .src(paths)
             .pipe(gulp.dest('./'));
 
+        const copyTask = gulp
+            .src([
+                rootDirectory + '/templates/tools/tasks/buildStatic.js'
+            ])
+            .pipe(gulp.dest('./tools/tasks/'));
+
         const gulpfileParse = gulp
             .src(rootDirectory + '/templates/Gulpfile.js')
             // Uses Underscore/Lodash templates to add or remove sections
             // which is determined what data is the "answers" object.
             .pipe(template(answers))
-            .pipe(jsbeautifier({
-            }))
+            .pipe(jsbeautifier())
             .pipe(gulp.dest('./'));
 
-        return merge(copyFiles, gulpfileParse);
+        return merge(copyFiles, gulpfileParse, copyTask);
     });
 
     // Return data
