@@ -28,8 +28,6 @@ requireDir('./tools/tasks', {
 global.pkg = require('./package.json');
 global.env = require('./build-env.js');
 
-//argv.prod = !!argv.prod;
-
 /**
  * All builds are considered to be production builds, unless they're not.
  */
@@ -88,7 +86,7 @@ gulp.task('clean:installed', (done) => {
  * @task build
  */
 gulp.task('build', (done) => {
-    if (argv.prod === true) {
+    if (isProd === true) {
         runSequence(
             ['clean:dest'],
             ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
@@ -147,7 +145,7 @@ gulp.task('lint', (done) => {
  * @task serve
  * @options --open
  */
-gulp.task('serve', ['default'], (done) => {
+gulp.task('serve', (done) => {
     browserSync.init({
         injectChanges: true,
         open: (argv.open === true),
@@ -157,24 +155,16 @@ gulp.task('serve', ['default'], (done) => {
     });
 });
 
-const imagemin = require('gulp-imagemin');
-const pngquant = require('imagemin-pngquant');
-
-<% if (markupFeatures.indexOf("icons") >= 0) { %>
+<% if (markupFeatures.indexOf('imagemin') >= 0) { %>
     /**
      * Optimizes images.
      *
-     * @task optimizeStatic
+     * @task optimize
      */
-    gulp.task('optimizeStatic', (done) => {
-        "use strict";
-        return gulp.src(env.DIR_SRC + '/assets/media/images/**/*')
-            .pipe(imagemin({
-                progressive: true,
-                svgoPlugins: [{removeViewBox: false}],
-                use: [pngquant()]
-            }))
-            .pipe(gulp.dest('./dist/images'));
+    gulp.task('optimize', (done) => {
+        runSequence(
+            ['optimizeStatic']
+        );
     });
 <% } %>
 
