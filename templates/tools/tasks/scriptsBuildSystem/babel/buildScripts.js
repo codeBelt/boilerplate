@@ -26,5 +26,7 @@ gulp.task('buildScripts', (done) => {
         .src(env.DIR_SRC + '/assets/vendor/**/*.js')
         .pipe(gulp.dest(env.DIR_DEST + '/assets/vendor/'));
 
+
+
     return merge(compileJavaScript, copyVendorScripts);
 });

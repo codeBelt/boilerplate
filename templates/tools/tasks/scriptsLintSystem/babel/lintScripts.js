@@ -3,7 +3,11 @@ const eslint = require('gulp-eslint');
 
 gulp.task('lintScripts', function (done) {
     gulp
-        .src([env.DIR_SRC + '/assets/scripts/**/*.js','!node_modules/**'])
+        .src([
+            env.DIR_SRC + '/assets/scripts/**/*.js',
+            '!node_modules/**',
+            '!**/precompiledJst.js'
+        ])
         .pipe(eslint())
         .pipe(eslint.format())
         .on('end', done);
