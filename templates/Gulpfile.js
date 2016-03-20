@@ -229,34 +229,3 @@ gulp.task('inject', (done) => {
 //    }
 //},
 //});*/
-
-//grunt.registerTask('default', 'Run default tasks for the target environment.',
-//    // Ran `grunt`
-//    grunt.option('dev')   ? ['build'] :
-//        // Ran `grunt --stage`
-//        grunt.option('stage') ? ['lint', 'build'] :
-//            // Ran `grunt --prod`
-//            grunt.option('prod')  ? ['lint', 'build', 'docs'] : []
-//);
-//grunt.registerTask(
-//    'build',
-//    'Compile source code and outputs to destination.',
-//    ['clean:dest', 'buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts', 'clean:tmp']
-//);
-//grunt.registerTask(
-//    'docs',
-//    'Generate documentation.',
-//    ['clean:docs', 'docsScripts', 'clean:tmp']
-//);
-//grunt.registerTask(
-//    'lint',
-//    'Validate code syntax.',
-//    ['lintScripts']
-//);
-//grunt.registerTask(
-//    'inject',
-//    'Inject 3rd-party library references from bower.json into source code.',
-//    ['injectStyles', 'injectScripts']
-//);
-//
-//grunt.loadNpmTasks('grunt-contrib-watch');
