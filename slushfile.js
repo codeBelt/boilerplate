@@ -9,44 +9,44 @@
 'use strict';
 
 // Slush/Gulp Files
-var gulp = require('gulp');
-var inquirer = require('inquirer');
-var runSequence = require('run-sequence').use(gulp);
+const gulp = require('gulp');
+const inquirer = require('inquirer');
+const runSequence = require('run-sequence').use(gulp);
 
 // Helpers
-var Util = require('./slush/utils/Util');
+const Util = require('./slush/utils/Util');
 
 // Slush Tasks
-var requiredFiles = require('./slush/tasks/requiredFiles');
-var demoBuildSystem = require('./slush/tasks/demoBuildSystem');
-var docsBuildSystem = require('./slush/tasks/docsBuildSystem');
-var markupBuildSystem = require('./slush/tasks/markupBuildSystem');
-var markupFeatures = require('./slush/tasks/markupFeatures');
-var stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
-var scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
-var scriptsFramework = require('./slush/tasks/scriptsFramework');
-var scriptsLintSystem = require('./slush/tasks/scriptsLintSystem');
-var scriptsAdditional = require('./slush/tasks/scriptsAdditional');
-var stylesFeatures = require('./slush/tasks/stylesFeatures');
-var precompileJst = require('./slush/tasks/precompileJst');
-var packageJson = require('./slush/tasks/packageJson');
-var testingBuildSystem = require('./slush/tasks/testingBuildSystem');
+const requiredFiles = require('./slush/tasks/requiredFiles');
+const demoBuildSystem = require('./slush/tasks/demoBuildSystem');
+const docsBuildSystem = require('./slush/tasks/docsBuildSystem');
+const markupBuildSystem = require('./slush/tasks/markupBuildSystem');
+const markupFeatures = require('./slush/tasks/markupFeatures');
+const stylesBuildSystem = require('./slush/tasks/stylesBuildSystem');
+const scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem');
+const scriptsFramework = require('./slush/tasks/scriptsFramework');
+const scriptsLintSystem = require('./slush/tasks/scriptsLintSystem');
+const scriptsAdditional = require('./slush/tasks/scriptsAdditional');
+const stylesFeatures = require('./slush/tasks/stylesFeatures');
+const precompileJst = require('./slush/tasks/precompileJst');
+const packageJson = require('./slush/tasks/packageJson');
+const testingBuildSystem = require('./slush/tasks/testingBuildSystem');
 
 // Default Slash Tasks
-gulp.task('default', function(done) {
-    var questions = require('./slush/questions.js');
+gulp.task('default', (done) => {
+    const questions = require('./slush/questions.js');
 
     // Ask the questions.
-    inquirer.prompt(questions, function(answers) {
+    inquirer.prompt(questions, (answers) => {
         if (!answers.moveon) {
             return done();
         }
 
         // List of all possible slush tasks.
-        var basePath = __dirname;
+        const basePath = __dirname;
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
-        var taskResults = [
+        let taskResults = [
             requiredFiles(basePath, answers),
             demoBuildSystem(basePath, answers),
             docsBuildSystem(basePath, answers),
@@ -66,10 +66,10 @@ gulp.task('default', function(done) {
         taskResults = taskResults.filter(Boolean);
 
         // Gets all the task name that need to be ran.
-        var slushTasks = Util.generateSlushTasks(taskResults);
+        const slushTasks = Util.generateSlushTasks(taskResults);
 
         // Final task to create the package.json and bower.json files.
-        var packageJsonTask = packageJson(basePath, answers, taskResults);
+        const packageJsonTask = packageJson(basePath, answers, taskResults);
 
         // Run tasks in sequence and parallel.
         runSequence(
@@ -80,7 +80,3 @@ gulp.task('default', function(done) {
     });
 
 });
-
-//https://github.com/react-fullstack/slush-react-fullstack
-//https://github.com/peterjuras/slush-react-express
-//https://github.com/arvindr21/slush-meanjs
