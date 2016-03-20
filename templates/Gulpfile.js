@@ -174,58 +174,8 @@ gulp.task('serve', (done) => {
  * @task watch
  */
 gulp.task('watch', (done) => {
-    gulp.watch(env.DIR_SRC + '/assets/scripts/**/*.ts', ['buildScripts']);
-    gulp.watch(env.DIR_SRC + '/assets/scss/**/*.scss', ['buildStyles']);
+    gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
+    gulp.watch(env.DIR_SRC + '/assets/scss/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.hbs', ['buildMarkup']);
+    gulp.watch(env.DIR_SRC + '/assets/media/**/*', ['buildStatic']);
 });
-
-/**
- * Inject 3rd-party library references from bower.json into source code.
- *
- * @task inject
- */
-gulp.task('inject', (done) => {
-    runSequence(
-        ['injectStyles', 'injectScripts']
-    );
-});
-
-// Watches files and directories changes and runs associated tasks automatically.
-// For LiveReload, download browser extension at http://go.livereload.com/extensions
-///*watch: {
-//    options: {
-//        livereload: {
-//            // Default port for LiveReload
-//            // *Will not work if multiple users run using the same port on a shared server*
-//            port: 35729
-//        }
-//    },
-//    watchVendor: {
-//        files: [env.DIR_BOWER + '/!**!/!*'],
-//            tasks: [
-//            'buildScripts',
-//            'buildStyles'
-//        ]
-//    },
-//    watchMarkup: {
-//        files: [env.DIR_SRC + '/!**!/!*.html'],
-//            tasks: ['buildMarkup']
-//    },
-//    watchStatic: {
-//        files: [
-//            env.DIR_SRC + '/!**!/.htaccess',
-//            env.DIR_SRC + '/!**!/!*.{php,rb,py,jsp,asp,aspx,cshtml,txt}',
-//            env.DIR_SRC + '/assets/media/!**',
-//        ],
-//            tasks: ['buildStatic']
-//    },
-//    watchStyles: {
-//        files: [env.DIR_SRC + '/assets/styles/!**!/!*'],
-//            tasks: ['buildStyles']
-//    },
-//    watchScripts: {
-//        files: [env.DIR_SRC + '/assets/scripts/!**!/!*'],
-//            tasks: ['buildScripts']
-//    }
-//},
-//});*/
