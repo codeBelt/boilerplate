@@ -37,7 +37,9 @@ module.exports = (rootDirectory, answers) => {
             // Uses Underscore/Lodash templates to add or remove sections
             // which is determined what data is the "answers" object.
             .pipe(template(answers))
-            .pipe(jsbeautifier())
+            .pipe(jsbeautifier({
+                max_preserve_newlines: 2
+            }))
             .pipe(gulp.dest('./'));
 
         return merge(copyFiles, gulpfileParse);
