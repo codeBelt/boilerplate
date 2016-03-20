@@ -157,16 +157,26 @@ gulp.task('serve', ['default'], (done) => {
     });
 });
 
+const imagemin = require('gulp-imagemin');
+const pngquant = require('imagemin-pngquant');
+
 <% if (markupFeatures.indexOf("icons") >= 0) { %>
     /**
      * Optimizes images.
      *
      * @task optimizeStatic
      */
-    gulp.task('optimizeStatic', ['todo'], function() {
+    gulp.task('optimizeStatic', (done) => {
+        "use strict";
+        return gulp.src(env.DIR_SRC + '/assets/media/images/**/*')
+            .pipe(imagemin({
+                progressive: true,
+                svgoPlugins: [{removeViewBox: false}],
+                use: [pngquant()]
+            }))
+            .pipe(gulp.dest('./dist/images'));
     });
 <% } %>
-
 
 /**
  * TODO:

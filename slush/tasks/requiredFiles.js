@@ -40,7 +40,7 @@ module.exports = (rootDirectory, answers) => {
             .pipe(jsbeautifier())
             .pipe(gulp.dest('./'));
 
-        return merge(copyFiles, gulpfileParse, copyTask);
+        return merge(copyFiles, gulpfileParse);
     });
 
     // Return data

@@ -4,9 +4,10 @@ const gulp = require('gulp');
 const merge = require('merge-stream');
 
 module.exports = (rootDirectory, answers) => {
-
     const testingBuildSystem = answers.testingBuildSystem;
     const allowAudit = (testingBuildSystem.indexOf('audit') >= 0);
+
+    if (allowAudit === false) { return null; }
 
     const taskPath = [];
 
