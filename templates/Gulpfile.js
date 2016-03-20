@@ -55,7 +55,8 @@ gulp.task('default', (done) => {
         // Ran `gulp --stage`
         (isStage === true) ? ['lint', 'build'] :
         // Ran `gulp --prod`
-        (isProd === true) ? ['lint', 'build'] : []
+        (isProd === true) ? ['lint', 'build'] : [],
+        done
     );
 });
 
@@ -95,7 +96,7 @@ gulp.task('build', (done) => {
         tasks.push(['minify']);
     }
 
-    runSequence(...tasks);
+    runSequence(...tasks, done);
 });
 
 /**
@@ -122,7 +123,8 @@ gulp.task('minify', (done) => {
 gulp.task('docs', (done) => {
     runSequence(
         ['clean:docs'],
-        ['buildDocs']
+        ['buildDocs'],
+        done
     );
 });
 
@@ -133,7 +135,8 @@ gulp.task('docs', (done) => {
  */
 gulp.task('lint', (done) => {
     runSequence(
-        ['lintScripts']
+        ['lintScripts'],
+        done
     );
 });
 
@@ -161,7 +164,8 @@ gulp.task('serve', (done) => {
      */
     gulp.task('optimize', (done) => {
         runSequence(
-            ['optimizeStatic']
+            ['optimizeStatic'],
+            done
         );
     });
 <% } %>
@@ -174,7 +178,8 @@ gulp.task('serve', (done) => {
      */
     gulp.task('jst', (done) => {
         runSequence(
-            ['precompileJst']
+            ['precompileJst'],
+            done
         );
     });
 <% } %>
