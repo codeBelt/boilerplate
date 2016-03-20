@@ -44,14 +44,6 @@ global.isProd = (isStage === false && isDev === false);
  */
 global.banner = require('./banner.js')(pkg);
 
-//https://knpuniversity.com/screencast/gulp
-//https://markgoodyear.com/2014/01/getting-started-with-gulp/
-//http://fettblog.eu/gulp-4-parallel-and-series/
-//https://www.browsersync.io/docs/gulp/
-//https://github.com/ryanbenson/Harvest/blob/master/gulpfile.js
-
-//https://css-tricks.com/gulp-for-beginners/
-
 // -- Tasks ----------------------------------------------------------------
 /**
  * Run default tasks for the target environment.
