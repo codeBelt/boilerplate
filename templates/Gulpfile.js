@@ -86,18 +86,16 @@ gulp.task('clean:installed', (done) => {
  * @task build
  */
 gulp.task('build', (done) => {
+    const tasks = [
+        ['clean:dest'],
+        ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
+    ];
+
     if (isProd === true) {
-        runSequence(
-            ['clean:dest'],
-            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts'],
-            ['minify']
-        );
-    } else {
-        runSequence(
-            ['clean:dest'],
-            ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
-        );
+        tasks.push(['minify']);
     }
+
+    runSequence(...tasks);
 });
 
 /**
@@ -182,7 +180,7 @@ gulp.task('serve', (done) => {
 <% } %>
 
 /**
- * TODO:
+ * Watch tasks
  *
  * @task watch
  */
