@@ -27,20 +27,13 @@ module.exports = (rootDirectory, answers) => {
     }
 
     const taskPath = rootDirectory + '/templates/tools/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
-    const sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + type + '/**/*';
 
     // Gulp task
     gulp.task('scriptsBuildSystem', (done) => {
-        const copyTasks = gulp
+        gulp
             .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
-
-        const copySourceFiles = gulp
-            .src(sourcePath)
-            .pipe(template(answers))
-            .pipe(gulp.dest('./src/'));
-
-        return merge(copyTasks, copySourceFiles);
+            .pipe(gulp.dest('./tools/tasks/'))
+            .on('end', done);
     });
 
     // Return data
