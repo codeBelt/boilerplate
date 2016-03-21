@@ -141,22 +141,22 @@ module.exports = [
         },
         type: "input"
     },
-    {
-        "name": "scriptsFramework",
-        "message": "Which framework build system?",
-        "choices": [
-            {
-                "name": "None",
-                "value": "none"
-            },
-            {
-                "name": "StructureJS",
-                "value": "structurejs"
-            }
-        ],
-        "default": "none",
-        "type": "list"
-    },
+    //{
+    //    "name": "scriptsFramework",
+    //    "message": "Which framework build system?",
+    //    "choices": [
+    //        {
+    //            "name": "None",
+    //            "value": "none"
+    //        },
+    //        {
+    //            "name": "StructureJS",
+    //            "value": "structurejs"
+    //        }
+    //    ],
+    //    "default": "none",
+    //    "type": "list"
+    //},
     {
         "name": "precompileJst",
         "message": "Precompile JavaScript Templates?",
@@ -222,7 +222,7 @@ module.exports = [
                 "value": "yes"
             }
         ],
-        "default": "yes",
+        "default": "no",
         "type": "list"
     },
     {
