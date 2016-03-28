@@ -9,29 +9,7 @@ const merge = require('merge-stream');
 module.exports = (rootDirectory, answers) => {
 
     // Gulp task
-    gulp.task('requiredFiles', (done) => {
-        const paths = [
-            rootDirectory + '/templates/*',
-            rootDirectory + '/templates/.*',
-            '!' + rootDirectory + '/templates/scriptsLintSystem',
-            '!' + rootDirectory + '/templates/scriptsLintSystem/**/*',
-            '!' + rootDirectory + '/templates/src/**/*',
-            '!' + rootDirectory + '/templates/tools/cache/**/*',
-            '!' + rootDirectory + '/templates/tools/tasks/**/*',
-            '!' + rootDirectory + '/templates/package.json',
-            '!' + rootDirectory + '/templates/Gulpfile.js'
-        ];
-
-        const copyFiles = gulp
-            .src(paths)
-            .pipe(gulp.dest('./'));
-
-        const copyTask = gulp
-            .src([
-                rootDirectory + '/templates/tools/tasks/buildStatic.js'
-            ])
-            .pipe(gulp.dest('./tools/tasks/'));
-
+    gulp.task('mainBuildSystem', (done) => {
         const gulpfileParse = gulp
             .src(rootDirectory + '/templates/Gulpfile.js')
             // Uses Underscore/Lodash templates to add or remove sections
@@ -47,7 +25,7 @@ module.exports = (rootDirectory, answers) => {
 
     // Return data
     return {
-        taskName: 'requiredFiles',
+        taskName: 'mainBuildSystem',
         devDependencies: [
             'gulp',
             'del',

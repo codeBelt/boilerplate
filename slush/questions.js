@@ -242,6 +242,22 @@ module.exports = [
         "type": "checkbox"
     },
     {
+        "name": "installerSystem",
+        "message": "Do you want installer files?",
+        "choices": [
+            {
+                "name": "No",
+                "value": "no"
+            },
+            {
+                "name": "Yes",
+                "value": "yes"
+            }
+        ],
+        "default": "yes",
+        "type": "list"
+    },
+    {
         "type": "confirm",
         "name": "moveon",
         "message": "Continue?"
