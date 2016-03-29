@@ -17,6 +17,7 @@ const runSequence = require('run-sequence').use(gulp);
 const Util = require('./slush/utils/Util');
 
 // Slush Tasks
+const npmJsonBuildSystem = require('./slush/tasks/npmJsonBuildSystem/index');
 const mainBuildSystem = require('./slush/tasks/mainBuildSystem/index');
 const installerSystem = require('./slush/tasks/installerSystem/index');
 //const scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem/index');
@@ -49,6 +50,7 @@ gulp.task('default', (done) => {
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         let taskResults = [
             installerSystem(basePath, answers),
+            mainBuildSystem(basePath, answers),
             //scriptsBuildSystem(basePath, answers),
             //scriptsFramework(basePath, answers),
             //scriptsLintSystem(basePath, answers),
@@ -70,12 +72,12 @@ gulp.task('default', (done) => {
         const slushTasks = Util.generateSlushTasks(taskResults);
 
         // Final task to create the package.json and bower.json files.
-        const mainBuildSystemTask = mainBuildSystem(basePath, answers, taskResults);
+        const npmJsonBuildSystemTask = npmJsonBuildSystem(basePath, answers, taskResults);
 
         // Run tasks in sequence and parallel.
         runSequence(
             slushTasks,
-            mainBuildSystemTask.taskName,
+            npmJsonBuildSystemTask.taskName,
             done
         );
     });

@@ -10,29 +10,9 @@ const merge = require('merge-stream');
 const Util = require('../../utils/Util');
 
 module.exports = (rootDirectory, answers, taskResults) => {
-    // Creates a stringify object of the dev dependencies to be added to the package.json
-    const devDependencyJson = Util.generateDevDependenciesWithVersions(taskResults);
-    const bowerDependenciesJson = Util.generateBowerDependenciesWithVersions(taskResults);
 
     // Gulp task
     gulp.task('mainBuildSystem', (done) => {
-
-        const clone = Object.assign({}, answers);
-        clone.devDependencies = devDependencyJson;
-        clone.bowerDependencies = bowerDependenciesJson;
-
-        const json = gulp
-            .src([
-                rootDirectory + '/slush/tasks/mainBuildSystem/files/package.json',
-                rootDirectory + '/slush/tasks/mainBuildSystem/files/bower.json'
-            ])
-            .pipe(template(clone))
-            .pipe(jsbeautifier({
-                indent_size: 2
-            }))
-            .pipe(gulp.dest('./'));
-        //.pipe(install())
-
         const gulpfileParse = gulp
             .src(rootDirectory + '/slush/tasks/mainBuildSystem/files/Gulpfile.js')
             // Uses Underscore/Lodash templates to add or remove sections
@@ -53,7 +33,7 @@ module.exports = (rootDirectory, answers, taskResults) => {
             ])
             .pipe(gulp.dest('./'));
 
-        return merge(json, gulpfileParse, files);
+        return merge(gulpfileParse, files);
     });
 
     // Return data
