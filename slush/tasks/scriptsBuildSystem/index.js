@@ -29,7 +29,7 @@ module.exports = (rootDirectory, answers) => {
     }
 
     const taskPath = rootDirectory + '/slush/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
-    const sourcePath = rootDirectory + '/templates/src/scriptsBuildSystem/' + type + '/**/*';
+    const sourcePath = rootDirectory + '/slush/tasks/scriptsBuildSystem/' + type + '/**/*';
 
     // Gulp task
     gulp.task('scriptsBuildSystem', (done) => {
