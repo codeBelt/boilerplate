@@ -18,21 +18,15 @@ module.exports = (answers) => {
             break;
     }
 
-    const taskPath = __dirname + '/slush/tasks/stylesBuildSystem/' + type + '/buildStyles.js';
-    const sourcePath = __dirname + '/templates/src/stylesBuildSystem/' + type + '/**/*';
+    const sourcePath = __dirname + '/' + type + '/**/*';
 
     // Gulp task
     gulp.task('stylesBuildSystem', (done) => {
-        const copyTasks = gulp
-            .src(taskPath)
-            .pipe(template(answers))
-            .pipe(gulp.dest('./tools/tasks/'));
-
         const copySourceFiles = gulp
             .src(sourcePath)
-            .pipe(gulp.dest('./src/'));
+            .pipe(gulp.dest('./'));
 
-        return merge(copyTasks, copySourceFiles);
+        return merge(copySourceFiles);
     });
 
     // Return data

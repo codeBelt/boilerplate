@@ -16,20 +16,15 @@ module.exports = (answers) => {
             break;
     }
 
-    const taskPath = __dirname + '/slush/tasks/precompileJst/' + type + '/precompileJst.js';
-    const sourcePath = __dirname + '/templates/src/precompileJst/' + type + '/**/*';
+    const sourcePath = __dirname + '/' + type + '/**/*';
 
     // Gulp task
     gulp.task('precompileJst', (done) => {
-        const copyTasks = gulp
-            .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
-
         const copySourceFiles = gulp
             .src(sourcePath)
-            .pipe(gulp.dest('./src/'));
+            .pipe(gulp.dest('./'));
 
-        return merge(copyTasks, copySourceFiles);
+        return merge(copySourceFiles);
     });
 
     // Return data

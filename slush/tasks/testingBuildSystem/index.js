@@ -14,7 +14,7 @@ module.exports = (answers) => {
     let devDependencies = [];
     if (allowAudit === true) {
         devDependencies.push('gulp', 'npm-check-updates', 'cli-table');
-        taskPath.push(__dirname + '/slush/tasks/auditScripts.js');
+        taskPath.push(__dirname + '/audit/**/*');
     }
 
     // Gulp task
@@ -22,7 +22,7 @@ module.exports = (answers) => {
         if (allowAudit === true) {
             gulp
                 .src(taskPath)
-                .pipe(gulp.dest('./tools/tasks/'))
+                .pipe(gulp.dest('./'))
                 .on('end', done);
         }
     });
