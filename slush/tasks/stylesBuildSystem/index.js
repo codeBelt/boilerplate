@@ -11,7 +11,7 @@ module.exports = (answers) => {
 
     switch (type) {
         case 'none':
-            devDependencies = ['gulp'];
+            devDependencies = ['gulp', 'gulp-autoprefixer', 'gulp-if'];
             break;
         case 'sass':
             devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer', 'gulp-if'];
@@ -24,6 +24,7 @@ module.exports = (answers) => {
     gulp.task('stylesBuildSystem', (done) => {
         const copySourceFiles = gulp
             .src(sourcePath)
+            .pipe(template(answers))
             .pipe(gulp.dest('./'));
 
         return merge(copySourceFiles);

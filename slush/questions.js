@@ -129,7 +129,7 @@ module.exports = [
                 "value": "requirejs"
             }
         ],
-        "default": "requirejs",
+        "default": "babel",
         "type": "list"
     },
     {
