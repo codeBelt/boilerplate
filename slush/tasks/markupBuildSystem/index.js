@@ -24,14 +24,14 @@ module.exports = (answers) => {
     }
 
     // Files and folder locations
-    const taskPath = __dirname + '/slush/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
-    const sourcePath = __dirname + '/templates/src/markupBuildSystem/' + type + '/**/*';
+    const taskPath = __dirname + '/' + type + '/tools/**/*';
+    const sourcePath = __dirname + '/' + type + '/src/**/*';
 
     // Gulp task
     gulp.task('markupBuildSystem', (done) => {
         const copyTasks = gulp
             .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
+            .pipe(gulp.dest('./tools/'));
 
         const copySourceFiles = gulp
             .src(sourcePath)
