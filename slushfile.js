@@ -20,7 +20,7 @@ const Util = require('./slush/utils/Util');
 const npmJsonBuildSystem = require('./slush/tasks/npmJsonBuildSystem/index');
 const mainBuildSystem = require('./slush/tasks/mainBuildSystem/index');
 const installerSystem = require('./slush/tasks/installerSystem/index');
-//const scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem/index');
+const scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem/index');
 //const scriptsFramework = require('./slush/tasks/scriptsFramework/index');
 //const scriptsLintSystem = require('./slush/tasks/scriptsLintSystem/index');
 //const scriptsAdditional = require('./slush/tasks/scriptsAdditional/index');
@@ -44,25 +44,22 @@ gulp.task('default', (done) => {
             return done();
         }
 
-        // List of all possible slush tasks.
-        const basePath = __dirname;
-
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         let taskResults = [
-            installerSystem(basePath, answers),
-            mainBuildSystem(basePath, answers),
-            //scriptsBuildSystem(basePath, answers),
-            //scriptsFramework(basePath, answers),
-            //scriptsLintSystem(basePath, answers),
-            //scriptsAdditional(basePath, answers),
-            //demoBuildSystem(basePath, answers),
-            //docsBuildSystem(basePath, answers),
-            //markupBuildSystem(basePath, answers),
-            //markupFeatures(basePath, answers),
-            //stylesFeatures(basePath, answers),
-            //stylesBuildSystem(basePath, answers),
-            //precompileJst(basePath, answers),
-            //testingBuildSystem(basePath, answers)
+            installerSystem(answers),
+            mainBuildSystem(answers),
+            scriptsBuildSystem(answers),
+            //scriptsFramework(answers),
+            //scriptsLintSystem(answers),
+            //scriptsAdditional(answers),
+            //demoBuildSystem(answers),
+            //docsBuildSystem(answers),
+            //markupBuildSystem(answers),
+            //markupFeatures(answers),
+            //stylesFeatures(answers),
+            //stylesBuildSystem(answers),
+            //precompileJst(answers),
+            //testingBuildSystem(answers)
         ];
 
         // Remove all null values in array.
@@ -72,7 +69,7 @@ gulp.task('default', (done) => {
         const slushTasks = Util.generateSlushTasks(taskResults);
 
         // Final task to create the package.json and bower.json files.
-        const npmJsonBuildSystemTask = npmJsonBuildSystem(basePath, answers, taskResults);
+        const npmJsonBuildSystemTask = npmJsonBuildSystem(answers, taskResults);
 
         // Run tasks in sequence and parallel.
         runSequence(

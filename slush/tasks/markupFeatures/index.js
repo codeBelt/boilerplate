@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const merge = require('merge-stream');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
     const markupFeatures = answers.markupFeatures;
     const allowImagemin = (markupFeatures.indexOf('imagemin') >= 0);
@@ -15,8 +15,8 @@ module.exports = (rootDirectory, answers) => {
     }
 
     // Files and folder locations
-    const taskPath = rootDirectory + '/slush/tasks/markupFeatures/optimizeStatic.js';
-    const imagePath = rootDirectory + '/templates/src/assets/media/images/**/*';
+    const taskPath = __dirname + '/slush/tasks/markupFeatures/optimizeStatic.js';
+    const imagePath = __dirname + '/templates/src/assets/media/images/**/*';
 
     // Gulp task
     gulp.task('markupFeatures', (done) => {

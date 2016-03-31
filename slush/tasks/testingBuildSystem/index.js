@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const merge = require('merge-stream');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
     const testingBuildSystem = answers.testingBuildSystem;
     const allowAudit = (testingBuildSystem.indexOf('audit') >= 0);
 
@@ -14,7 +14,7 @@ module.exports = (rootDirectory, answers) => {
     let devDependencies = [];
     if (allowAudit === true) {
         devDependencies.push('gulp', 'npm-check-updates', 'cli-table');
-        taskPath.push(rootDirectory + '/slush/tasks/auditScripts.js');
+        taskPath.push(__dirname + '/slush/tasks/auditScripts.js');
     }
 
     // Gulp task

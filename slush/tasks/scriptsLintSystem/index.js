@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const merge = require('merge-stream');
 const template = require('gulp-template');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
     const type = answers.scriptsBuildSystem;
     let devDependencies = [];
@@ -25,8 +25,8 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
-    const taskPath = rootDirectory + '/slush/tasks/scriptsLintSystem/' + type + '/lintScripts.js';
-    const sourcePath = rootDirectory + '/templates/scriptsLintSystem/' + type + '/**/{*,.*}';
+    const taskPath = __dirname + '/slush/tasks/scriptsLintSystem/' + type + '/lintScripts.js';
+    const sourcePath = __dirname + '/templates/scriptsLintSystem/' + type + '/**/{*,.*}';
 
     // Gulp task
     gulp.task('scriptsLintSystem', (done) => {

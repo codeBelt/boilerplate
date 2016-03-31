@@ -4,9 +4,9 @@ const gulp = require('gulp');
 const merge = require('merge-stream');
 const template = require('gulp-template');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
-    const wasDemoChoosen = answers.demoBuildSystem === 'no';
+    const wasDemoChoosen = answers.demoBuildSystem === 'yes';
 
     const type = answers.scriptsBuildSystem;
     let devDependencies = [];
@@ -28,16 +28,16 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
-    const taskPath = rootDirectory + '/slush/tasks/scriptsBuildSystem/' + type + '/buildScripts.js';
-    const sourcePath = rootDirectory + '/slush/tasks/scriptsBuildSystem/' + type + '/**/*';
+    const taskPath = __dirname + '/' + type + '/tools/**/*';
+    const sourcePath = __dirname + '/' + type + '/src/**/*';
 
     // Gulp task
     gulp.task('scriptsBuildSystem', (done) => {
         const tasks = [];
 
-        const copyTasks =gulp
+        const copyTasks = gulp
             .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
+            .pipe(gulp.dest('./tools/'));
 
         tasks.push(copyTasks);
 

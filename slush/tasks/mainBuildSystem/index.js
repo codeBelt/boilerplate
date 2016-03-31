@@ -9,28 +9,28 @@ const merge = require('merge-stream');
 
 const Util = require('../../utils/Util');
 
-module.exports = (rootDirectory, answers, taskResults) => {
+module.exports = (answers) => {
 
     // Gulp task
     gulp.task('mainBuildSystem', (done) => {
+        const files = gulp
+            .src([
+                __dirname + '/files/**/*',
+                __dirname + '/files/**/.*',
+                '!' + __dirname + '/files/Gulpfile.js',
+                '!' + __dirname + '/files/package.json',
+                '!' + __dirname + '/files/bower.json'
+            ])
+            .pipe(gulp.dest('./'));
+
         const gulpfileParse = gulp
-            .src(rootDirectory + '/slush/tasks/mainBuildSystem/files/Gulpfile.js')
+            .src(__dirname + '/files/Gulpfile.js')
             // Uses Underscore/Lodash templates to add or remove sections
             // which is determined what data is the "answers" object.
             .pipe(template(answers))
             .pipe(jsbeautifier({
                 max_preserve_newlines: 2
             }))
-            .pipe(gulp.dest('./'));
-
-        const files = gulp
-            .src([
-                rootDirectory + '/slush/tasks/mainBuildSystem/files/**/*',
-                rootDirectory + '/slush/tasks/mainBuildSystem/files/**/.*',
-                '!' + rootDirectory + '/slush/tasks/mainBuildSystem/files/Gulpfile.js',
-                '!' + rootDirectory + '/slush/tasks/mainBuildSystem/files/package.json',
-                '!' + rootDirectory + '/slush/tasks/mainBuildSystem/files/bower.json'
-            ])
             .pipe(gulp.dest('./'));
 
         return merge(gulpfileParse, files);

@@ -3,22 +3,22 @@
 const gulp = require('gulp');
 const merge = require('merge-stream');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
     let devDependencies = ['gulp', 'gulp-yuidoc'];
     let bowerDependencies = [];
 
     // Files and folder locations
     const filesToCopy = [
-        rootDirectory + '/templates/tools/cache/yuidoc-friendly-theme/**/*'
+        __dirname + '/templates/tools/cache/yuidoc-friendly-theme/**/*'
     ];
 
-    const taskPath = rootDirectory + '/slush/tasks/docsBuildSystem/buildDocs.js';
+    const taskPath = __dirname + '/slush/tasks/docsBuildSystem/buildDocs.js';
 
     // Gulp task
     gulp.task('docsBuildSystem', (done) => {
         const copySourceFiles = gulp
-            .src(filesToCopy,  { base: rootDirectory + '/templates' })
+            .src(filesToCopy,  { base: __dirname + '/templates' })
             .pipe(gulp.dest('./'));
 
         const copyTasks = gulp

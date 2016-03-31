@@ -3,7 +3,7 @@
 const gulp = require('gulp');
 const merge = require('merge-stream');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
     const type = answers.precompileJst;
     let devDependencies = [];
@@ -16,8 +16,8 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
-    const taskPath = rootDirectory + '/slush/tasks/precompileJst/' + type + '/precompileJst.js';
-    const sourcePath = rootDirectory + '/templates/src/precompileJst/' + type + '/**/*';
+    const taskPath = __dirname + '/slush/tasks/precompileJst/' + type + '/precompileJst.js';
+    const sourcePath = __dirname + '/templates/src/precompileJst/' + type + '/**/*';
 
     // Gulp task
     gulp.task('precompileJst', (done) => {

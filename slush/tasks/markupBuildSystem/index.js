@@ -6,7 +6,7 @@ const template = require('gulp-template');
 const prettify = require('gulp-prettify');
 const replace = require('gulp-replace');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
     const type = answers.markupBuildSystem;
     let devDependencies = [];
@@ -24,8 +24,8 @@ module.exports = (rootDirectory, answers) => {
     }
 
     // Files and folder locations
-    const taskPath = rootDirectory + '/slush/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
-    const sourcePath = rootDirectory + '/templates/src/markupBuildSystem/' + type + '/**/*';
+    const taskPath = __dirname + '/slush/tasks/markupBuildSystem/' + type + '/buildMarkup.js';
+    const sourcePath = __dirname + '/templates/src/markupBuildSystem/' + type + '/**/*';
 
     // Gulp task
     gulp.task('markupBuildSystem', (done) => {

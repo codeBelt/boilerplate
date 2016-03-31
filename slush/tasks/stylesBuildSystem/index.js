@@ -4,7 +4,7 @@ const gulp = require('gulp');
 const merge = require('merge-stream');
 const template = require('gulp-template');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
 
     const type = answers.stylesBuildSystem;
     let devDependencies = [];
@@ -18,8 +18,8 @@ module.exports = (rootDirectory, answers) => {
             break;
     }
 
-    const taskPath = rootDirectory + '/slush/tasks/stylesBuildSystem/' + type + '/buildStyles.js';
-    const sourcePath = rootDirectory + '/templates/src/stylesBuildSystem/' + type + '/**/*';
+    const taskPath = __dirname + '/slush/tasks/stylesBuildSystem/' + type + '/buildStyles.js';
+    const sourcePath = __dirname + '/templates/src/stylesBuildSystem/' + type + '/**/*';
 
     // Gulp task
     gulp.task('stylesBuildSystem', (done) => {

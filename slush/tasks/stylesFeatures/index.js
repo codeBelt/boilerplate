@@ -2,22 +2,22 @@
 
 const gulp = require('gulp');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
     if (answers.stylesFeatures.length === 0) { return null; }
 
     const stylesFeatures = answers.stylesFeatures;
     const paths = [];
 
     if (stylesFeatures.indexOf('print') >= 0) {
-        paths.push(rootDirectory + '/templates/src/assets/styles/print.css');
+        paths.push(__dirname + '/templates/src/assets/styles/print.css');
     }
 
     if (stylesFeatures.indexOf('ie9') >= 0) {
-        paths.push(rootDirectory + '/templates/src/assets/styles/ie9.css');
+        paths.push(__dirname + '/templates/src/assets/styles/ie9.css');
     }
 
     if (stylesFeatures.indexOf('ie8') >= 0) {
-        paths.push(rootDirectory + '/templates/src/assets/styles/ie8.css');
+        paths.push(__dirname + '/templates/src/assets/styles/ie8.css');
     }
 
     // Gulp task

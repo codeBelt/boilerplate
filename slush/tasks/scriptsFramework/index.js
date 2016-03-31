@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
     if (answers.scriptsFramework === 'none') { return null; }
 
     const frameworkType = answers.scriptsFramework;

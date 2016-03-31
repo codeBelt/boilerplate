@@ -4,11 +4,11 @@ const gulp = require('gulp');
 const merge = require('merge-stream');
 const template = require('gulp-template');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
     if (answers.demoBuildSystem === 'no') { return null; }
 
     const type = answers.scriptsBuildSystem;
-    const sourcePath = rootDirectory + '/templates/src/demoBuildSystem/' + type + '/**/*';
+    const sourcePath = __dirname + '/templates/src/demoBuildSystem/' + type + '/**/*';
     let devDependencies = ['gulp'];
     let bowerDependencies = ['jquery'];
 

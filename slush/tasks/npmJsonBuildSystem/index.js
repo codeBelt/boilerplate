@@ -7,7 +7,7 @@ const install = require('gulp-install');
 
 const Util = require('../../utils/Util');
 
-module.exports = (rootDirectory, answers, taskResults) => {
+module.exports = (answers, taskResults) => {
     // Creates a stringify object of the dev dependencies to be added to the package.json
     const devDependencyJson = Util.generateDevDependenciesWithVersions(taskResults);
     const bowerDependenciesJson = Util.generateBowerDependenciesWithVersions(taskResults);
@@ -21,8 +21,8 @@ module.exports = (rootDirectory, answers, taskResults) => {
 
         const json = gulp
             .src([
-                rootDirectory + '/slush/tasks/npmJsonBuildSystem/files/package.json',
-                rootDirectory + '/slush/tasks/npmJsonBuildSystem/files/bower.json'
+                __dirname + '/files/package.json',
+                __dirname + '/files/bower.json'
             ])
             .pipe(template(clone))
             .pipe(jsbeautifier({

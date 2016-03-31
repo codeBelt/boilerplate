@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
     if (answers.scriptsAdditional.length === 0) { return null; }
 
     const scriptsAdditional = answers.scriptsAdditional;
@@ -20,14 +20,14 @@ module.exports = (rootDirectory, answers) => {
     scriptsAdditional.forEach((item) => {
         if (item.includes('nerdery-') === true) {
             bowerDependencies.push(item);
-            filesToCopy.push(rootDirectory + '/templates/tools/cache/' + item + '/**/*');
+            filesToCopy.push(__dirname + '/templates/tools/cache/' + item + '/**/*');
         }
     });
 
     // Gulp task
     gulp.task('scriptsAdditional', (done) => {
         gulp
-            .src(filesToCopy,  { base: rootDirectory + '/templates' })
+            .src(filesToCopy,  { base: __dirname + '/templates' })
             .pipe(gulp.dest('./'))
             .on('end', done);
     });

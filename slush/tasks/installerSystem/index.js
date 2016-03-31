@@ -3,11 +3,11 @@
 const gulp = require('gulp');
 const merge = require('merge-stream');
 
-module.exports = (rootDirectory, answers) => {
+module.exports = (answers) => {
     if (answers.installerSystem === 'no') { return null; }
 
     // Files and folder locations
-    const files = rootDirectory + '/slush/tasks/installerSystem/files/**/*';
+    const files = __dirname + '/files/**/*';
 
     // Gulp task
     gulp.task('installerSystem', (done) => {
