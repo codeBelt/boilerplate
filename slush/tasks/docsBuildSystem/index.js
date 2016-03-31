@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const merge = require('merge-stream');
 
 module.exports = (answers) => {
 
@@ -15,9 +14,8 @@ module.exports = (answers) => {
     gulp.task('docsBuildSystem', (done) => {
         const copyTasks = gulp
             .src(taskPath)
-            .pipe(gulp.dest('./'));
-
-        return merge(copyTasks);
+            .pipe(gulp.dest('./'))
+            .on('end', done);
     });
 
     // Return data

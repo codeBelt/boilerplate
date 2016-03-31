@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const merge = require('merge-stream');
 const template = require('gulp-template');
 
 module.exports = (answers) => {

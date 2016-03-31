@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const merge = require('merge-stream');
 
 module.exports = (answers) => {
     if (answers.installerSystem === 'no') { return null; }
