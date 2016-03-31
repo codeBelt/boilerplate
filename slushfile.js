@@ -21,13 +21,12 @@ const npmJsonBuildSystem = require('./slush/tasks/npmJsonBuildSystem/index');
 const mainBuildSystem = require('./slush/tasks/mainBuildSystem/index');
 const installerSystem = require('./slush/tasks/installerSystem/index');
 const scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem/index');
-//const scriptsFramework = require('./slush/tasks/scriptsFramework/index');
-//const scriptsLintSystem = require('./slush/tasks/scriptsLintSystem/index');
-//const scriptsAdditional = require('./slush/tasks/scriptsAdditional/index');
-//const requiredFiles = require('./slush/tasks/requiredFiles/index');
-//const demoBuildSystem = require('./slush/tasks/demoBuildSystem/index');
-//const docsBuildSystem = require('./slush/tasks/docsBuildSystem/index');
-//const markupBuildSystem = require('./slush/tasks/markupBuildSystem/index');
+const scriptsFramework = require('./slush/tasks/scriptsFramework/index');
+const scriptsLintSystem = require('./slush/tasks/scriptsLintSystem/index');
+const scriptsAdditional = require('./slush/tasks/scriptsAdditional/index');
+const demoBuildSystem = require('./slush/tasks/demoBuildSystem/index');
+const docsBuildSystem = require('./slush/tasks/docsBuildSystem/index');
+const markupBuildSystem = require('./slush/tasks/markupBuildSystem/index');
 //const markupFeatures = require('./slush/tasks/markupFeatures/index');
 //const stylesBuildSystem = require('./slush/tasks/stylesBuildSystem/index');
 //const stylesFeatures = require('./slush/tasks/stylesFeatures/index');
@@ -46,15 +45,15 @@ gulp.task('default', (done) => {
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         let taskResults = [
-            installerSystem(answers),
-            mainBuildSystem(answers),
-            scriptsBuildSystem(answers),
+            //installerSystem(answers),
+            //mainBuildSystem(answers),
+            //scriptsBuildSystem(answers),
             //scriptsFramework(answers),
             //scriptsLintSystem(answers),
             //scriptsAdditional(answers),
             //demoBuildSystem(answers),
             //docsBuildSystem(answers),
-            //markupBuildSystem(answers),
+            markupBuildSystem(answers),
             //markupFeatures(answers),
             //stylesFeatures(answers),
             //stylesBuildSystem(answers),

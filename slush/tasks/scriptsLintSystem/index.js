@@ -25,21 +25,16 @@ module.exports = (answers) => {
             break;
     }
 
-    const taskPath = __dirname + '/slush/tasks/scriptsLintSystem/' + type + '/lintScripts.js';
-    const sourcePath = __dirname + '/templates/scriptsLintSystem/' + type + '/**/{*,.*}';
+    const sourcePath = __dirname + '/' + type + '/**/{*,.*}';
 
     // Gulp task
     gulp.task('scriptsLintSystem', (done) => {
-        const copyTasks = gulp
-            .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
-
         const copySourceFiles = gulp
             .src(sourcePath)
             .pipe(template(answers))
             .pipe(gulp.dest('./'));
 
-        return merge(copyTasks, copySourceFiles);
+        return merge(copySourceFiles);
     });
 
     // Return data

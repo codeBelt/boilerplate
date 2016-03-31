@@ -20,14 +20,14 @@ module.exports = (answers) => {
     scriptsAdditional.forEach((item) => {
         if (item.includes('nerdery-') === true) {
             bowerDependencies.push(item);
-            filesToCopy.push(__dirname + '/templates/tools/cache/' + item + '/**/*');
+            filesToCopy.push(__dirname + '/files/tools/cache/' + item + '/**/*');
         }
     });
 
     // Gulp task
     gulp.task('scriptsAdditional', (done) => {
         gulp
-            .src(filesToCopy,  { base: __dirname + '/templates' })
+            .src(filesToCopy,  { base: __dirname + '/files' })
             .pipe(gulp.dest('./'))
             .on('end', done);
     });

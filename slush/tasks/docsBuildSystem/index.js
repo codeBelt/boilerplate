@@ -9,23 +9,15 @@ module.exports = (answers) => {
     let bowerDependencies = [];
 
     // Files and folder locations
-    const filesToCopy = [
-        __dirname + '/templates/tools/cache/yuidoc-friendly-theme/**/*'
-    ];
-
-    const taskPath = __dirname + '/slush/tasks/docsBuildSystem/buildDocs.js';
+    const taskPath = __dirname + '/files/**/*';
 
     // Gulp task
     gulp.task('docsBuildSystem', (done) => {
-        const copySourceFiles = gulp
-            .src(filesToCopy,  { base: __dirname + '/templates' })
-            .pipe(gulp.dest('./'));
-
         const copyTasks = gulp
             .src(taskPath)
-            .pipe(gulp.dest('./tools/tasks/'));
+            .pipe(gulp.dest('./'));
 
-        return merge(copyTasks, copySourceFiles);
+        return merge(copyTasks);
     });
 
     // Return data
