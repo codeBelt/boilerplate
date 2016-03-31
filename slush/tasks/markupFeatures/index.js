@@ -15,8 +15,8 @@ module.exports = (answers) => {
     }
 
     // Files and folder locations
-    const taskPath = __dirname + '/slush/tasks/markupFeatures/optimizeStatic.js';
-    const imagePath = __dirname + '/templates/src/assets/media/images/**/*';
+    const taskPath = __dirname + '/files/tools/**/*';
+    const imagePath = __dirname + '/files/src/**/*';
 
     // Gulp task
     gulp.task('markupFeatures', (done) => {
@@ -25,7 +25,7 @@ module.exports = (answers) => {
         if (allowImagemin === true) {
             const copyTasks = gulp
                 .src(taskPath)
-                .pipe(gulp.dest('./tools/tasks/'));
+                .pipe(gulp.dest('./tools/'));
 
             streams.push(copyTasks);
         }
@@ -33,7 +33,7 @@ module.exports = (answers) => {
         if (allowIcons === true) {
             const copySourceFiles = gulp
                 .src(imagePath)
-                .pipe(gulp.dest('./src/assets/media/images/'));
+                .pipe(gulp.dest('./src/'));
 
             streams.push(copySourceFiles);
         }

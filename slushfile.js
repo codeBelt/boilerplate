@@ -27,7 +27,7 @@ const scriptsAdditional = require('./slush/tasks/scriptsAdditional/index');
 const demoBuildSystem = require('./slush/tasks/demoBuildSystem/index');
 const docsBuildSystem = require('./slush/tasks/docsBuildSystem/index');
 const markupBuildSystem = require('./slush/tasks/markupBuildSystem/index');
-//const markupFeatures = require('./slush/tasks/markupFeatures/index');
+const markupFeatures = require('./slush/tasks/markupFeatures/index');
 //const stylesBuildSystem = require('./slush/tasks/stylesBuildSystem/index');
 //const stylesFeatures = require('./slush/tasks/stylesFeatures/index');
 //const precompileJst = require('./slush/tasks/precompileJst/index');
@@ -53,8 +53,8 @@ gulp.task('default', (done) => {
             //scriptsAdditional(answers),
             //demoBuildSystem(answers),
             //docsBuildSystem(answers),
-            markupBuildSystem(answers),
-            //markupFeatures(answers),
+            //markupBuildSystem(answers),
+            markupFeatures(answers),
             //stylesFeatures(answers),
             //stylesBuildSystem(answers),
             //precompileJst(answers),
