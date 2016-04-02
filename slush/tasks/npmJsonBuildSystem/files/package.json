@@ -7,6 +7,5 @@
   "dependencies": {},
   "devDependencies": <%= devDependencies %>,
   "scripts": {
-    "postinstall": "node tools/npm-postinstall"
   }
 }
