@@ -8,11 +8,12 @@ module.exports = (answers) => {
 
     const jsType = answers.scriptsBuildSystem;
     const jsSourcePaths = __dirname + '/files/scripts/' + jsType + '/**/*';
+    const testingSourcePaths = __dirname + '/files/__tests__/' + jsType + '/**/*';
 
     const stylesType = answers.stylesBuildSystem;
     const stylesSourcePaths = __dirname + '/files/styles/' + stylesType + '/**/*';
 
-    const devDependencies = ['gulp'];
+    const devDependencies = ['gulp', 'jquery'];
     const bowerDependencies = ['jquery'];
 
     // Gulp task
@@ -20,6 +21,7 @@ module.exports = (answers) => {
         gulp
             .src([
                 jsSourcePaths,
+                testingSourcePaths,
                 stylesSourcePaths
             ])
             .pipe(template(answers))

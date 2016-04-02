@@ -222,7 +222,7 @@ module.exports = [
                 "value": "yes"
             }
         ],
-        "default": "no",
+        "default": "yes",
         "type": "list"
     },
     {
@@ -231,14 +231,14 @@ module.exports = [
         "choices": [
             {
                 "name": "JavaScript Unit Testing",
-                "value": "testing"
+                "value": "testing",
+                "checked": true
             },
             {
                 "name": "3rd-Party Vulnerability Audit",
                 "value": "audit"
             }
         ],
-        "default": "",
         "type": "checkbox"
     },
     {
@@ -254,7 +254,7 @@ module.exports = [
                 "value": "yes"
             }
         ],
-        "default": "yes",
+        "default": "no",
         "type": "list"
     },
     {

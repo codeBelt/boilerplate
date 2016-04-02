@@ -1,6 +1,7 @@
 {
   "tsify": "*",
   "del": "*",
+  "jquery": "*",
   "gulp": "*",
   "jest-cli": "*",
   "gulp-jest-iojs": "*",

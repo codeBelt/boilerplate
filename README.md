@@ -2,11 +2,11 @@
 
 `npm install`
 
-`mkdir test`
-
 `npm link`
 
-`cd test`
+`mkdir output`
+
+`cd output`
 
 `slush boilerplate`
 
@@ -18,4 +18,4 @@ devDependencies.json is a list npm modules where you can put version number. If 
 
 TODO:  postinstall should call 'gulp install' also.
 
-"npm install && gulp install" seems to always repeat.
+"npm install && gulp install" seems to always repeats.
