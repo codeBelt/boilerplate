@@ -2,6 +2,8 @@
   "tsify": "*",
   "del": "*",
   "gulp": "*",
+  "jest-cli": "*",
+  "gulp-jest-iojs": "*",
   "gulp-jshint": "*",
   "jshint": "*",
   "gulp-eslint": "*",

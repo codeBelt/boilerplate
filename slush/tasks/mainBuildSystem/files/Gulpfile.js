@@ -9,6 +9,8 @@ const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
 const del = require('del');
+const install = require('gulp-install');
+
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -138,6 +140,17 @@ gulp.task('lint', (done) => {
         ['lintScripts'],
         done
     );
+});
+
+/**
+ * Installs the NPM and Bower modules.
+ *
+ * @task install
+ */
+gulp.task('install', (done) => {
+    return gulp
+        .src(['./*.json'])
+        .pipe(install());
 });
 
 /**

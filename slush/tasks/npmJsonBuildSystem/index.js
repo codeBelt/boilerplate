@@ -3,7 +3,6 @@
 const gulp = require('gulp');
 const jsbeautifier = require('gulp-jsbeautifier');
 const template = require('gulp-template');
-const install = require('gulp-install');
 
 const Util = require('../../utils/Util');
 

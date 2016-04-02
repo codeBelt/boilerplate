@@ -1,31 +1,28 @@
-/*jshint node:true, laxbreak:true */
-'use strict';
+const gulp = require('gulp');
+const jest = require('gulp-jest-iojs');
 
-module.exports = function(grunt) {
-    grunt.config.merge({
-        // Runs tests in real live browsers.
-        karma: {
-            testScripts: {
-                options: {
-                    singleRun: true,
-                    configFile: 'karma.conf.js',
-                    basePath: '<%= env.DIR_SRC %>/assets',
-                    coverageReporter: {
-                        type: 'html',
-                        // path is relative to basePath
-                        // adjust to the best location for your project
-                        // and backend
-                        dir: '../../build-reports/'
-                    }
-                },
-                reporters: grunt.option('coverage')
-                    ? ['progress', 'coverage']
-                    : ['progress']
-            }
-        }
-    });
+//http://www.undefinednull.com/2015/05/03/react-tdd-example-unit-testing-and-building-a-react-component-with-jest-gulp-and-react-test-utils/
 
-    grunt.registerTask('testScripts', [
-        'karma:testScripts'
-    ]);
-};
+gulp.task('testScripts', (done) => {
+    gulp
+        .src('__tests__')
+        .pipe(jest({
+            collectCoverage: true,
+            // scriptPreprocessor: "./spec/support/preprocessor.js",
+            // unmockedModulePathPatterns: [
+            //     "node_modules/react"
+            // ],
+            // testDirectoryName: "spec",
+            // testPathPattern: /.\/__tests__\/.*-test.js/,
+            // testPathIgnorePatterns: [
+            //     "node_modules",
+            //     "spec/support"
+            // ],
+            // moduleFileExtensions: [
+            //     "js",
+            //     "json",
+            //     "react"
+            // ]
+        }))
+        .on('end', done);
+});
