@@ -15,12 +15,12 @@ module.exports = (answers) => {
 
     if (allowAudit === true) {
         devDependencies.push('gulp', 'npm-check-updates', 'cli-table');
-        taskPath.push(__dirname + '/audit/**/{*.*}');
+        taskPath.push(__dirname + '/audit/**/*');
     }
 
     if (allowUnitTesting === true) {
         devDependencies.push('gulp', 'jest-cli', 'gulp-jest-iojs');
-        taskPath.push(__dirname + '/jest/**/*');
+        taskPath.push(__dirname + '/jest/**/{*,.*}');
     }
 
     // Gulp task
