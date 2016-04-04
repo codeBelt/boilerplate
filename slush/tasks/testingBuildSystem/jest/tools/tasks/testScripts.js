@@ -21,7 +21,6 @@ gulp.task('testScripts', (done) => {
             moduleFileExtensions: [
                 "ts",
                 "js",
-                "json",
                 "es6"
             ]
         }))
