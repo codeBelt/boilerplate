@@ -5,24 +5,25 @@ const jest = require('gulp-jest-iojs');
 
 gulp.task('testScripts', (done) => {
     gulp
-        .src('__tests__')
-        .pipe(jest({
+        .src('__tests__').pipe(jest({
             collectCoverage: true,
-            // scriptPreprocessor: "./spec/support/preprocessor.js",
-            // unmockedModulePathPatterns: [
-            //     "node_modules/react"
-            // ],
-            // testDirectoryName: "spec",
-            // testPathPattern: /.\/__tests__\/.*-test.js/,
-            // testPathIgnorePatterns: [
-            //     "node_modules",
-            //     "spec/support"
-            // ],
-            // moduleFileExtensions: [
-            //     "js",
-            //     "json",
-            //     "react"
-            // ]
+            scriptPreprocessor: '../node_modules/babel-jest',
+            unmockedModulePathPatterns: [
+                "node_modules"
+            ],
+            testPathIgnorePatterns: [
+                "node_modules"
+            ],
+            testFileExtensions: [
+                "es6",
+                "js"
+            ],
+            moduleFileExtensions: [
+                "ts",
+                "js",
+                "json",
+                "es6"
+            ]
         }))
         .on('end', done);
 });

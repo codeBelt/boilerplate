@@ -19,7 +19,7 @@ module.exports = (answers) => {
     }
 
     if (allowUnitTesting === true) {
-        devDependencies.push('gulp', 'jest-cli', 'gulp-jest-iojs');
+        devDependencies.push('gulp', 'jest-cli', 'gulp-jest-iojs', 'babel-jest', 'babel-polyfill');
         taskPath.push(__dirname + '/jest/**/{*,.*}');
     }
 

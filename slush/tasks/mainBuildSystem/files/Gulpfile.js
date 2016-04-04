@@ -143,6 +143,18 @@ gulp.task('lint', (done) => {
 });
 
 /**
+ * Unit tests the code.
+ *
+ * @task test
+ */
+gulp.task('test', (done) => {
+    runSequence(
+        ['testScripts'],
+        done
+    );
+});
+
+/**
  * Installs the NPM and Bower modules.
  *
  * @task install

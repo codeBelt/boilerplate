@@ -8,7 +8,7 @@ module.exports = (answers) => {
 
     const jsType = answers.scriptsBuildSystem;
     const jsSourcePaths = __dirname + '/files/scripts/' + jsType + '/**/*';
-    const testingSourcePaths = __dirname + '/files/__tests__/' + jsType + '/**/*';
+    const testingSourcePaths = __dirname + '/files/tests/' + jsType + '/**/*';
 
     const stylesType = answers.stylesBuildSystem;
     const stylesSourcePaths = __dirname + '/files/styles/' + stylesType + '/**/*';

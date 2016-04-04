@@ -1,6 +1,8 @@
 {
   "tsify": "*",
   "del": "*",
+  "babel-jest": "*",
+  "babel-polyfill": "*",
   "jquery": "*",
   "gulp": "*",
   "jest-cli": "*",
