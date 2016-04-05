@@ -35,6 +35,8 @@
   "gulp-concat": "*",
   "gulp-file-include": "*",
   "babel-preset-es2015": "*",
+  "babel-plugin-syntax-class-properties": "*",
+  "babel-plugin-transform-class-properties": "*",
   "babelify": "*",
   "browser-sync": "*",
   "browserify": "*",

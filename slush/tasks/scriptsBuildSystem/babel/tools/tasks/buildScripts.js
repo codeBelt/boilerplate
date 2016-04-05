@@ -14,7 +14,11 @@ gulp.task('buildScripts', (done) => {
             presets: ['es2015'],
             extensions: ['.js', '.es'],
             //https://github.com/HenriqueLimas/gulp-babelify-starter-kit/blob/master/.babelrc
-            plugins: ['transform-class-properties']
+            // http://babeljs.io/docs/usage/babelrc/
+            plugins: [
+                'transform-class-properties',
+                'syntax-class-properties'
+            ]
         })
         .bundle()
         .on('error', console.log)
