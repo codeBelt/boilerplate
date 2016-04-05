@@ -232,7 +232,7 @@ module.exports = [
             {
                 "name": "JavaScript Unit Testing",
                 "value": "testing",
-                "checked": true
+                "checked": false
             },
             {
                 "name": "3rd-Party Vulnerability Audit",
@@ -254,7 +254,7 @@ module.exports = [
                 "value": "yes"
             }
         ],
-        "default": "no",
+        "default": "yes",
         "type": "list"
     },
     {
