@@ -225,22 +225,22 @@ module.exports = [
         "default": "yes",
         "type": "list"
     },
-    {
-        "name": "testingBuildSystem",
-        "message": "Any testing features?",
-        "choices": [
-            {
-                "name": "JavaScript Unit Testing",
-                "value": "testing",
-                "checked": false
-            },
-            {
-                "name": "3rd-Party Vulnerability Audit",
-                "value": "audit"
-            }
-        ],
-        "type": "checkbox"
-    },
+    // {
+    //     "name": "testingBuildSystem",
+    //     "message": "Any testing features?",
+    //     "choices": [
+    //         {
+    //             "name": "JavaScript Unit Testing",
+    //             "value": "testing",
+    //             "checked": false
+    //         },
+    //         {
+    //             "name": "3rd-Party Vulnerability Audit",
+    //             "value": "audit"
+    //         }
+    //     ],
+    //     "type": "checkbox"
+    // },
     {
         "name": "installerSystem",
         "message": "Do you want installer files?",

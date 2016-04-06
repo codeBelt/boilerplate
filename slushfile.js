@@ -60,7 +60,7 @@ gulp.task('default', (done) => {
             stylesBuildSystem(answers),
             precompileJst(answers),
             staticBuildSystem(answers),
-            testingBuildSystem(answers)
+            // testingBuildSystem(answers)
         ];
 
         // Remove all null values in array.
