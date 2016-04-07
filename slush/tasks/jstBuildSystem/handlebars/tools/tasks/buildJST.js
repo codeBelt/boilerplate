@@ -5,7 +5,7 @@ const wrap = require('gulp-wrap');
 const declare = require('gulp-declare');
 const concat = require('gulp-concat');
 
-gulp.task('precompileJst', (done) => {
+gulp.task('buildJST', (done) => {
     gulp
         .src(env.DIR_SRC + '/templates/jst/**/*.hbs')
         .pipe(handlebars({

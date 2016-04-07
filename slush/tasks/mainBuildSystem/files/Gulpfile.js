@@ -75,6 +75,10 @@ gulp.task('clean:docs', (done) => {
     return del(env.DIR_DOCS);
 });
 
+gulp.task('clean:minify', (done) => {
+    return del(env.DIR_DOCS);
+});
+
 gulp.task('clean:installed', (done) => {
     return del([
         'tools/node-*',
@@ -91,11 +95,12 @@ gulp.task('clean:installed', (done) => {
 gulp.task('build', (done) => {
     const tasks = [
         ['clean:dest'],
-        ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts']
+        ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts' <% if (jstBuildSystem !== "no") { %>, 'buildJST'<% } %> ]
     ];
 
     if (isProd === true) {
         tasks.push(['minify']);
+        tasks.push(['clean:minify']);
     }
 
     runSequence(...tasks, done);
@@ -195,20 +200,6 @@ gulp.task('serve', (done) => {
     });
 <% } %>
 
-<% if (precompileJst !== "no") { %>
-    /**
-     * Precompiles JavaScript Templates
-     *
-     * @task jst
-     */
-    gulp.task('jst', (done) => {
-        runSequence(
-            ['precompileJst'],
-            done
-        );
-    });
-<% } %>
-
 /**
  * Watch tasks
  *
@@ -218,6 +209,6 @@ gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/scss/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
-    gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['precompileJst']);
+    gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
     gulp.watch(env.DIR_SRC + '/assets/media/**/*', ['buildStatic']);
 });

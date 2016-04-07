@@ -5,7 +5,7 @@ const merge = require('merge-stream');
 
 module.exports = (answers) => {
 
-    const type = answers.precompileJst;
+    const type = answers.jstBuildSystem;
     let devDependencies = [];
     let bowerDependencies = [];
 
@@ -19,7 +19,7 @@ module.exports = (answers) => {
     const sourcePath = __dirname + '/' + type + '/**/*';
 
     // Gulp task
-    gulp.task('precompileJst', (done) => {
+    gulp.task('jstBuildSystem', (done) => {
         const copySourceFiles = gulp
             .src(sourcePath)
             .pipe(gulp.dest('./'));
@@ -29,7 +29,7 @@ module.exports = (answers) => {
 
     // Return data
     return {
-        taskName: 'precompileJst',
+        taskName: 'jstBuildSystem',
         devDependencies: devDependencies,
         bowerDependencies: bowerDependencies
     }

@@ -30,7 +30,7 @@ const markupBuildSystem = require('./slush/tasks/markupBuildSystem/index');
 const markupFeatures = require('./slush/tasks/markupFeatures/index');
 const stylesFeatures = require('./slush/tasks/stylesFeatures/index');
 const stylesBuildSystem = require('./slush/tasks/stylesBuildSystem/index');
-const precompileJst = require('./slush/tasks/precompileJst/index');
+const jstBuildSystem = require('./slush/tasks/jstBuildSystem/index');
 const testingBuildSystem = require('./slush/tasks/testingBuildSystem/index');
 const staticBuildSystem = require('./slush/tasks/staticBuildSystem/index');
 
@@ -58,7 +58,7 @@ gulp.task('default', (done) => {
             markupFeatures(answers),
             stylesFeatures(answers),
             stylesBuildSystem(answers),
-            precompileJst(answers),
+            jstBuildSystem(answers),
             staticBuildSystem(answers),
             // testingBuildSystem(answers)
         ];

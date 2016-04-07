@@ -8,7 +8,7 @@ gulp.task('buildScripts', (done) => {
     const compileJavaScript = browserify({
         entries: [env.DIR_SRC + '/assets/scripts/main.js'],
         debug: true,
-        extensions: ['.js', '.jsx', '.es']
+        extensions: ['.js', '.jsx', '.es6']
     })
         .transform('babelify', {
             presets: ['es2015'],

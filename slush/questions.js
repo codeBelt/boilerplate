@@ -158,7 +158,7 @@ module.exports = [
     //    "type": "list"
     //},
     {
-        "name": "precompileJst",
+        "name": "jstBuildSystem",
         "message": "Precompile JavaScript Templates?",
         "choices": [
             {
@@ -166,7 +166,7 @@ module.exports = [
                 "value": "no"
             },
             {
-                "name": "Yes",
+                "name": "Handlebars",
                 "value": "handlebars"
             }
         ],
@@ -222,7 +222,7 @@ module.exports = [
                 "value": "yes"
             }
         ],
-        "default": "yes",
+        "default": "no",
         "type": "list"
     },
     // {
