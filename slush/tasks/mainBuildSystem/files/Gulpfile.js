@@ -8,9 +8,7 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
-const del = require('del');
 const install = require('gulp-install');
-
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -60,31 +58,6 @@ gulp.task('default', (done) => {
         (isProd === true) ? ['lint', 'build'] : [],
         done
     );
-});
-
-/**
- * Cleaning tasks
- *
- * @task clean:*
- */
-gulp.task('clean:dest', (done) => {
-    return del(env.DIR_DEST);
-});
-
-gulp.task('clean:docs', (done) => {
-    return del(env.DIR_DOCS);
-});
-
-gulp.task('clean:minify', (done) => {
-    return del(env.DIR_DOCS);
-});
-
-gulp.task('clean:installed', (done) => {
-    return del([
-        'tools/node-*',
-        env.DIR_BOWER,
-        env.DIR_NPM
-    ]);
 });
 
 /**
@@ -160,7 +133,7 @@ gulp.task('test', (done) => {
 });
 
 /**
- * Installs the NPM and Bower modules.
+ * Installs the NPM, Bower and TSD modules.
  *
  * @task install
  */
@@ -207,7 +180,7 @@ gulp.task('serve', (done) => {
  */
 gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
-    gulp.watch(env.DIR_SRC + '/assets/scss/**/*', ['buildStyles']);
+    gulp.watch(env.DIR_SRC + '/assets/{scss,styles}/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
     gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
     gulp.watch(env.DIR_SRC + '/assets/media/**/*', ['buildStatic']);

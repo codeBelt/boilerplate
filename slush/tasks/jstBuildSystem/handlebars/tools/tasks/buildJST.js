@@ -31,6 +31,6 @@ gulp.task('buildJST', (done) => {
             noRedeclare: true // Avoid duplicate declarations
         }))
         .pipe(concat('precompiledJst.js'))
-        .pipe(gulp.dest(env.DIR_SRC + '/assets/scripts/'))
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
         .on('end', done);
 });

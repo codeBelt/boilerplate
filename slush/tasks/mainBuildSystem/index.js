@@ -14,8 +14,8 @@ module.exports = (answers) => {
     gulp.task('mainBuildSystem', (done) => {
         const files = gulp
             .src([
-                __dirname + '/files/**/*',
-                __dirname + '/files/**/.*',
+                __dirname + '/files/*',
+                __dirname + '/files/.*',
                 '!' + __dirname + '/files/Gulpfile.js',
                 '!' + __dirname + '/files/package.json',
                 '!' + __dirname + '/files/bower.json'
@@ -23,7 +23,10 @@ module.exports = (answers) => {
             .pipe(gulp.dest('./'));
 
         const gulpfileParse = gulp
-            .src(__dirname + '/files/Gulpfile.js')
+            .src([
+                __dirname + '/files/tools/**/*',
+                __dirname + '/files/Gulpfile.js'
+            ], { base: __dirname + '/files/' })
             // Uses Underscore/Lodash templates to add or remove sections
             // which is determined what data is the "answers" object.
             .pipe(template(answers))
