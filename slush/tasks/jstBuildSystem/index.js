@@ -11,7 +11,7 @@ module.exports = (answers) => {
 
     switch (type) {
         case 'handlebars':
-            devDependencies = ['gulp', 'gulp-handlebars', 'handlebars', 'gulp-wrap', 'gulp-declare', 'gulp-concat'];
+            devDependencies = ['gulp', 'gulp-handlebars', 'handlebars', 'gulp-wrap', 'gulp-declare', 'gulp-concat', 'merge-stream'];
             bowerDependencies.push('handlebars');
             break;
     }
