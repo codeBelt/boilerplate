@@ -2,6 +2,7 @@
   "tsify": "*",
   "gulp-install": "*",
   "del": "*",
+  "browserify-shim": "*",
   "aliasify": "*",
   "merge-stream": "*",
   "babel-jest": "*",
