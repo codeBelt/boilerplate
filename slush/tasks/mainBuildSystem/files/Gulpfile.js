@@ -31,13 +31,18 @@ global.env = require('./build-env.js');
 global.reloadBrowser = browserSync.reload;
 
 /**
- * All builds are considered to be production builds, unless they're not.
+ * Determines the build mode. Default will be read from the env file but can be overridden with a flag.
+ * Flags are: --dev , --stage , --prod
  */
-global.isProd = !!argv.prod;
-global.isStage = !!argv.stage;
-global.isDev = !!argv.dev;
-
-global.isProd = (isStage === false && isDev === false);
+if (argv.prod === true || argv.stage === true || argv.dev === true) {
+    global.isProd = !!argv.prod;
+    global.isStage = !!argv.stage;
+    global.isDev = !!argv.dev;
+} else {
+    global.isProd = (env.BUILD_MODE === 'prod');
+    global.isStage = (env.BUILD_MODE === 'stage');
+    global.isDev = (env.BUILD_MODE === 'dev');
+}
 
 /**
  * A code block that will be added to the minified code files.
@@ -52,12 +57,9 @@ global.banner = require('./banner.js')(pkg);
  */
 gulp.task('default', (done) => {
     runSequence(
-        // Ran `gulp --dev`
-        (isDev === true) ? ['build'] :
-        // Ran `gulp --stage`
-        (isStage === true) ? ['lint', 'build'] :
-        // Ran `gulp --prod`
-        (isProd === true) ? ['lint', 'build'] : [],
+        (isDev === true)    ? ['build'] :
+        (isStage === true)  ? ['lint', 'build'] :
+        (isProd === true)   ? ['lint', 'build'] : [],
         done
     );
 });
@@ -167,10 +169,10 @@ gulp.task('install', (done) => {
 /**
  * Start a web server and reloads the browser file changes.
  *
- * @task serve
+ * @task watch
  * @options --open
  */
-gulp.task('serve', (done) => {
+gulp.task('watch', (done) => {
     browserSync.init({
         injectChanges: true,
         open: (argv.open === true),
@@ -179,19 +181,6 @@ gulp.task('serve', (done) => {
         }
     });
 
-    gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
-    gulp.watch(env.DIR_SRC + '/assets/{scss,styles}/**/*', ['buildStyles']);
-    gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
-    gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
-    gulp.watch(env.DIR_SRC + '/assets/media/**/*', ['buildStatic']);
-});
-
-/**
- * Watch tasks
- *
- * @task watch
- */
-gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/{scss,styles}/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
