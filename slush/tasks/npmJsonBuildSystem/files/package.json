@@ -4,6 +4,16 @@
   "description": "<%= projectName %> description.",
   "developedBy": "",
   "private": true,
+  "browserify": {
+    "transform": [
+      [
+        "browserify-shim", { "global": true }
+      ]
+    ]
+  },
+  "aliases": {
+    "structurejs": "./src/assets/vendor/structurejs/js"
+  },
   "dependencies": {},
   "devDependencies": <%= devDependencies %>,
   "scripts": {

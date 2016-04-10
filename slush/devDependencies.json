@@ -2,6 +2,7 @@
   "tsify": "*",
   "gulp-install": "*",
   "del": "*",
+  "aliasify": "*",
   "merge-stream": "*",
   "babel-jest": "*",
   "babel-polyfill": "*",

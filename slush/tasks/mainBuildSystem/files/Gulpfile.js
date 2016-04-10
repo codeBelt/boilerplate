@@ -2,13 +2,13 @@ const gulp = require('gulp');
 const requireDir = require('require-dir');
 const runSequence = require('run-sequence');
 const argv = require('yargs').argv;
-const browserSync = require('browser-sync').create();
 const gulpIf = require('gulp-if');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
 const install = require('gulp-install');
+const browserSync = require('browser-sync').create();
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -27,6 +27,8 @@ requireDir('./tools/tasks', {
  */
 global.pkg = require('./package.json');
 global.env = require('./build-env.js');
+
+global.reloadBrowser = browserSync.reload;
 
 /**
  * All builds are considered to be production builds, unless they're not.
@@ -88,7 +90,10 @@ gulp.task('minify', (done) => {
     gulp
         .src(env.DIR_DEST + '/*.html')
         .pipe(useref())
-        .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulpIf('*.js', uglify({
+            mangle: false,
+            preserveComments: 'license'
+        })))
         .pipe(gulpIf('*.css', cleanCSS()))
         .pipe(gulpIf('**/*.{css,js}', header(banner)))
         .pipe(gulp.dest(env.DIR_DEST))
@@ -121,18 +126,6 @@ gulp.task('lint', (done) => {
 });
 
 /**
- * Unit tests the code.
- *
- * @task test
- */
-gulp.task('test', (done) => {
-    runSequence(
-        ['testScripts'],
-        done
-    );
-});
-
-/**
  * Installs the NPM, Bower and TSD modules.
  *
  * @task install
@@ -143,21 +136,19 @@ gulp.task('install', (done) => {
         .pipe(install());
 });
 
-/**
- * TODO:
- *
- * @task serve
- * @options --open
- */
-gulp.task('serve', (done) => {
-    browserSync.init({
-        injectChanges: true,
-        open: (argv.open === true),
-        server: {
-            baseDir: env.DIR_DEST
-        }
+<% if (testingBuildSystem.indexOf('testing') >= 0) { %>
+    /**
+     * Unit tests the code.
+     *
+     * @task test
+     */
+    gulp.task('test', (done) => {
+        runSequence(
+            ['testScripts'],
+            done
+        );
     });
-});
+<% } %>
 
 <% if (markupFeatures.indexOf('imagemin') >= 0) { %>
     /**
@@ -172,6 +163,28 @@ gulp.task('serve', (done) => {
         );
     });
 <% } %>
+
+/**
+ * Start a web server and reloads the browser file changes.
+ *
+ * @task serve
+ * @options --open
+ */
+gulp.task('serve', (done) => {
+    browserSync.init({
+        injectChanges: true,
+        open: (argv.open === true),
+        server: {
+            baseDir: env.DIR_DEST
+        }
+    });
+
+    gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
+    gulp.watch(env.DIR_SRC + '/assets/{scss,styles}/**/*', ['buildStyles']);
+    gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
+    gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
+    gulp.watch(env.DIR_SRC + '/assets/media/**/*', ['buildStatic']);
+});
 
 /**
  * Watch tasks

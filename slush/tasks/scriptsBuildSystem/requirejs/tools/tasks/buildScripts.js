@@ -1,8 +1,7 @@
 const gulp = require('gulp');
 const runSequence = require('run-sequence').use(gulp);
-const argv = require('yargs').argv;
-var requirejsOptimize = require('gulp-requirejs-optimize');
-var sourcemaps = require('gulp-sourcemaps');
+const requirejsOptimize = require('gulp-requirejs-optimize');
+const sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('buildScripts', (done) => {
 
@@ -62,7 +61,7 @@ gulp.task('buildScripts', (done) => {
         tasks.push('requirejs:copyAll');
     }
 
-    runSequence(...tasks, done);
+    return runSequence(...tasks, reloadBrowser);
 });
 
 

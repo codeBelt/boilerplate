@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const argv = require('yargs').argv;
 const merge = require('merge-stream');
 
 gulp.task('buildScripts', (done) => {
@@ -11,5 +10,6 @@ gulp.task('buildScripts', (done) => {
         .src(env.DIR_SRC + '/assets/vendor/**/*.js')
         .pipe(gulp.dest(env.DIR_DEST + '/assets/vendor/'));
 
-    return merge(compileJavaScript, copyVendorScripts);
+    return merge(compileJavaScript, copyVendorScripts)
+        .on('end', reloadBrowser);
 });

@@ -1,12 +1,11 @@
 const gulp = require('gulp');
-const argv = require('yargs').argv;
 const hb = require('gulp-hb');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const prettify = require('gulp-prettify');
 
 gulp.task('buildMarkup', (done) => {
-    gulp
+    return gulp
         .src([
             env.DIR_SRC + '/**/*.hbs',
             '!' + env.DIR_SRC + '/templates/**',
@@ -33,5 +32,5 @@ gulp.task('buildMarkup', (done) => {
             ]
         }))
         .pipe(gulp.dest(env.DIR_DEST))
-        .on('end', done);
+        .on('end', reloadBrowser);
 });

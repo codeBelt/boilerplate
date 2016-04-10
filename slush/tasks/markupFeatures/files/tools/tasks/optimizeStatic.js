@@ -1,10 +1,9 @@
 const gulp = require('gulp');
-const argv = require('yargs').argv;
 const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
 
 gulp.task('optimizeStatic', (done) => {
-    gulp
+    return gulp
         .src(env.DIR_SRC + '/assets/media/images/**/*.+(png|jpg|gif|svg)')
         .pipe(imagemin({
             progressive: true,
@@ -15,6 +14,5 @@ gulp.task('optimizeStatic', (done) => {
             //],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest(env.DIR_DEST + '/assets/media/images/'))
-        .on('end', done);
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/media/images/'));
 });

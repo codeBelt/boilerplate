@@ -1,8 +1,8 @@
 const gulp = require('gulp');
-const argv = require('yargs').argv;
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const merge = require('merge-stream');
+const aliasify = require('aliasify');
 
 gulp.task('buildScripts', (done) => {
     const compileJavaScript = browserify({
@@ -13,13 +13,16 @@ gulp.task('buildScripts', (done) => {
         .transform('babelify', {
             presets: ['es2015'],
             extensions: ['.js', '.es'],
-            //https://github.com/HenriqueLimas/gulp-babelify-starter-kit/blob/master/.babelrc
+            // https://github.com/HenriqueLimas/gulp-babelify-starter-kit/blob/master/.babelrc
             // http://babeljs.io/docs/usage/babelrc/
             plugins: [
                 'transform-class-properties',
                 'syntax-class-properties'
             ]
         })
+        .transform(aliasify.configure({
+            aliases: pkg.aliases
+        }))
         .bundle()
         .on('error', console.log)
         // .pipe(exorcist(jsDir + config.bundleFileName + '.js.map'))
@@ -30,5 +33,6 @@ gulp.task('buildScripts', (done) => {
         .src(env.DIR_SRC + '/assets/vendor/**/*.js')
         .pipe(gulp.dest(env.DIR_DEST + '/assets/vendor/'));
 
-    return merge(compileJavaScript, copyVendorScripts);
+    return merge(compileJavaScript, copyVendorScripts)
+        .on('end', reloadBrowser);
 });

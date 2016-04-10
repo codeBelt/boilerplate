@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const argv = require('yargs').argv;
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const merge = require('merge-stream');

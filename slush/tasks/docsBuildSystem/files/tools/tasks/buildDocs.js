@@ -17,11 +17,10 @@ gulp.task('buildDocs', (done) => {
         themedir: 'tools/cache/yuidoc-friendly-theme'
     };
 
-    gulp
+    return gulp
         .src(env.DIR_SRC + '/assets/scripts/**/*.{js,ts}')
         .pipe(yuidoc.parser(parserOptions))
         //.pipe(yuidoc.reporter())
         .pipe(yuidoc.generator(generatorOptions))
         .pipe(gulp.dest(env.DIR_DOCS))
-        .on('end', done);
 });
