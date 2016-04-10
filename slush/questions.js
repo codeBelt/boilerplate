@@ -78,6 +78,10 @@ module.exports = [
             {
                 "name": "Sass",
                 "value": "sass"
+            },
+            {
+                "name": "PostCSS",
+                "value": "postCSS"
             }
         ],
         "default": "sass",
@@ -234,10 +238,10 @@ module.exports = [
             //     "value": "testing",
             //     "checked": false
             // },
-            // {
-            //     "name": "3rd-Party Vulnerability Audit",
-            //     "value": "audit"
-            // }
+            {
+                "name": "3rd-Party Vulnerability Audit",
+                "value": "audit"
+            }
         ],
         "type": "checkbox"
     },

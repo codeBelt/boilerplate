@@ -16,6 +16,9 @@ module.exports = (answers) => {
         case 'sass':
             devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer', 'gulp-if'];
             break;
+        case 'postCSS':
+            devDependencies = ['gulp', 'gulp-postcss', 'autoprefixer', 'gulp-sourcemaps'];
+            break;
     }
 
     const sourcePath = __dirname + '/' + type + '/**/*';
