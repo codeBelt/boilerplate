@@ -43,6 +43,7 @@ module.exports = (answers) => {
         taskName: 'mainBuildSystem',
         devDependencies: [
             'gulp',
+            'gulp-install',
             'del',
             'gulp-uglify',
             'gulp-header',
