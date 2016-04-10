@@ -10,4 +10,3 @@ node_modules/
 npm-debug.log
 tools/node/
 web/
-src/assets/scripts/precompiledJst.js
