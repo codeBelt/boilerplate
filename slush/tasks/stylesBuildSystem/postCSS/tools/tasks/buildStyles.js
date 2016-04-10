@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
+const atImport = require("postcss-import");
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('autoprefixer');
 
@@ -8,6 +9,7 @@ const allowAutoPrefixer = <%= stylesFeatures.indexOf("autoprefixer") >= 0 %>;
 gulp.task('buildStyles', (done) => {
 
     const processors = [
+        atImport
     ];
 
     if (allowAutoPrefixer === true) {

@@ -24,3 +24,5 @@ TODO:  postinstall should call 'gulp install' also.
 TODO: add ?v=@@version for cache breaker.
 
 get sourcemaps work on all that is needed.
+
+should we use cssnano instead of cleanCSS
