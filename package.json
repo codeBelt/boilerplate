@@ -15,5 +15,19 @@
     "merge-stream": "^1.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codeBelt/boilerplate"
+  },
+  "keywords": [
+    "slushgenerator",
+    "es6",
+    "es2015",
+    "RequireJS",
+    "TypeScript",
+    "slush",
+    "gulp",
+    "boilerplate"
+  ]
 }
