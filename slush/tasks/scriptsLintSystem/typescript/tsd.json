@@ -5,7 +5,7 @@
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
   "installed": {
-  <% if (demoBuildSystem === "yes") { %>
+  <% if (scriptsAdditional.indexOf("jquery") >= 0 || demoBuildSystem === "yes") { %>
     "jquery/jquery.d.ts": {
       "commit": "cc3d223a946f661eff871787edeb0fcb8f0db156"
     }
