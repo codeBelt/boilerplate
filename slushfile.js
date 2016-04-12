@@ -12,6 +12,7 @@
 const gulp = require('gulp');
 const inquirer = require('inquirer');
 const runSequence = require('run-sequence').use(gulp);
+const install = require('gulp-install');
 
 // Helpers
 const Util = require('./slush/utils/Util');
@@ -76,8 +77,16 @@ gulp.task('default', (done) => {
         runSequence(
             slushTasks,
             npmJsonBuildSystemTask.taskName,
+            // 'install',
             done
         );
     });
 
+});
+
+// Installer
+gulp.task('install', (done) => {
+    return gulp
+        .src(['./*.json'])
+        .pipe(install());
 });

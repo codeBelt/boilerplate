@@ -32,15 +32,13 @@ global.reloadBrowser = browserSync.reload;
 
 /**
  * Determines the build mode. Default will be read from the env file but can be overridden with a flag.
- * Flags are: --dev , --stage , --prod
+ * Flags are: --dev , --prod
  */
-if (argv.prod === true || argv.stage === true || argv.dev === true) {
+if (argv.prod === true || argv.dev === true) {
     global.isProd = !!argv.prod;
-    global.isStage = !!argv.stage;
     global.isDev = !!argv.dev;
 } else {
     global.isProd = (env.BUILD_MODE === 'prod');
-    global.isStage = (env.BUILD_MODE === 'stage');
     global.isDev = (env.BUILD_MODE === 'dev');
 }
 
@@ -57,9 +55,8 @@ global.banner = require('./banner.js')(pkg);
  */
 gulp.task('default', (done) => {
     runSequence(
-        (isDev === true)    ? ['build'] :
-        (isStage === true)  ? ['lint', 'build'] :
-        (isProd === true)   ? ['lint', 'build'] : [],
+        (isDev === true)    ? ['lint', 'build'] :
+        (isProd === true)   ? ['build'] : [],
         done
     );
 });

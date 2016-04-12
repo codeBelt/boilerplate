@@ -87,7 +87,7 @@ var Config = {
      * Value to determine what tasks should be triggered to build the output.
      *
      * @property BUILD_MODE
-     * @type {String} Options are 'dev', 'stage' or 'prod'
+     * @type {String} Options are 'dev' or 'prod'
      */
     BUILD_MODE: 'prod',
 

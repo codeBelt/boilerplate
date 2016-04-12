@@ -204,9 +204,13 @@
                     <script src="assets/scripts/precompiledJst.js"></script>
                 <% } %>
 
-                <% if (scriptsBuildSystem === "none" && demoBuildSystem === "yes") { %>
+                <% if (scriptsBuildSystem === "none") { %>
                     <script src="assets/scripts/shim.js"></script>
-                    <script src="assets/scripts/views/DemoView.js"></script>
+
+                        <% if (demoBuildSystem === "yes") { %>
+                            <script src="assets/scripts/views/DemoView.js"></script>
+                        <% } %>
+
                     <script src="assets/scripts/App.js"></script>
                 <% } %>
 
