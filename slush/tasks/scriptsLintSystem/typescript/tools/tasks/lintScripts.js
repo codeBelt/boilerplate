@@ -9,5 +9,7 @@ gulp.task('lintScripts', function (done) {
             '!**/precompiledJst.js'
         ])
         .pipe(tslint())
-        .pipe(tslint.report("verbose"));
+        .pipe(tslint.report('prose', {
+            emitError: false
+        }))
 });
