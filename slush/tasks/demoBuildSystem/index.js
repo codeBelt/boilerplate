@@ -2,6 +2,8 @@
 
 const gulp = require('gulp');
 const template = require('gulp-template');
+const jsbeautifier = require('gulp-jsbeautifier');
+const gulpIf = require('gulp-if');
 
 module.exports = (answers) => {
     if (answers.demoBuildSystem === 'no') { return null; }
@@ -25,6 +27,9 @@ module.exports = (answers) => {
                 stylesSourcePaths
             ])
             .pipe(template(answers))
+            .pipe(gulpIf('*.js', jsbeautifier({
+                max_preserve_newlines: 2
+            })))
             .pipe(gulp.dest('./'))
             .on('end', done);
     });

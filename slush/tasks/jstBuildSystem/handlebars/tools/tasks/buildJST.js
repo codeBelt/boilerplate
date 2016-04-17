@@ -5,8 +5,13 @@ const wrap = require('gulp-wrap');
 const declare = require('gulp-declare');
 const concat = require('gulp-concat');
 const merge = require('merge-stream');
+const gulpIf = require('gulp-if');
+
 
 gulp.task('buildJST', (done) => {
+    const isAMD = @@isAMD;
+    const destPath = (isAMD === true && isProd === true) ? env.DIR_SRC : env.DIR_DEST;
+
     // Compile partials: Assume all partials start with an underscore
     const partials = gulp
         .src(env.DIR_SRC + '/templates/jst/**/_*.hbs')
@@ -40,6 +45,7 @@ gulp.task('buildJST', (done) => {
     // Output both the partials and the templates.
     return merge(partials, templates)
         .pipe(concat('precompiledJst.js'))
-        .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'))
+        .pipe(gulpIf(isAMD, wrap('define(["handlebars"], function(Handlebars) {<%= contents %>});')))
+        .pipe(gulp.dest(destPath + '/assets/scripts/'))
         .on('end', reloadBrowser);
 });

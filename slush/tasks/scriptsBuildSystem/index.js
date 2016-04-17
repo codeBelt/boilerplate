@@ -24,7 +24,7 @@ module.exports = (answers) => {
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'requirejs', 'gulp-requirejs-optimize', 'merge-stream'];
-            bowerDependencies = ['requirejs'];
+            bowerDependencies = ['requirejs', 'jquery'];
             break;
     }
 

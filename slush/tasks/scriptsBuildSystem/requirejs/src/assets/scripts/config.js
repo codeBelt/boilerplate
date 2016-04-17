@@ -35,10 +35,18 @@ require.config({ // jshint ignore:line
     paths: {
         // this empty string tells r.js to use single quotes when injecting
         // bower modules automatically. Otherwise it defaults to double quotes.
-        'requirejs': ''
+        'requirejs': '',
+        'jquery': '../vendor/jquery/dist/jquery',
+        <% if (jstBuildSystem !== "no") { %>
+            'handlebars': '../vendor/handlebars/handlebars',
+            'templates': './precompiledJst',
+        <% } %>
     },
 
     shim: {
+        'jquery': {
+            exports: '$'
+        }
     },
 
     waitSeconds: 120

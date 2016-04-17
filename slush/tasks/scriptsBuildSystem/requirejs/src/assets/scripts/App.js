@@ -1,6 +1,10 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
+    <% if (jstBuildSystem !== "no") { %>
+        require('templates'); // jshint ignore:line
+    <% } %>
+
     /**
      * Initial application setup. Runs once upon every page load.
      *
@@ -21,6 +25,10 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.init = function() {
         // Create your views here
+        <% if (jstBuildSystem !== "no") { %>
+            var template = window['JST']['templates/jst/GenericModal']();
+            console.log(template);
+        <% } %>
     };
 
     return App;
