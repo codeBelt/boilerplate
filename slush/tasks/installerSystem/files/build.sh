@@ -18,10 +18,10 @@ if [ -e "$NODE_DIR" ]; then
     printf ':: Location: %s\n' "$NODE"
     printf ':: Installing dependencies...\n'
     "$NODE_DIR/bin/npm" install
-    "$NODE" "$NODE_DIR/bin/bower" install
+    "$NODE" "$NODE_DIR/bin/gulp" install
 
-    printf ':: Performing Grunt build...\n'
-    "$NODE" "$NODE_DIR/bin/grunt" $@
+    printf ':: Performing Gulp build...\n'
+    "$NODE" "$NODE_DIR/bin/gulp" $@
 else
     # Otherwise, assume local install is available
     NODE="node"
@@ -29,10 +29,10 @@ else
     printf ':: Node installation found! (%s)\n' "$(node -v)"
     printf ':: Installing dependencies...\n'
     npm install
-    bower install
+    gulp install
 
-    printf ':: Performing Grunt build...\n'
-    grunt $@
+    printf ':: Performing Gulp build...\n'
+    gulp $@
 fi
 
 # Check the installed version of node with the latest version

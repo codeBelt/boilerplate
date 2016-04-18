@@ -28,10 +28,10 @@ echo :: Location: "%NODE%"
 
 echo :: Installing dependencies...
 CALL "%NODE_DIR%npm" install || exit /b 1
-CALL "%NODE_DIR%bower" install || exit /b 1
+CALL "%NODE_DIR%gulp" install || exit /b 1
 
-echo :: Performing Grunt build...
-CALL "%NODE_DIR%grunt" %* || exit /b 1
+echo :: Performing Gulp build...
+CALL "%NODE_DIR%gulp" %* || exit /b 1
 
 goto finish
 
@@ -42,9 +42,9 @@ set NODE=node
 echo :: Node installation found!
 echo :: Installing dependencies...
 CALL npm install || exit /b 1
-CALL bower install || exit /b 1
-echo :: Performing Grunt build...
-CALL grunt %* || exit /b 1
+CALL gulp install || exit /b 1
+echo :: Performing Gulp build...
+CALL gulp %* || exit /b 1
 
 goto finish
 
