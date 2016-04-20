@@ -6,11 +6,6 @@
  * environment-specific configuration should placed in appropriate configuration
  * files.
  *
- * Paths to vendor libraries may be added here to provide short aliases to
- * otherwise long and arbitrary paths. If you're using bower to manage vendor
- * scripts, running `grunt inject` will automatically add paths aliases as
- * needed.
- *
  * @example
  *     paths: {
  *         'jquery': '../vendor/jquery/jquery',

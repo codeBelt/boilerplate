@@ -92,7 +92,7 @@ var Config = {
     BUILD_MODE: 'prod',
 
     /**
-     * DANGER: Whether the Gruntfile should be allowed to modify directories
+     * DANGER: Whether the Gulpfile should be allowed to modify directories
      * outside of the current working directory (CDW). Should only be enabled
      * if you understand the effects and repercussions. Useful when building
      * in environments where only the contents of DIR_DEST should be publicly

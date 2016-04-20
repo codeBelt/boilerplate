@@ -6,7 +6,7 @@
   "ignore": [
     ".*",
     "*.json",
-    "Gruntfile.js",
+    "Gulpfile.js",
     "lib",
     "node_modules",
     "test"
