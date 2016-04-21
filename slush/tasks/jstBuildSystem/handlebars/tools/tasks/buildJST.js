@@ -14,7 +14,7 @@ gulp.task('buildJST', (done) => {
 
     // Compile partials: Assume all partials start with an underscore
     const partials = gulp
-        .src(env.DIR_SRC + '/templates/jst/**/_*.hbs')
+        .src(env.DIR_SRC + '/templates/jst/**/_*.*')
         .pipe(handlebars({
             handlebars: require('handlebars')
         }))
@@ -29,7 +29,7 @@ gulp.task('buildJST', (done) => {
 
     // Compile templates
     const templates = gulp
-        .src(env.DIR_SRC + '/templates/jst/**/[^_]*.hbs')
+        .src(env.DIR_SRC + '/templates/jst/**/[^_]*.*')
         .pipe(handlebars({
             handlebars: require('handlebars')
         }))

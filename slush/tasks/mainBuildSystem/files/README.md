@@ -4,7 +4,7 @@
 
 ### Step One - Install Node.js
 
-Installation of Node.js is a prerequisite to running the Gulp build tool. Run the `node-install` script below to install everything you need to get started: Node.js, gulp-cli, and bower.
+Installation of Node.js is a prerequisite to running the Gulp build tool. Run the `node-install` script below to install everything you need to get started: Node.js, gulp, and bower.
 
 **Windows:**
 
