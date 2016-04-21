@@ -182,5 +182,5 @@ gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/assets/{scss,styles}/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
     gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
-    gulp.watch(env.DIR_SRC + '/assets/media/**/*', ['buildStatic']);
+    gulp.watch(env.DIR_SRC + '/assets/{media,data}/**/*', ['buildStatic']);
 });
