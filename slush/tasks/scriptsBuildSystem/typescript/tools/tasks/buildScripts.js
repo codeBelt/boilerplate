@@ -26,7 +26,6 @@ gulp.task('buildScripts', (done) => {
             ]
         })
         .bundle()
-        .on('error', console.log)
         // .pipe(exorcist(jsDir + config.bundleFileName + '.js.map'))
         .pipe(source('main.js'))
         .pipe(gulp.dest(env.DIR_DEST + '/assets/scripts/'));
