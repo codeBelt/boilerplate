@@ -5,7 +5,7 @@ gulp.task('buildStatic', (done) => {
         .src([
             env.DIR_SRC + '/assets/media/**/*',
             env.DIR_SRC + '/assets/data/**/*'
-        ], { base: env.DIR_SRC + '/assets/' })
+        ], { base: env.DIR_SRC })
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', reloadBrowser);
 });
