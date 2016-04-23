@@ -125,7 +125,8 @@ gulp.task('lint', (done) => {
 });
 
 /**
- * Installs the NPM, Bower and TSD modules.
+ * Installs the NPM, Bower and TypeScript Definition Manager modules;
+ * Depending on what boilerplate you chosen.
  *
  * @task install
  */
