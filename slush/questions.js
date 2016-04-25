@@ -17,10 +17,9 @@ module.exports = [
             return Util.toSentence(answer.projectName, '-');
         },
         "validate": (answer) => {
-            //if (answer.length < 1) {
-            //    return 'You must choose at least one topping.';
-            //}
-            return true;
+            const isValid = Boolean(answer && answer.match(/^[\w-]+$/));
+
+            return isValid || 'Slugs may only contain letters, numbers, hyphens, and underscores.';
         }
     },
     {
