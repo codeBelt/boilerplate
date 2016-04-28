@@ -20,7 +20,7 @@ module.exports = (answers) => {
             devDependencies = ['gulp', 'gulp-sourcemaps', 'browserify', 'browserify-shim', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties', 'aliasify'];
             break;
         case 'typescript':
-            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'babelify', 'aliasify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties', 'babel-plugin-syntax-class-properties'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'browserify-shim', 'babelify', 'aliasify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties', 'babel-plugin-syntax-class-properties'];
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'requirejs', 'gulp-requirejs-optimize', 'merge-stream'];
