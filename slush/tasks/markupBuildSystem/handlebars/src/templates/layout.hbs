@@ -193,6 +193,10 @@
                     <% if (scriptsAdditional.indexOf("jquery") >= 0 || demoBuildSystem === "yes") { %>
                         <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
                     <% } %>
+
+                    <% if (jstBuildSystem === "handlebars") { %>
+                        <script src="assets/vendor/handlebars/handlebars.runtime.min.js"></script>
+                    <% } %>
                 <!-- endbuild -->
 
                 <!-- build:js assets/scripts/main.js -->
