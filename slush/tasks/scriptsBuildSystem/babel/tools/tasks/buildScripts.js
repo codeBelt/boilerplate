@@ -17,7 +17,8 @@ gulp.task('buildScripts', (done) => {
             // http://babeljs.io/docs/usage/babelrc/
             plugins: [
                 'transform-class-properties',
-                'syntax-class-properties'
+                'transform-async-to-generator',
+                'transform-runtime'
             ]
         })
         .transform(aliasify.configure({

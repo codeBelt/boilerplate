@@ -17,10 +17,10 @@ module.exports = (answers) => {
             devDependencies = ['gulp', 'merge-stream'];
             break;
         case 'babel':
-            devDependencies = ['gulp', 'gulp-sourcemaps', 'browserify', 'browserify-shim', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties', 'aliasify'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'browserify', 'browserify-shim', 'babelify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'aliasify', 'babel-plugin-transform-async-to-generator', 'babel-plugin-transform-class-properties', 'babel-plugin-transform-runtime'];
             break;
         case 'typescript':
-            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'browserify-shim', 'babelify', 'aliasify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-class-properties', 'babel-plugin-syntax-class-properties'];
+            devDependencies = ['gulp', 'gulp-sourcemaps', 'tsify', 'browserify', 'browserify-shim', 'babelify', 'aliasify', 'vinyl-source-stream', 'babel-preset-es2015', 'merge-stream', 'babel-plugin-transform-async-to-generator', 'babel-plugin-transform-class-properties', 'babel-plugin-transform-runtime'];
             break;
         case 'requirejs':
             devDependencies = ['gulp', 'requirejs', 'gulp-requirejs-optimize', 'merge-stream'];
