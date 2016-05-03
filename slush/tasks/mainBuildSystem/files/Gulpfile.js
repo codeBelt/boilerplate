@@ -172,6 +172,7 @@ gulp.task('install', (done) => {
  */
 gulp.task('watch', (done) => {
     browserSync.init({
+        notify: true,
         injectChanges: true,
         open: (argv.open === true),
         server: {

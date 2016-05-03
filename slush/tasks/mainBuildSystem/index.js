@@ -17,6 +17,7 @@ module.exports = (answers) => {
                 __dirname + '/files/*',
                 __dirname + '/files/.*',
                 '!' + __dirname + '/files/Gulpfile.js',
+                '!' + __dirname + '/files/README.md',
                 '!' + __dirname + '/files/package.json',
                 '!' + __dirname + '/files/bower.json'
             ])
@@ -25,7 +26,8 @@ module.exports = (answers) => {
         const gulpfileParse = gulp
             .src([
                 __dirname + '/files/tools/**/*',
-                __dirname + '/files/Gulpfile.js'
+                __dirname + '/files/Gulpfile.js',
+                __dirname + '/files/README.md'
             ], { base: __dirname + '/files/' })
             // Uses Underscore/Lodash templates to add or remove sections
             // which is determined what data is the "answers" object.
