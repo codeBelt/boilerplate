@@ -14,7 +14,7 @@ module.exports = (answers) => {
             devDependencies = ['gulp', 'gulp-autoprefixer', 'gulp-if'];
             break;
         case 'sass':
-            devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer', 'gulp-if'];
+            devDependencies = ['gulp', 'gulp-sass', 'gulp-autoprefixer', 'gulp-if', 'gulp-plumber'];
             break;
         case 'postCSS':
             devDependencies = ['gulp', 'gulp-postcss', 'postcss-import', 'autoprefixer', 'gulp-sourcemaps'];
