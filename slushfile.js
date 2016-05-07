@@ -20,7 +20,6 @@ const Util = require('./slush/utils/Util');
 // Slush Tasks
 const npmJsonBuildSystem = require('./slush/tasks/npmJsonBuildSystem/index');
 const mainBuildSystem = require('./slush/tasks/mainBuildSystem/index');
-const installerSystem = require('./slush/tasks/installerSystem/index');
 const scriptsBuildSystem = require('./slush/tasks/scriptsBuildSystem/index');
 const scriptsFramework = require('./slush/tasks/scriptsFramework/index');
 const scriptsLintSystem = require('./slush/tasks/scriptsLintSystem/index');
@@ -47,7 +46,6 @@ gulp.task('default', (done) => {
 
         // List of gulp tasks. Tasks will return 'null' if they don't need to be ran.
         let taskResults = [
-            installerSystem(answers),
             mainBuildSystem(answers),
             scriptsBuildSystem(answers),
             scriptsFramework(answers),
@@ -77,7 +75,7 @@ gulp.task('default', (done) => {
         runSequence(
             slushTasks,
             npmJsonBuildSystemTask.taskName,
-            // 'install',
+            'install',
             done
         );
     });
@@ -87,6 +85,6 @@ gulp.task('default', (done) => {
 // Installer
 gulp.task('install', (done) => {
     return gulp
-        .src(['./*.json'])
+        .src(['./package.json'])
         .pipe(install());
 });
