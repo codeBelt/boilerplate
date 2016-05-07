@@ -1,5 +1,5 @@
 {
-  "name": "slush-boilerplate",
+  "name": "slush-project",
   "version": "0.1.0",
   "devDependencies": {},
   "dependencies": {
@@ -19,16 +19,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/codeBelt/boilerplate"
+    "url": "git://github.com/codeBelt/slush-project"
   },
   "keywords": [
     "slushgenerator",
+    "sass",
+    "postcss",
     "es6",
     "es2015",
-    "RequireJS",
-    "TypeScript",
+    "requirejs",
+    "typescript",
+    "babel",
     "slush",
     "gulp",
+    "handlebars",
+    "jst",
     "boilerplate"
   ]
 }
