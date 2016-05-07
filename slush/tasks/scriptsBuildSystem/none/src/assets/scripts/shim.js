@@ -5,6 +5,5 @@ NRD['./shim'] = (function() {
 
     // Shim
     NRD['jquery'] = window.jQuery;
-    NRD['nerdery-function-bind'] = window.nerderyFunctionBind;
 
 }());

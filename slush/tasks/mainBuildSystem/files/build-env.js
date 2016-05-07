@@ -60,14 +60,6 @@ var Config = {
     DIR_SRC: 'src',
 
     /**
-     * Path to temporary directory (for multi-pass compilation). No trailing slash.
-     *
-     * @property DIR_TMP
-     * @type {String}
-     */
-    DIR_TMP: '.tmp',
-
-    /**
      * Path to compiled output files. No trailing slash.
      *
      * @property DIR_DEST

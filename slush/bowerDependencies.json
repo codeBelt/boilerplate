@@ -1,13 +1,9 @@
 {
   "requirejs": "~2.2.0",
   "jquery": "~2.2.3",
-  "modernizr": "git://github.com/components/modernizr#2.8.3",
   "structurejs": "~0.12.0",
   "handlebars": "~4.0.5",
-  "yuidoc-friendly-theme": "./tools/cache/yuidoc-friendly-theme",
-  "nerdery-auto-replace": "./tools/cache/nerdery-auto-replace",
-  "nerdery-external-links": "./tools/cache/nerdery-external-links",
-  "nerdery-function-name": "./tools/cache/nerdery-function-name",
-  "nerdery-has-js": "./tools/cache/nerdery-has-js",
-  "nerdery-request-animation-frame": "./tools/cache/nerdery-request-animation-frame"
+  "requestAnimationFrame": "~0.0.23",
+  "modernizr": "git://github.com/components/modernizr#2.8.3",
+  "yuidoc-friendly-theme": "./tools/cache/yuidoc-friendly-theme"
 }

@@ -189,24 +189,8 @@ module.exports = [
                 "value": "modernizr"
             },
             {
-                "name": "Auto Replace",
-                "value": "nerdery-auto-replace"
-            },
-            {
-                "name": "External Links",
-                "value": "nerdery-external-links"
-            },
-            {
-                "name": "Function Name",
-                "value": "nerdery-function-name"
-            },
-            {
-                "name": "Has JS",
-                "value": "nerdery-has-js"
-            },
-            {
                 "name": "Request Animation Frame",
-                "value": "nerdery-request-animation-frame"
+                "value": "requestAnimationFrame"
             }
         ],
         "default": "",
