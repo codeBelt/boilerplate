@@ -17,7 +17,7 @@ Remember to install `gulp`, `slush`, and `bower` globally as well, if you haven'
 npm install -g slush gulp bower
 ```
 
-If you choose TypeScript as an option.  You'll need to have `typings` installed for a smooth installation
+If you choose TypeScript as an option.  You'll need to have `typings` installed for a smooth installation:
 
 ```
 npm install -g typings
