@@ -3,13 +3,22 @@ slush-project
 
 > A [slush](http://slushjs.github.io) generator to create different Front-end / Client-side boilerplates while maintainer the same folder structure. 
 
-
 > ####Configure Options:
 > 
 > * **JavaScript** - Babel (ES2015), TypeScript (ES2015), or RequireJS (ES5)
 > * **CSS** - Sass, PostCSS, or None
 > * **HTML** - Handlebars, Includes, or None
 > * **Plus More...**
+> 
+> ####Features:
+> 
+> * Development Mode
+> * Production Mode
+> * Sourcemaps
+> * Minifying
+> * BrowserSync / Browser Reload
+> * YUIDocs
+
 
 ## Installation
 
