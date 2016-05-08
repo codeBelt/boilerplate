@@ -39,6 +39,58 @@ cd my-project-app
 slush project
 ```
 
+# Questions you'll be asked
+    
+
+1. Which scripts build system?
+	* None 
+	* ES2015 (Babel)
+	* ES2015 (TypeScript)
+	* RequireJS (legacy)
+	
+1. Any additional scripts?
+	* jQuery 
+	* Includes
+	* Handlebars
+	
+1. Any additional scripts?
+	* jQuery 
+	* Modernizr
+	* Request Animation Frame
+	
+1. Which styles build system?
+	* None 
+	* Sass
+	* PostCSS
+	
+1. Any additional stylesheets?
+	* Autoprefixer 
+	* Print
+	* IE9 Conditional
+	* IE8 Conditional
+	
+1. Which markup build system?
+	* None 
+	* Includes
+	* Handlebars
+	
+1. Precompile JavaScript Templates?
+	* No 
+	* Handlebars
+	
+1. What markup features would you like?
+	* Icons 
+	* SEO Meta Data
+	* XHTML Strict Doctype (legacy)
+	* Imagemin
+	
+1. Do you want a demo application?
+	* No 
+	* Yes
+	
+1. Any testing features?
+	* 3rd-Party Vulnerability Audit 
+	
 ----
 
 TODO: 

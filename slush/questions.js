@@ -23,44 +23,69 @@ module.exports = [
         }
     },
     {
-        "name": "markupBuildSystem",
-        "message": "Which markup build system?",
+        "name": "scriptsBuildSystem",
+        "message": "Which scripts build system?",
         "choices": [
             {
                 "name": "None",
                 "value": "none"
             },
             {
-                "name": "Includes",
-                "value": "includes"
+                "name": "ES2015 (Babel)",
+                "value": "babel"
             },
             {
-                "name": "Handlebars",
-                "value": "handlebars"
+                "name": "ES2015 (TypeScript)",
+                "value": "typescript"
+            },
+            {
+                "name": "RequireJS (legacy)",
+                "value": "requirejs"
             }
         ],
-        "default": "handlebars",
+        "default": "babel",
         "type": "list"
     },
     {
-        "name": "markupFeatures",
-        "message": "What markup features would you like?",
+        name: "jsNamespace",
+        message: "What JavaScript global variable name would you like?",
+        "default": "NERD",
+        when: function( answers ) {
+            return answers.scriptsBuildSystem === "none";
+        },
+        type: "input"
+    },
+    //{
+    //    "name": "scriptsFramework",
+    //    "message": "Which framework build system?",
+    //    "choices": [
+    //        {
+    //            "name": "None",
+    //            "value": "none"
+    //        },
+    //        {
+    //            "name": "StructureJS",
+    //            "value": "structurejs"
+    //        }
+    //    ],
+    //    "default": "none",
+    //    "type": "list"
+    //},
+    {
+        "name": "scriptsAdditional",
+        "message": "Any additional scripts?",
         "choices": [
             {
-                "name": "Icons",
-                "value": "icons"
+                "name": "jQuery",
+                "value": "jquery"
             },
             {
-                "name": "SEO Meta Data",
-                "value": "seo"
+                "name": "Modernizr",
+                "value": "modernizr"
             },
             {
-                "name": "XHTML Strict Doctype (legacy)",
-                "value": "xhtml"
-            },
-            {
-                "name": "Imagemin",
-                "value": "imagemin"
+                "name": "Request Animation Frame",
+                "value": "requestAnimationFrame"
             }
         ],
         "default": "",
@@ -112,54 +137,25 @@ module.exports = [
         "type": "checkbox"
     },
     {
-        "name": "scriptsBuildSystem",
-        "message": "Which scripts build system?",
+        "name": "markupBuildSystem",
+        "message": "Which markup build system?",
         "choices": [
             {
                 "name": "None",
                 "value": "none"
             },
             {
-                "name": "ES2015 (Babel)",
-                "value": "babel"
+                "name": "Includes",
+                "value": "includes"
             },
             {
-                "name": "ES2015 (TypeScript)",
-                "value": "typescript"
-            },
-            {
-                "name": "RequireJS (legacy)",
-                "value": "requirejs"
+                "name": "Handlebars",
+                "value": "handlebars"
             }
         ],
-        "default": "babel",
+        "default": "handlebars",
         "type": "list"
     },
-    {
-        name: "jsNamespace",
-        message: "What JavaScript global variable name would you like?",
-        "default": "NERD",
-        when: function( answers ) {
-            return answers.scriptsBuildSystem === "none";
-        },
-        type: "input"
-    },
-    //{
-    //    "name": "scriptsFramework",
-    //    "message": "Which framework build system?",
-    //    "choices": [
-    //        {
-    //            "name": "None",
-    //            "value": "none"
-    //        },
-    //        {
-    //            "name": "StructureJS",
-    //            "value": "structurejs"
-    //        }
-    //    ],
-    //    "default": "none",
-    //    "type": "list"
-    //},
     {
         "name": "jstBuildSystem",
         "message": "Precompile JavaScript Templates?",
@@ -177,20 +173,24 @@ module.exports = [
         "type": "list"
     },
     {
-        "name": "scriptsAdditional",
-        "message": "Any additional scripts?",
+        "name": "markupFeatures",
+        "message": "What markup features would you like?",
         "choices": [
             {
-                "name": "jQuery",
-                "value": "jquery"
+                "name": "Icons",
+                "value": "icons"
             },
             {
-                "name": "Modernizr",
-                "value": "modernizr"
+                "name": "SEO Meta Data",
+                "value": "seo"
             },
             {
-                "name": "Request Animation Frame",
-                "value": "requestAnimationFrame"
+                "name": "XHTML Strict Doctype (legacy)",
+                "value": "xhtml"
+            },
+            {
+                "name": "Imagemin",
+                "value": "imagemin"
             }
         ],
         "default": "",
