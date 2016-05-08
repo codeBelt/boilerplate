@@ -97,6 +97,10 @@
                     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
                 <% } %>
 
+                <% if (scriptsAdditional.indexOf("requestAnimationFrame") >= 0 ) { %>
+                    <script src="assets/vendor/requestAnimationFrame/app/requestAnimationFrame.js"></script>
+                <% } %>
+
                 <% if (jstBuildSystem === "handlebars") { %>
                     <script src="assets/vendor/handlebars/handlebars.runtime.min.js"></script>
                 <% } %>
