@@ -33,7 +33,12 @@
     "slush",
     "gulp",
     "handlebars",
+    "includes",
     "jst",
-    "boilerplate"
+    "sourcemaps",
+    "templates",
+    "boilerplate",
+    "browsersync",
+    "project"
   ]
 }

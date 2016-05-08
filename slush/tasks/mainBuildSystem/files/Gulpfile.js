@@ -7,7 +7,6 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
-const install = require('gulp-install');
 const browserSync = require('browser-sync').create();
 
 /**
@@ -122,18 +121,6 @@ gulp.task('lint', (done) => {
         ['lintScripts'],
         done
     );
-});
-
-/**
- * Installs the NPM, Bower and TypeScript Definition Manager modules;
- * Depending on what boilerplate you chosen.
- *
- * @task install
- */
-gulp.task('install', (done) => {
-    return gulp
-        .src(['./*.json'])
-        .pipe(install());
 });
 
 <% if (testingBuildSystem.indexOf('testing') >= 0) { %>
