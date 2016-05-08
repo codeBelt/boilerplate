@@ -1,7 +1,15 @@
 slush-project
 ==============
 
-> A [slush](http://slushjs.github.io) generator for........................
+> A [slush](http://slushjs.github.io) generator to create different Front-end / Client-side boilerplates while maintainer the same folder structure. 
+
+
+> ####Configure Options:
+> 
+> * **JavaScript** - Babel (ES2015), TypeScript (ES2015), or RequireJS (ES5)
+> * **CSS** - Sass, PostCSS, or None
+> * **HTML** - Handlebars, Includes, or None
+> * **Plus More...**
 
 ## Installation
 
@@ -39,7 +47,7 @@ cd my-project-app
 slush project
 ```
 
-# Questions you'll be asked
+## Questions you'll be asked
     
 
 1. Which scripts build system?
