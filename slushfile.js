@@ -1,6 +1,6 @@
 /*
- * slush-boilerplate
- * https://github.com/codeBelt/slush-boilerplate
+ * slush-project
+ * https://github.com/codeBelt/slush-project
  *
  * Copyright (c) 2016, codeBelt
  * Licensed under the MIT license.
