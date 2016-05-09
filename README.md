@@ -1,7 +1,7 @@
 #slush-project
 
 
-> A [slush](http://slushjs.github.io) generator to create different Front-end / Client-side boilerplates while maintainer the same folder structure. 
+> A [slush](http://slushjs.github.io) generator to create different Client-side boilerplates while maintainer the same folder structure. 
 
 > ####Configure Options:
 > 
