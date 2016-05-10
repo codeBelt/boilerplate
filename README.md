@@ -5,7 +5,7 @@
 
 > ####Configure Options:
 > 
-> * **JavaScript** - Babel (ES2015), TypeScript (ES2015), or RequireJS (ES5)
+> * **JavaScript** - Babel (ES2015), TypeScript (ES2015), RequireJS (ES5) or None
 > * **CSS** - Sass, PostCSS, or None
 > * **HTML** - Handlebars, Includes, or None
 > * **Plus More...**
