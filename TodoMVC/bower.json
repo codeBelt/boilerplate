@@ -1,0 +1,10 @@
+{
+  "name": "demo-todo-mvc",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "handlebars": "~4.0.5",
+    "jquery": "~2.2.3"
+  },
+  "devDependencies": {}
+}

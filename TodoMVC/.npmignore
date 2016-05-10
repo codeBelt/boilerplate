@@ -1,0 +1,3 @@
+# don't ignore files
+!.gitignore
+!build-env.js
