@@ -1,6 +1,6 @@
 {
   "name": "slush-project",
-  "version": "0.8.0",
+  "version": "0.8.3",
   "devDependencies": {},
   "dependencies": {
     "gulp": "^3.8.6",
