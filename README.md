@@ -70,11 +70,6 @@ slush project
 	* Includes
 	* Handlebars
 	
-1. Any additional scripts?
-	* jQuery 
-	* Modernizr
-	* Request Animation Frame
-	
 1. Which styles build system?
 	* None 
 	* Sass
