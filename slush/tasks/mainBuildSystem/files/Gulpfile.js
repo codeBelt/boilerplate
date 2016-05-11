@@ -173,3 +173,17 @@ gulp.task('watch', (done) => {
     gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
     gulp.watch(env.DIR_SRC + '/assets/{media,data}/**/*', ['buildStatic']);
 });
+
+/**
+ * Helper task to builds and then watches files.
+ * Same as doing "gulp && gulp watch"
+ *
+ * @task launch
+ */
+gulp.task('launch', (done) => {
+    runSequence(
+        ['default'],
+        ['watch'],
+        done
+    );
+});
