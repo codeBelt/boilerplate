@@ -7,11 +7,11 @@ const del = require('del');
  * @task clean:*
  */
 gulp.task('clean:dest', (done) => {
-    return del(env.DIR_DEST);
+    return del(env.DIR_DEST, { force: env.UNSAFE_MODE });
 });
 
 gulp.task('clean:docs', (done) => {
-    return del(env.DIR_DOCS);
+    return del(env.DIR_DOCS, { force: env.UNSAFE_MODE });
 });
 
 gulp.task('clean:minify', (done) => {
@@ -19,7 +19,7 @@ gulp.task('clean:minify', (done) => {
         env.DIR_DEST + '/assets/vendor'
         <% if (jstBuildSystem !== "no") { %>, env.DIR_DEST + '/assets/scripts/precompiledJst.js' <% } %>
         <% if (jstBuildSystem !== "no") { %>, env.DIR_SRC + '/assets/scripts/precompiledJst.js' <% } %>
-    ]);
+    ], { force: env.UNSAFE_MODE });
 });
 
 gulp.task('clean:installed', (done) => {
@@ -27,5 +27,5 @@ gulp.task('clean:installed', (done) => {
         'tools/node-*',
         env.DIR_BOWER,
         env.DIR_NPM
-    ]);
+    ], { force: env.UNSAFE_MODE });
 });
