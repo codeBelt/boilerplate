@@ -61,9 +61,9 @@ slush project
 
 1. Which scripts build system?
 	* None 
-	* ES2015 (Babel)
-	* ES2015 (TypeScript)
-	* RequireJS (legacy)
+	* Babel (ES2015)
+	* TypeScript (ES2015)
+	* RequireJS (legacy - ES5)
 	
 1. Any additional scripts?
 	* jQuery 
