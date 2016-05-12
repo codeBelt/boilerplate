@@ -15,5 +15,5 @@ gulp.task('optimizeStatic', (done) => {
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest(env.DIR_DEST + '/dist/images'));
+        .pipe(gulp.dest(env.DIR_DEST + '/assets/media/images/'));
 });
