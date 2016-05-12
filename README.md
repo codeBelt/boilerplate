@@ -113,7 +113,6 @@ slush project
 TODO: 
 
 * Add AVA unit testing to projects.
-* Make sure optimizeStatic is working.
 
 ## License
 

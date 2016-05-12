@@ -1,6 +1,47 @@
 {{#extend "layout"}}
     {{#content "body" mode="append" }}
-        <h1>Welcome</h1> <p>
-                Star my project <a href="https://github.com/codeBelt/slush-project" target="_blank">slush project</a>
-            </p> {{/content}}
+        <!-- CONTENT -->
+        <section id="todoapp">
+            <header id="header">
+                <h1>todos</h1>
+                <input id="new-todo" class="js-App-addInput" placeholder="What needs to be done?" autofocus>
+            </header>
+            <!-- This section should be hidden by default and shown when there are todos -->
+            <section id="main" class="js-mainView">
+                <input id="toggle-all" class="js-markAllComplete" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list" class="js-todoList">
+
+                </ul>
+            </section>
+            <!-- This footer should hidden by default and shown when there are todos -->
+            <footer id="footer" class="js-footerView">
+                <!-- This should be `0 items left` by default -->
+                <span id="todo-count"><strong class="js-FooterView-remaining">0</strong> item left</span>
+                <!-- Remove this if you don't implement routing -->
+                <ul id="filters">
+                    <li>
+                        <a class="selected" href="#/">All</a>
+                    </li>
+                    <li>
+                        <a href="#/active">Active</a>
+                    </li>
+                    <li>
+                        <a href="#/completed">Completed</a>
+                    </li>
+                </ul>
+                <!-- Hidden if no completed items are left ↓ -->
+                <button id="clear-completed" class="js-FooterView-clearCompleteBtn">Clear completed (<span class="js-FooterView-complete">0</span>)</button>
+            </footer>
+        </section>
+
+        <footer id="info">
+            <p>Double-click to edit a todo</p>
+            <!-- Remove the below line ↓ -->
+            <p>Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
+            <!-- Change this out with your name and url ↓ -->
+            <p>Created by <a href="http://www.codebelt.com/">codeBelt</a></p>
+            <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+        </footer>
+    {{/content}}
 {{/extend}}

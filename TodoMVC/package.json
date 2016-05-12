@@ -4,7 +4,9 @@
   "description": "Demo.TodoMVC description.",
   "developedBy": "",
   "private": true,
-  "aliases": {},
+  "aliases": {
+      "structurejs": "./src/assets/vendor/structurejs/js"
+  },
   "browser": {},
   "browserify-shim": {},
   "browserify": {
