@@ -1,11 +1,11 @@
 #slush-project
 
 
-> A [slush](http://slushjs.github.io) generator to create different Client-side boilerplates while maintainer the same folder structure. 
+> A [slush](http://slushjs.github.io) generator to create different Client-side boilerplates while maintaining the same folder structure. 
 
 > ####Configure Options:
 > 
-> * **JavaScript** - Babel (ES2015), TypeScript (ES2015), or RequireJS (ES5)
+> * **JavaScript** - Babel (ES2015), TypeScript (ES2015), RequireJS (ES5) or None
 > * **CSS** - Sass, PostCSS, or None
 > * **HTML** - Handlebars, Includes, or None
 > * **Plus More...**
@@ -61,19 +61,14 @@ slush project
 
 1. Which scripts build system?
 	* None 
-	* ES2015 (Babel)
-	* ES2015 (TypeScript)
-	* RequireJS (legacy)
+	* Babel (ES2015)
+	* TypeScript (ES2015)
+	* RequireJS (legacy - ES5)
 	
 1. Any additional scripts?
 	* jQuery 
 	* Includes
 	* Handlebars
-	
-1. Any additional scripts?
-	* jQuery 
-	* Modernizr
-	* Request Animation Frame
 	
 1. Which styles build system?
 	* None 

@@ -20,9 +20,9 @@
   "devDependencies": <%= devDependencies %>,
   "scripts": {
     <% if (scriptsBuildSystem.indexOf("typescript") >= 0) { %>
-      "postinstall": "bower install | typings install | gulp --dev && gulp watch --open"
+      "postinstall": "bower install && typings install && gulp --dev && gulp watch --open"
     <%  } else { %>
-      "postinstall": "bower install | gulp --dev && gulp watch --open"
+      "postinstall": "bower install && gulp --dev && gulp watch --open"
     <% } %>
   }
 }

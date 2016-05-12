@@ -6,6 +6,7 @@ const declare = require('gulp-declare');
 const concat = require('gulp-concat');
 const merge = require('merge-stream');
 const gulpIf = require('gulp-if');
+const slash = require('slash');
 
 
 gulp.task('buildJST', (done) => {
@@ -37,7 +38,9 @@ gulp.task('buildJST', (done) => {
         .pipe(declare({
             namespace: 'JST',
             processName: (filePath) => {
-                return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.'));
+                const path = filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.'));
+                // Node outputs \\ paths on Windows so the slash fixes that issue.
+                return slash(path);
             },
             noRedeclare: true // Avoid duplicate declarations
         }));

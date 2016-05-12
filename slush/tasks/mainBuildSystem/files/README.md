@@ -29,6 +29,10 @@ By default the ```BUILD_MODE``` in **build-env.js** file production mode. Don't 
 
     // Check for linting issues:
     $ gulp lint
+    
+    // Helper task for "gulp && gulp watch"
+    $ gulp launch
+    $ gulp launch --open
 
 ## Install
 After code is committed to source control and pulled down to another computer you will need to do the following:

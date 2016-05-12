@@ -13,7 +13,7 @@ module.exports = (answers) => {
 
     switch (jstType) {
         case 'handlebars':
-            devDependencies = ['gulp', 'gulp-handlebars', 'handlebars', 'gulp-wrap', 'gulp-declare', 'gulp-concat', 'merge-stream', 'gulp-if'];
+            devDependencies = ['gulp', 'gulp-handlebars', 'handlebars', 'gulp-wrap', 'gulp-declare', 'gulp-concat', 'merge-stream', 'gulp-if', 'slash'];
             bowerDependencies.push('handlebars');
             break;
     }

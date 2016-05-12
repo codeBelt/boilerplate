@@ -8,7 +8,7 @@ const allowAutoPrefixer = <%= stylesFeatures.indexOf("autoprefixer") >= 0 %>;
 
 gulp.task('buildStyles', (done) => {
     return gulp
-        .src(env.DIR_SRC + '/assets/scss/*.scss')
+        .src(env.DIR_SRC + '/assets/styles/*.scss')
         .pipe(plumber())
         .pipe(sass.sync())
         .pipe(gulpIf(allowAutoPrefixer, autoprefixer('last 2 versions')))
