@@ -3,10 +3,10 @@ const requireDir = require('require-dir');
 const runSequence = require('run-sequence');
 const argv = require('yargs').argv;
 const gulpIf = require('gulp-if');
-const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
+const cssnano = require('gulp-cssnano');
 const browserSync = require('browser-sync').create();
 
 /**
@@ -92,7 +92,7 @@ gulp.task('minify', (done) => {
             mangle: false,
             preserveComments: 'license'
         })))
-        .pipe(gulpIf('*.css', cleanCSS()))
+        .pipe(gulpIf('*.css', cssnano()))
         .pipe(gulpIf('**/*.{css,js}', header(banner)))
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
@@ -139,8 +139,21 @@ gulp.task('watch', (done) => {
     });
 
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
-    gulp.watch(env.DIR_SRC + '/assets/{scss,styles}/**/*', ['buildStyles']);
+    gulp.watch(env.DIR_SRC + '/assets/styles/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
     gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
     gulp.watch(env.DIR_SRC + '/assets/{media,data}/**/*', ['buildStatic']);
+});
+
+/**
+ * Helper task to builds and then watches files.
+ * Same as doing "gulp && gulp watch"
+ *
+ * @task launch
+ */
+gulp.task('launch', (done) => {
+    runSequence(
+        ['default'], ['watch'],
+        done
+    );
 });
