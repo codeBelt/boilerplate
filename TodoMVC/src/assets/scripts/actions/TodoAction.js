@@ -1,7 +1,8 @@
-import BaseObject from 'strucutrejs/BaseObject';
-import EventBroker from 'strucutrejs/event/EventBroker';
+import BaseObject from 'structurejs/BaseObject';
+import EventBroker from 'structurejs/event/EventBroker';
 
 import TodoEvent from '../events/TodoEvent';
+
 /**
  * TODO: YUIDoc_comment
  *
@@ -22,22 +23,24 @@ class TodoAction extends BaseObject {
      * @public
      */
     load() {
-        BeerService
-            .getAllBeerModels()
-            .then((models) => EventBroker.dispatchEvent(TodoEvent.LOAD, models));
+        // TodoService
+        //     .getAllTodoModels()
+        //     .then((models) => EventBroker.dispatchEvent(TodoEvent.LOAD, models));
     }
 
     /**
      * TODO: YUIDoc_comment
      *
      * @method add
-     * @param beerModel {BeerModel}
+     * @param todoModel {TodoModel}
      * @public
      */
-    add(beerModel) {
-        BeerService
-            .add(beerModel)
-            .then((model) => EventBroker.dispatchEvent(TodoEvent.ADD, model));
+    add(todoModel) {
+        // TodoService
+        //     .add(todoModel)
+        //     .then((model) => EventBroker.dispatchEvent(TodoEvent.ADD, model));
+
+        // window.localStorage.setItem(key, data);
     }
 
     /**
@@ -46,10 +49,10 @@ class TodoAction extends BaseObject {
      * @method update
      * @public
      */
-    update(beerModel) {
-        BeerService
-            .update(beerModel)
-            .then((model) => EventBroker.dispatchEvent(TodoEvent.UPDATE));
+    update(todoModel) {
+        // TodoService
+        //     .update(todoModel)
+        //     .then((model) => EventBroker.dispatchEvent(TodoEvent.UPDATE));
     }
 
     /**
@@ -58,10 +61,10 @@ class TodoAction extends BaseObject {
      * @method remove
      * @public
      */
-    remove(beerId) {
-        BeerService
-            .delete(beerId)
-            .then(EventBroker.dispatchEvent(TodoEvent.REMOVE, beerId));
+    remove(todoId) {
+        // TodoService
+        //     .delete(todoId)
+        //     .then(EventBroker.dispatchEvent(TodoEvent.REMOVE, todoId));
     }
 
     /**
@@ -73,7 +76,7 @@ class TodoAction extends BaseObject {
     clear() {
         EventBroker.dispatchEvent(TodoEvent.CLEAR);
     }
-    
+
 }
 
 export default new TodoAction();

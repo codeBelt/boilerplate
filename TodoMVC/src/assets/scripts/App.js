@@ -3,6 +3,7 @@ import BaseEvent from 'structurejs/event/BaseEvent';
 import Router from 'structurejs/controller/Router';
 import StringUtil from 'structurejs/util/StringUtil';
 
+import TodoAction from './actions/TodoAction';
 import ListItemCollection from './collections/ListItemCollection';
 import TodoModel from './models/TodoModel';
 import ListItemComponent from './views/components/ListItemComponent';
@@ -82,6 +83,8 @@ class App extends DOMElement {
 
         this._footerView = new FooterView(this.$element.find('.js-footerView'));
         this.addChild(this._footerView);
+
+        TodoAction.load();
     }
 
     /**
