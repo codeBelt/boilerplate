@@ -8,6 +8,7 @@ const useref = require('gulp-useref');
 const header = require('gulp-header');
 const cssnano = require('gulp-cssnano');
 const browserSync = require('browser-sync').create();
+{% if mockDataSystem == 'jsonServer' %} const jsonServer = require('json-server'); {% endif %}
 
 /**
  * Uncomment the next line to report the Gulp execution time (for optimization, etc)
@@ -68,7 +69,7 @@ gulp.task('default', (done) => {
 gulp.task('build', (done) => {
     const tasks = [
         ['clean:dest'],
-        ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts' <% if (jstBuildSystem !== "no") { %>, 'buildJST'<% } %> ]
+        ['buildStatic', 'buildMarkup', 'buildStyles', 'buildScripts' {% if jstBuildSystem != 'no' %}, 'buildJST'{% endif %}]
     ];
 
     if (isProd === true) {
@@ -123,7 +124,7 @@ gulp.task('lint', (done) => {
     );
 });
 
-<% if (testingBuildSystem.indexOf('testing') >= 0) { %>
+{% if testingBuildSystem.indexOf('testing') >= 0 %}
     /**
      * Unit tests the code.
      *
@@ -135,9 +136,9 @@ gulp.task('lint', (done) => {
             done
         );
     });
-<% } %>
+{% endif %}
 
-<% if (markupFeatures.indexOf('imagemin') >= 0) { %>
+{% if markupFeatures.indexOf('imagemin') >= 0 %}
     /**
      * Optimizes images.
      *
@@ -149,7 +150,7 @@ gulp.task('lint', (done) => {
             done
         );
     });
-<% } %>
+{% endif %}
 
 /**
  * Start a web server and reloads the browser file changes.
@@ -158,6 +159,16 @@ gulp.task('lint', (done) => {
  * @options --open
  */
 gulp.task('watch', (done) => {
+    {% if mockDataSystem == 'jsonServer' %}
+        // Mock data
+        const jsonServerFakerData = require(`./${env.DIR_DEST}/db.js`);
+        // JSON Server setup
+        const server = jsonServer.create();
+        server.use(jsonServer.defaults());
+        server.use(jsonServer.router(jsonServerFakerData));
+    {% endif %}
+
+    // BrowserSync setup
     browserSync.init({
         notify: false,
         injectChanges: true,
@@ -165,13 +176,20 @@ gulp.task('watch', (done) => {
         server: {
             baseDir: env.DIR_DEST
         }
+    }, (err, bs) => {
+        if (err) { console.warn(err)}
+        {% if mockDataSystem == 'jsonServer' %}
+            // Add JSON Server as a middleware to BrowserSync
+            bs.app.use('/api', server);
+        {% endif %}
     });
 
+    // Watch and trigger tasks on file changes
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/styles/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
     gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
-    gulp.watch(env.DIR_SRC + '/assets/{media,data}/**/*', ['buildStatic']);
+    gulp.watch([env.DIR_SRC + '/assets/{media,data}/**/*'{% if mockDataSystem == 'jsonServer' %}, env.DIR_SRC + '/db.*'{% endif %}], ['buildStatic']);
 });
 
 /**

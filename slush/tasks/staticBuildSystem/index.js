@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
+const template = require('gulp-template');
 
 module.exports = (answers) => {
     // Files and folder locations
@@ -10,6 +11,7 @@ module.exports = (answers) => {
     gulp.task('staticBuildSystem', (done) => {
         gulp
             .src(files)
+            .pipe(template(answers))
             .pipe(gulp.dest('./'))
             .on('end', done);
     });

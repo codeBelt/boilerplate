@@ -5,6 +5,8 @@ const jsbeautifier = require('gulp-jsbeautifier');
 const template = require('gulp-template');
 const prettify = require('gulp-prettify');
 const merge = require('merge-stream');
+const preprocess = require('gulp-preprocess');
+const nunjucks = require('gulp-nunjucks');
 
 const Util = require('../../utils/Util');
 
@@ -22,6 +24,7 @@ module.exports = (answers) => {
                 '!' + __dirname + '/files/bower.json'
             ])
             .pipe(gulp.dest('./'));
+console.log("answers", {context : answers});
 
         const gulpfileParse = gulp
             .src([
@@ -29,9 +32,7 @@ module.exports = (answers) => {
                 __dirname + '/files/Gulpfile.js',
                 __dirname + '/files/README.md'
             ], { base: __dirname + '/files/' })
-            // Uses Underscore/Lodash templates to add or remove sections
-            // which is determined what data is the "answers" object.
-            .pipe(template(answers))
+            .pipe(nunjucks.compile(answers))
             .pipe(jsbeautifier({
                 max_preserve_newlines: 2
             }))
