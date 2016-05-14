@@ -213,6 +213,22 @@ module.exports = [
         "type": "list"
     },
     {
+        "name": "mockDataSystem",
+        "message": "Do you want add mock data?",
+        "choices": [
+            {
+                "name": "No",
+                "value": "no"
+            },
+            {
+                "name": "JSON Server with faker.js",
+                "value": "jsonServer"
+            }
+        ],
+        "default": "jsonServer",
+        "type": "list"
+    },
+    {
         "name": "testingBuildSystem",
         "message": "Any testing features?",
         "choices": [

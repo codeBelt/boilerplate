@@ -33,6 +33,7 @@ const stylesBuildSystem = require('./slush/tasks/stylesBuildSystem/index');
 const jstBuildSystem = require('./slush/tasks/jstBuildSystem/index');
 const testingBuildSystem = require('./slush/tasks/testingBuildSystem/index');
 const staticBuildSystem = require('./slush/tasks/staticBuildSystem/index');
+const mockDataSystem = require('./slush/tasks/mockDataSystem/index');
 
 // Default Slash Tasks
 gulp.task('default', (done) => {
@@ -59,7 +60,8 @@ gulp.task('default', (done) => {
             stylesBuildSystem(answers),
             jstBuildSystem(answers),
             staticBuildSystem(answers),
-            testingBuildSystem(answers)
+            testingBuildSystem(answers),
+            mockDataSystem(answers)
         ];
 
         // Remove all null values in array.
