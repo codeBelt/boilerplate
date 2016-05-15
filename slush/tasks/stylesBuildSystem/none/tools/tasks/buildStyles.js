@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const gulpIf = require('gulp-if');
 
-const allowAutoPrefixer = <%= stylesFeatures.indexOf("autoprefixer") >= 0 %>;
+const allowAutoPrefixer = {{ stylesFeatures.indexOf('autoprefixer') >= 0 }};
 
 gulp.task('buildStyles', (done) => {
     return gulp

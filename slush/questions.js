@@ -225,7 +225,7 @@ module.exports = [
                 "value": "jsonServer"
             }
         ],
-        "default": "jsonServer",
+        "default": "no",
         "type": "list"
     },
     {

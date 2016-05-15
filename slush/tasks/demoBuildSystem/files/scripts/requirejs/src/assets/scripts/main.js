@@ -18,7 +18,6 @@
  RequireJS syntax is used here to specify dependencies. Do not use this
  syntax in any other modules.
 
- http://plaintexttools.github.io/plain-text-table/
  */
 
 /**

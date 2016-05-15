@@ -32,10 +32,10 @@ require.config({ // jshint ignore:line
         // bower modules automatically. Otherwise it defaults to double quotes.
         'requirejs': '',
         'jquery': '../vendor/jquery/dist/jquery',
-        <% if (jstBuildSystem !== 'no') { %>
+        {% if jstBuildSystem != 'no' %}
             'handlebars': '../vendor/handlebars/handlebars',
             'templates': './precompiledJst',
-        <% } %>
+        {% endif %}
     },
 
     shim: {

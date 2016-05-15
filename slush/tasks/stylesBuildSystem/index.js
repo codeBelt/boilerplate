@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 const merge = require('merge-stream');
-const template = require('gulp-template');
+const nunjucks = require('gulp-nunjucks');
 
 module.exports = (answers) => {
 
@@ -27,7 +27,7 @@ module.exports = (answers) => {
     gulp.task('stylesBuildSystem', (done) => {
         const copySourceFiles = gulp
             .src(sourcePath)
-            .pipe(template(answers))
+            .pipe(nunjucks.compile(answers))
             .pipe(gulp.dest('./'));
 
         return merge(copySourceFiles);
