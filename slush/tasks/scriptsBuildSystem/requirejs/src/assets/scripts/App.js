@@ -1,7 +1,7 @@
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
-    <% if (jstBuildSystem !== "no") { %>
+    <% if (jstBuildSystem !== 'no') { %>
         require('templates'); // jshint ignore:line
     <% } %>
 
@@ -25,7 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
      */
     proto.init = function() {
         // Create your views here
-        <% if (jstBuildSystem !== "no") { %>
+        <% if (jstBuildSystem !== 'no') { %>
             var template = window['JST']['templates/jst/GenericModal']();
             console.log(template);
         <% } %>

@@ -1,4 +1,4 @@
-<% if (markupFeatures.indexOf("xhtml") >= 0) { %>
+<% if (markupFeatures.indexOf('xhtml') >= 0) { %>
     <!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     <html class="no-js" lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
 <%  } else { %>
@@ -8,7 +8,7 @@
 
     <head>
         <!-- META DATA -->
-        <% if (markupFeatures.indexOf("xhtml") >= 0) { %>
+        <% if (markupFeatures.indexOf('xhtml') >= 0) { %>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <%  } else { %>
             <meta charset="utf-8" />
@@ -20,12 +20,12 @@
         <!-- SEO -->
         <title><%= projectName %></title>
 
-        <% if (markupFeatures.indexOf("seo") >= 0) { %>
+        <% if (markupFeatures.indexOf('seo') >= 0) { %>
             <meta name="description" content="" />
             <meta name="author" content="" />
         <% } %>
 
-        <% if (markupFeatures.indexOf("icons") >= 0) { %>
+        <% if (markupFeatures.indexOf('icons') >= 0) { %>
             <!-- ICONS -->
             <!-- Touch Icons - iOS and Android 2.1+  -->
             <link rel="apple-touch-icon" sizes="57x57" href="assets/media/images/apple-touch-icon-57x57.png" />
@@ -59,33 +59,33 @@
         <!-- build:css assets/styles/screen.css -->
         <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
 
-        <% if (demoBuildSystem === "yes" && stylesBuildSystem === "none") { %>
+        <% if (demoBuildSystem === 'yes' && stylesBuildSystem === 'none') { %>
             <link rel="stylesheet" media="screen, projection" href="assets/styles/modules/card.css" />
         <% } %>
         <!-- endbuild -->
 
-        <% if (stylesFeatures.indexOf("ie9") >= 0) { %>
+        <% if (stylesFeatures.indexOf('ie9') >= 0) { %>
             <!--[if IE 9]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie9.css" /><![endif]-->
         <% } %>
 
-        <% if (stylesFeatures.indexOf("ie8") >= 0) { %>
+        <% if (stylesFeatures.indexOf('ie8') >= 0) { %>
             <!--[if lte IE 8]><link rel="stylesheet" media="screen, projection" href="assets/styles/ie8.css" /><![endif]-->
         <% } %>
 
-        <% if (stylesFeatures.indexOf("print") >= 0) { %>
+        <% if (stylesFeatures.indexOf('print') >= 0) { %>
             <link rel="stylesheet" media="print" href="assets/styles/print.css" />
         <% } %>
 
         <!-- POLYFILLS -->
         <!-- build:js assets/scripts/head.js -->
-            <% if (scriptsAdditional.indexOf("modernizr") >= 0) { %>
+            <% if (scriptsAdditional.indexOf('modernizr') >= 0) { %>
                 <script src="assets/vendor/modernizr/modernizr.js"></script>
             <% } %>
         <!-- endbuild -->
     </head>
     <body>
         <!-- CONTENT -->
-        <% if (demoBuildSystem === "yes") { %>
+        <% if (demoBuildSystem === 'yes') { %>
             <div class="js-demoView">
                 <div class="js-demoView-card demo-card">
                     <div class="demo-card-front">
@@ -102,14 +102,14 @@
                 Star my project <a href="https://github.com/codeBelt/slush-project" target="_blank">slush project</a>
             </p>
 
-            <% if (mockDataSystem.indexOf("jsonServer") >= 0) { %>
+            <% if (mockDataSystem.indexOf('jsonServer') >= 0) { %>
                 <a href="/api/" target="_blank">Mock data /api/</a>
             <% } %>
 
         <% } %>
 
         <!-- JAVASCRIPT -->
-        <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>
+        <% if (scriptsBuildSystem.indexOf('requirejs') >= 0) { %>
             <!-- build:js assets/vendor/requirejs/require.js -->
                 <script src="assets/vendor/requirejs/require.js"></script>
             <!-- endbuild -->
@@ -180,7 +180,7 @@
              */
             SETTINGS.SCRIPT_PATH = 'assets/scripts/';
 
-            <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>
+            <% if (scriptsBuildSystem.indexOf('requirejs') >= 0) { %>
                 /**
                  * Set any RequireJs configuration that is dependent on dynamic
                  * configuration variables. Note that this config data is merged into
@@ -202,30 +202,30 @@
             <% } %>
         </script>
 
-        <% if (scriptsBuildSystem.indexOf("requirejs") < 0) { %>
+        <% if (scriptsBuildSystem.indexOf('requirejs') < 0) { %>
             <!-- build:js assets/scripts/vendor.js -->
-                <% if (scriptsAdditional.indexOf("jquery") >= 0 || demoBuildSystem === "yes") { %>
+                <% if (scriptsAdditional.indexOf('jquery') >= 0 || demoBuildSystem === 'yes') { %>
                     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
                 <% } %>
 
-                <% if (scriptsAdditional.indexOf("requestAnimationFrame") >= 0 ) { %>
+                <% if (scriptsAdditional.indexOf('requestAnimationFrame') >= 0 ) { %>
                     <script src="assets/vendor/requestAnimationFrame/app/requestAnimationFrame.js"></script>
                 <% } %>
 
-                <% if (jstBuildSystem === "handlebars") { %>
+                <% if (jstBuildSystem === 'handlebars') { %>
                     <script src="assets/vendor/handlebars/handlebars.runtime.min.js"></script>
                 <% } %>
             <!-- endbuild -->
 
             <!-- build:js assets/scripts/main.js -->
-                <% if (jstBuildSystem !== "no") { %>
+                <% if (jstBuildSystem !== 'no') { %>
                     <script src="assets/scripts/precompiledJst.js"></script>
                 <% } %>
 
-                <% if (scriptsBuildSystem === "none") { %>
+                <% if (scriptsBuildSystem === 'none') { %>
                     <script src="assets/scripts/shim.js"></script>
 
-                        <% if (demoBuildSystem === "yes") { %>
+                        <% if (demoBuildSystem === 'yes') { %>
                             <script src="assets/scripts/views/DemoView.js"></script>
                         <% } %>
 

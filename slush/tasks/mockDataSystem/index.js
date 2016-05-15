@@ -1,10 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const merge = require('merge-stream');
-const template = require('gulp-template');
-const prettify = require('gulp-prettify');
-const replace = require('gulp-replace');
 
 module.exports = (answers) => {
     if (answers.mockDataSystem === 'no') { return null; }
@@ -14,7 +10,7 @@ module.exports = (answers) => {
 
     switch (type) {
         case 'jsonServer':
-            devDependencies = ['faker', 'lodash'];
+            devDependencies = ['faker', 'lodash', 'json-server'];
             break;
     }
 
@@ -25,7 +21,7 @@ module.exports = (answers) => {
     gulp.task('mockDataSystem', (done) => {
         return gulp
             .src(path)
-            .pipe(gulp.dest('./'));
+            .pipe(gulp.dest('./src/'));
     });
 
     // Return data

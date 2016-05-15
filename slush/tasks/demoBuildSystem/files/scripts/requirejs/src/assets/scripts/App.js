@@ -4,7 +4,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var $ = require('jquery');
     var DemoView = require('./views/DemoView');
 
-    <% if (jstBuildSystem !== "no") { %>
+    <% if (jstBuildSystem !== 'no') { %>
         require('templates'); // jshint ignore:line
     <% } %>
 
@@ -31,7 +31,7 @@ define(function(require, exports, module) { // jshint ignore:line
         // Pass in a jQuery reference to DOM elements that need functionality attached to them
         this.demoView = new DemoView($('.js-demoView'));
 
-        <% if (jstBuildSystem !== "no") { %>
+        <% if (jstBuildSystem !== 'no') { %>
             var template = window['JST']['templates/jst/GenericModal']();
             console.log(template);
         <% } %>

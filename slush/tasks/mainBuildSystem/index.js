@@ -2,7 +2,6 @@
 
 const gulp = require('gulp');
 const jsbeautifier = require('gulp-jsbeautifier');
-const template = require('gulp-template');
 const prettify = require('gulp-prettify');
 const merge = require('merge-stream');
 const preprocess = require('gulp-preprocess');

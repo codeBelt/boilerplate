@@ -1,5 +1,5 @@
         <!-- JAVASCRIPT -->
-        <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>
+        <% if (scriptsBuildSystem.indexOf('requirejs') >= 0) { %>
             <!-- build:js assets/vendor/requirejs/require.js -->
                 <script src="assets/vendor/requirejs/require.js"></script>
             <!-- endbuild -->
@@ -69,7 +69,7 @@
              */
             SETTINGS.SCRIPT_PATH = 'assets/scripts/';
 
-            <% if (scriptsBuildSystem.indexOf("requirejs") >= 0) { %>
+            <% if (scriptsBuildSystem.indexOf('requirejs') >= 0) { %>
                 /**
                  * Set any RequireJs configuration that is dependent on dynamic
                  * configuration variables. Note that this config data is merged into
@@ -91,30 +91,30 @@
             <% } %>
         </script>
 
-        <% if (scriptsBuildSystem.indexOf("requirejs") < 0) { %>
+        <% if (scriptsBuildSystem.indexOf('requirejs') < 0) { %>
             <!-- build:js assets/scripts/vendor.js -->
-                <% if (scriptsAdditional.indexOf("jquery") >= 0 || demoBuildSystem === "yes") { %>
+                <% if (scriptsAdditional.indexOf('jquery') >= 0 || demoBuildSystem === 'yes') { %>
                     <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
                 <% } %>
 
-                <% if (scriptsAdditional.indexOf("requestAnimationFrame") >= 0 ) { %>
+                <% if (scriptsAdditional.indexOf('requestAnimationFrame') >= 0 ) { %>
                     <script src="assets/vendor/requestAnimationFrame/app/requestAnimationFrame.js"></script>
                 <% } %>
 
-                <% if (jstBuildSystem === "handlebars") { %>
+                <% if (jstBuildSystem === 'handlebars') { %>
                     <script src="assets/vendor/handlebars/handlebars.runtime.min.js"></script>
                 <% } %>
             <!-- endbuild -->
 
             <!-- build:js assets/scripts/main.js -->
-                <% if (jstBuildSystem !== "no") { %>
+                <% if (jstBuildSystem !== 'no') { %>
                     <script src="assets/scripts/precompiledJst.js"></script>
                 <% } %>
 
-                <% if (scriptsBuildSystem === "none") { %>
+                <% if (scriptsBuildSystem === 'none') { %>
                     <script src="assets/scripts/shim.js"></script>
 
-                        <% if (demoBuildSystem === "yes") { %>
+                        <% if (demoBuildSystem === 'yes') { %>
                             <script src="assets/scripts/views/DemoView.js"></script>
                         <% } %>
 
