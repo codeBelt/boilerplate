@@ -177,7 +177,7 @@ gulp.task('watch', (done) => {
             baseDir: env.DIR_DEST
         }
     }, (err, bs) => {
-        if (err) { console.warn(err)}
+        if (err) { console.warn(err); }
         {% if mockDataSystem == 'jsonServer' %}
             // Add JSON Server as a middleware to BrowserSync
             bs.app.use('/api', server);
