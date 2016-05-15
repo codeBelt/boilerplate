@@ -52,8 +52,8 @@ const fakeData = {
         description: 'typicode'
     },
 
-    // Dynamic data api example. Returns an array of 20 objects.
-    examples: _.times(20, (num) => _exampleModel(num))
+    // Generated data api example. Returns an array of 20 objects.
+    generated: _.times(20, (num) => _exampleModel(num))
 };
 
 module.exports = fakeData;
