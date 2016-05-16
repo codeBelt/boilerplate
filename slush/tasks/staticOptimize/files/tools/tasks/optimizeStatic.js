@@ -7,13 +7,14 @@ const pngquant = require('imagemin-pngquant');
  *
  * @task optimizeStatic
  */
-gulp.task('optimizeStatic', (done) => {
-    return gulp.
-        src(env.DIR_SRC + '/assets/media/images/**/*')
+gulp.task('optimizeStatic', done => {
+    return gulp
+        .src(`${ global.env.DIR_SRC }/assets/media/images/**/*.+(png|jpg|gif|svg)`)
         .pipe(imagemin({
+            verbose: true,
             progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
+            optimizationLevel: 7,
+            use: [pngquant()], // pngquant not included by default in gulp-imagemin
         }))
-        .pipe(gulp.dest(env.DIR_DEST + '/assets/media/images/'));
+        .pipe(gulp.dest(`${ global.env.DIR_DEST }/assets/media/images/`));
 });
