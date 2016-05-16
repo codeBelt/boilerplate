@@ -14,7 +14,7 @@ gulp.task('optimizeStatic', done => {
             verbose: true,
             progressive: true,
             optimizationLevel: 7,
-            use: [pngquant()], // pngquant not included by default in gulp-imagemin
+            use: [pngquant()] // pngquant not included by default in gulp-imagemin
         }))
         .pipe(gulp.dest(`${ global.env.DIR_DEST }/assets/media/images/`));
 });
