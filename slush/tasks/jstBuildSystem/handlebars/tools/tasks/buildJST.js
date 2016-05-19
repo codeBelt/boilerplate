@@ -20,11 +20,9 @@ gulp.task('buildJST', (done) => {
             handlebars: require('handlebars')
         }))
         .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
-            imports: {
-                processPartialName: (fileName) => {
-                    // Strip the extension and the underscore. Escape the output with JSON.stringify
-                    return JSON.stringify(path.basename(fileName, '.js').substr(1));
-                }
+            processPartialName: (fileName) => {
+                // Strip the extension and the underscore. Escape the output with JSON.stringify
+                return JSON.stringify(path.basename(fileName, '.js').substr(1));
             }
         }));
 
