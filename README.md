@@ -28,10 +28,10 @@ Install `slush-project` globally:
 npm install -g slush-project
 ```
 
-Remember to install `gulp`, `slush`, and `bower` globally as well, if you haven't already:
+Remember to install `gulp-cli`, `slush`, and `bower` globally as well, if you haven't already:
 
 ```
-npm install -g slush gulp bower
+npm install -g slush gulp-cli bower
 ```
 
 If you choose TypeScript as an option.  You'll need to have `typings` installed for a smooth installation:
