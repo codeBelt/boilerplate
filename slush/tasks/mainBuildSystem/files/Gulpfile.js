@@ -42,11 +42,6 @@ if (argv.prod === true || argv.dev === true) {
     global.isDev = (env.BUILD_MODE === 'dev');
 }
 
-/**
- * A code block that will be added to the minified code files.
- */
-global.banner = require('./banner.js')(pkg);
-
 // -- Tasks ----------------------------------------------------------------
 /**
  * Run default tasks for the target environment.
@@ -94,7 +89,6 @@ gulp.task('minify', (done) => {
             preserveComments: 'license'
         })))
         .pipe(gulpIf('*.css', cleanCSS()))
-        .pipe(gulpIf('**/*.{css,js}', header(banner)))
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
 });
