@@ -46,7 +46,7 @@ module.exports = (answers) => {
             'del',
             'gulp-uglify',
             'gulp-header',
-            'gulp-cssnano',
+            'gulp-clean-css',
             'gulp-useref',
             'gulp-if',
             'yargs',

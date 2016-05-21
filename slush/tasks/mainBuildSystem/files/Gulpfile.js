@@ -6,7 +6,7 @@ const gulpIf = require('gulp-if');
 const uglify = require('gulp-uglify');
 const useref = require('gulp-useref');
 const header = require('gulp-header');
-const cssnano = require('gulp-cssnano');
+const cleanCSS = require('gulp-clean-css');
 const browserSync = require('browser-sync').create();
 {% if mockDataSystem == 'jsonServer' %} const jsonServer = require('json-server'); {% endif %}
 
@@ -93,7 +93,7 @@ gulp.task('minify', (done) => {
             mangle: false,
             preserveComments: 'license'
         })))
-        .pipe(gulpIf('*.css', cssnano()))
+        .pipe(gulpIf('*.css', cleanCSS()))
         .pipe(gulpIf('**/*.{css,js}', header(banner)))
         .pipe(gulp.dest(env.DIR_DEST))
         .on('end', done);
