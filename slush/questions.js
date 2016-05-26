@@ -214,7 +214,7 @@ module.exports = [
     },
     {
         "name": "mockDataSystem",
-        "message": "Do you want add mock data?",
+        "message": "Do you want to add mock data?",
         "choices": [
             {
                 "name": "No",

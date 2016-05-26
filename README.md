@@ -98,7 +98,11 @@ slush project
 	
 1. Do you want a demo application?
 	* No 
-	* Yes
+	* Yes	
+	
+1. Do you want to add mock data?
+	* No 
+	* JSON Server with faker.js
 	
 1. Any testing features?
 	* 3rd-Party Vulnerability Audit 
@@ -108,7 +112,7 @@ slush project
 TODO: 
 
 * Add AVA unit testing to projects.
-* Make sure optimizeStatic is working.
+* Update Demos.
 
 ## License
 

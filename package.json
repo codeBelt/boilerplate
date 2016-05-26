@@ -1,7 +1,7 @@
 {
   "name": "slush-project",
   "description": "A slush generator to create different Client-side boilerplates while maintaining the same folder structure.",
-  "version": "0.8.9",
+  "version": "0.9.0",
   "devDependencies": {},
   "dependencies": {
     "gulp": "^3.8.6",
