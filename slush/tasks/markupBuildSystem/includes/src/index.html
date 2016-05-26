@@ -2,7 +2,7 @@
     "title": "Boilerplate"
 })
 
-    <% if (demoBuildSystem === "yes") { %>
+    <% if (demoBuildSystem === 'yes') { %>
         <div class="js-demoView">
             <div class="js-demoView-card demo-card">
                 <div class="demo-card-front">
@@ -13,11 +13,16 @@
                 </div>
             </div>
         </div>
-        <% } else { %>
-            <h1>Welcome</h1>
-            <p>
-                Star my project <a href="https://github.com/codeBelt/slush-project" target="_blank">slush project</a>
-            </p>
+    <% } else { %>
+        <h1>Welcome</h1>
+        <p>
+            Star my project <a href="https://github.com/codeBelt/slush-project" target="_blank">slush project</a>
+        </p>
+
+        <% if (mockDataSystem != 'no') { %>
+            <a href="/api/" target="_blank">Mock data /api/</a>
         <% } %>
+
+    <% } %>
 
 @@include('templates/footer.html')

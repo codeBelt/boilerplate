@@ -16,7 +16,6 @@ import App from './App';
  controller at the appropriate time. All other code should be written as
  separate modules in their own files.
 
- http://plaintexttools.github.io/plain-text-table/
  */
 
 window.app = new App();

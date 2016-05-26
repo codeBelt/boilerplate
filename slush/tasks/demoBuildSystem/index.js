@@ -1,9 +1,9 @@
 'use strict';
 
 const gulp = require('gulp');
-const template = require('gulp-template');
 const jsbeautifier = require('gulp-jsbeautifier');
 const gulpIf = require('gulp-if');
+const nunjucks = require('gulp-nunjucks');
 
 module.exports = (answers) => {
     if (answers.demoBuildSystem === 'no') { return null; }
@@ -26,7 +26,7 @@ module.exports = (answers) => {
                 testingSourcePaths,
                 stylesSourcePaths
             ])
-            .pipe(template(answers))
+            .pipe(nunjucks.compile(answers))
             .pipe(gulpIf('*.js', jsbeautifier({
                 max_preserve_newlines: 2
             })))

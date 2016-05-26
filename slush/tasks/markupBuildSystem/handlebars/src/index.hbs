@@ -2,7 +2,7 @@
 
     {{#content "body" mode="append"}}
 
-        <% if (demoBuildSystem === "yes") { %>
+        <% if (demoBuildSystem === 'yes') { %>
             <div class="js-demoView">
                 <div class="js-demoView-card demo-card">
                     <div class="demo-card-front">
@@ -18,6 +18,11 @@
             <p>
                 Star my project <a href="https://github.com/codeBelt/slush-project" target="_blank">slush project</a>
             </p>
+
+            <% if (mockDataSystem != 'no') { %>
+                <a href="/api/" target="_blank">Mock data /api/</a>
+            <% } %>
+
         <% } %>
 
     {{/content}}

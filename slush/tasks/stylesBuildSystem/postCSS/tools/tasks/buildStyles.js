@@ -6,7 +6,7 @@ const discardComments = require('postcss-discard-comments');
 const apply = require('postcss-apply');
 const cssnext = require('postcss-cssnext');
 
-const allowAutoPrefixer = <%= stylesFeatures.indexOf("autoprefixer") >= 0 %>;
+const allowAutoPrefixer = {{ stylesFeatures.indexOf('autoprefixer') >= 0 }};
 
 gulp.task('buildStyles', (done) => {
 

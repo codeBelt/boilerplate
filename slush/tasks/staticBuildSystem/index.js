@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
+const nunjucks = require('gulp-nunjucks');
 
 module.exports = (answers) => {
     // Files and folder locations
@@ -10,6 +11,7 @@ module.exports = (answers) => {
     gulp.task('staticBuildSystem', (done) => {
         gulp
             .src(files)
+            .pipe(nunjucks.compile(answers))
             .pipe(gulp.dest('./'))
             .on('end', done);
     });

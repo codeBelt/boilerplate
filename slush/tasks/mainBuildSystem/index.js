@@ -2,9 +2,9 @@
 
 const gulp = require('gulp');
 const jsbeautifier = require('gulp-jsbeautifier');
-const template = require('gulp-template');
 const prettify = require('gulp-prettify');
 const merge = require('merge-stream');
+const nunjucks = require('gulp-nunjucks');
 
 const Util = require('../../utils/Util');
 
@@ -29,9 +29,7 @@ module.exports = (answers) => {
                 __dirname + '/files/Gulpfile.js',
                 __dirname + '/files/README.md'
             ], { base: __dirname + '/files/' })
-            // Uses Underscore/Lodash templates to add or remove sections
-            // which is determined what data is the "answers" object.
-            .pipe(template(answers))
+            .pipe(nunjucks.compile(answers))
             .pipe(jsbeautifier({
                 max_preserve_newlines: 2
             }))
@@ -48,7 +46,7 @@ module.exports = (answers) => {
             'del',
             'gulp-uglify',
             'gulp-header',
-            'gulp-cssnano',
+            'gulp-clean-css',
             'gulp-useref',
             'gulp-if',
             'yargs',

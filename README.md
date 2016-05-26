@@ -28,10 +28,10 @@ Install `slush-project` globally:
 npm install -g slush-project
 ```
 
-Remember to install `gulp`, `slush`, and `bower` globally as well, if you haven't already:
+Remember to install `gulp-cli`, `slush`, and `bower` globally as well, if you haven't already:
 
 ```
-npm install -g slush gulp bower
+npm install -g slush gulp-cli bower
 ```
 
 If you choose TypeScript as an option.  You'll need to have `typings` installed for a smooth installation:
@@ -98,7 +98,11 @@ slush project
 	
 1. Do you want a demo application?
 	* No 
-	* Yes
+	* Yes	
+	
+1. Do you want to add mock data?
+	* No 
+	* JSON Server with faker.js
 	
 1. Any testing features?
 	* 3rd-Party Vulnerability Audit 
@@ -108,6 +112,7 @@ slush project
 TODO: 
 
 * Add AVA unit testing to projects.
+* Update Demos.
 
 ## License
 

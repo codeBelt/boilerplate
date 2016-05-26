@@ -17,8 +17,8 @@ gulp.task('clean:docs', (done) => {
 gulp.task('clean:minify', (done) => {
     return del([
         env.DIR_DEST + '/assets/vendor'
-        <% if (jstBuildSystem !== "no") { %>, env.DIR_DEST + '/assets/scripts/precompiledJst.js' <% } %>
-        <% if (jstBuildSystem !== "no") { %>, env.DIR_SRC + '/assets/scripts/precompiledJst.js' <% } %>
+        {% if jstBuildSystem != 'no' %}, env.DIR_DEST + '/assets/scripts/precompiledJst.js' {% endif %}
+        {% if jstBuildSystem != 'no' %}, env.DIR_SRC + '/assets/scripts/precompiledJst.js' {% endif %}
     ], { force: env.UNSAFE_MODE });
 });
 
