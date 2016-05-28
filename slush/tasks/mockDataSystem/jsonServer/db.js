@@ -18,7 +18,7 @@ const _ = require('lodash');
 /**
  * Models
  */
-const _locationMode = (num) => {
+const _locationModel = (num) => {
     return {
         id: num,
         address1: faker.address.streetAddress(),
@@ -37,7 +37,7 @@ const _exampleModel = (num) => {
         email: faker.internet.email(),
         phonePrimary: faker.phone.phoneNumber(),
         phoneSecondary: faker.phone.phoneNumber(),
-        locations: _locationMode(1)
+        locations: _locationModel(1)
     }
 };
 
