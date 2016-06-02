@@ -15,7 +15,7 @@ module.exports = (answers) => {
             devDependencies = ['gulp', 'gulp-jshint' ,'jshint'];
             break;
         case 'babel':
-            devDependencies = ['gulp', 'gulp-eslint', 'babel-eslint', 'eslint-plugin-react'];
+            devDependencies = ['gulp', 'gulp-eslint', 'babel-eslint', 'eslint'];
             break;
         case 'typescript':
             devDependencies = ['gulp', 'gulp-tslint', 'tslint', 'typescript'];
