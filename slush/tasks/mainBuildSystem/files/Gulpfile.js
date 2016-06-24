@@ -181,7 +181,7 @@ gulp.task('watch', (done) => {
     // Watch and trigger tasks on file changes
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/styles/**/*', ['buildStyles']);
-    gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
+    gulp.watch([env.DIR_SRC + '/**/*.{hbs,html}', '!' + env.DIR_SRC + '/templates/jst/**/*'], ['buildMarkup']);
     gulp.watch(env.DIR_SRC + '/templates/jst/**/*', ['buildJST']);
     gulp.watch([env.DIR_SRC + '/assets/{media,data}/**/*'{% if mockDataSystem == 'jsonServer' %}, env.DIR_SRC + '/db.*'{% endif %}], ['buildStatic']);
 });
