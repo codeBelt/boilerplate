@@ -1,7 +1,7 @@
 {
-  "ambientDependencies": {
+  "globalDependencies": {
   <% if (scriptsAdditional.indexOf('jquery') >= 0 || demoBuildSystem === 'yes') { %>
-    "jquery": "registry:dt/jquery#1.10.0+20160316155526"
+      "jquery": "registry:dt/jquery#1.10.0+20160704162008"
   <% } %>
   }
 }
